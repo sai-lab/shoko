@@ -39,5 +39,8 @@ module Shoko
     config.generators.stylesheets = false
     config.generators.javascripts = false
     config.generators.helper      = false
+
+    # Current git revision
+    config.git_revision = `git log --abbrev-commit --pretty=oneline | head -1 | cut -d' ' -f1`
   end
 end

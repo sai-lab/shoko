@@ -17,3 +17,24 @@
  *= require_tree .
  *= require_self
  */
+
+.exo {
+  font-family: 'Exo', sans-serif !important;
+  font-weight: 400;
+}
+.exo-bold {
+  font-family: 'Exo', sans-serif !important;
+  font-weight: 600;
+}
+.exo-brand {
+  font-family: 'Exo', sans-serif !important;
+  font-weight: 800;
+}
+
+.relative { position: relative; }
+.revision {
+  position: absolute;
+  right: 0;
+  font-family: monospace;
+  color: #999999;
+}

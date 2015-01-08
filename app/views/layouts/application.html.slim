@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title #{@title} | Shoko
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    = stylesheet_link_tag    'application', 'data-turbolinks-track' => true, media: 'all'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    link href="http://fonts.googleapis.com/css?family=Exo:400,600,800" rel="stylesheet" type="text/css"
+
+  body
+    nav.uk-navbar.uk-navbar-attached
+      .uk-container
+        = link_to root_path, class: 'uk-navbar-brand' do
+          = fa_icon 'book'
+          span.exo-brand &nbsp;Shoko
+
+    .uk-container
+      = yield
+
+      footer.uk-margin-bottom
+        .relative
+          small
+            | &copy; 香川大学工学部 電子・情報工学科 最所研究室
+            - unless Rails.env.production?
+              span.revision rev.#{Shoko::Application.config.git_revision}
