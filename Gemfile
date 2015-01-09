@@ -52,6 +52,7 @@ group :production do
   # Use unicorn as the app server
   gem 'unicorn'
   gem 'rails_12factor'
+  gem 'newrelic_rpm'
 end
 
 gem 'devise'
