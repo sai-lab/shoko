@@ -1,4 +1,11 @@
 ja:
+  activerecord:
+    attributes:
+      user:
+        account: 'アカウント名'
+        password: 'パスワード'
+        current_password: '現在のパスワード'
+        name: '名前'
   date:
     abbr_day_names:
     - 日

@@ -1,11 +1,11 @@
-- @title = 'ようこそ'
+- @title = 'ログイン'
 
 .uk-width-medium-1-2.uk-container-center.uk-margin-top.uk-margin-bottom
   .uk-panel.uk-panel-box
     h3.uk-panel-title
       i.uk-icon-sign-in
       span.exo.exo-bold Sign in
-    = form_for :user, html: { class: 'uk-form uk-form-stacked' }, url: { controller: 'devise/sessions', action: 'new' } do |f|
+    = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked' }, url: session_path(resource_name) do |f|
       .uk-form-row.uk-form-icon
         i.uk-icon-user
         = f.text_field :account, autofocus: true, class: 'uk-form-width-large',placeholder: 'アカウント名 (例: s10t200)'
