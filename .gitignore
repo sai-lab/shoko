@@ -22,9 +22,6 @@
 .*.swp
 *#*
 
-# Ignore indivisual settings.
-/bin/unicorn
-
 # Ignore assets pipeline files.
 /public/assets
 

@@ -78,6 +78,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: shoko_production_<%= ENV['USER'] %>
-  password: <%= ENV['SHOKO_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  database:
+  pool: 5
+  username:
+  password:
