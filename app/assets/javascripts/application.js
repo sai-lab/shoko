@@ -16,5 +16,10 @@
 //= require uikit
 //= require uikit_components/htmleditor.min
 //= require uikit_components/upload.min
+//= require codemirror
+//= require codemirror/modes/markdown
+//= require codemirror/modes/xml
+//= require codemirror/modes/gfm
+//= require codemirror/addons/mode/overlay
+//= require marked
 //= require turbolinks
-//= require_tree .
