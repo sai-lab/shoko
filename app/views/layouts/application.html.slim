@@ -14,13 +14,15 @@ html
         = link_to root_path, class: 'uk-navbar-brand' do
           i.uk-icon-book
           span.exo.exo-heavy Shoko
-        .uk-navbar-flip
+        .uk-navbar-nav.uk-hidden-small
+        .uk-navbar-flip.uk-hidden-small
           ul.uk-navbar-nav
             - if current_user
               li.uk-parent data-uk-dropdown=""
                 a
                   i.uk-icon-user
                   span.exo.exo-bold #{current_user.account}
+                  i.uk-icon-caret-down.uk-margin-small-left
                 .uk-dropdown.uk-dropdown-navbar
                   ul.uk-nav.uk-nav-navbar
                     li
@@ -36,6 +38,31 @@ html
                 = link_to new_user_session_path
                   i.uk-icon-sign-in
                   span.exo.exo-bold Sign in
+        .uk-navbar-flip.uk-visible-small
+          a.uk-navbar-toggle href="#navbar-offcanvas" data-uk-offcanvas=""
+
+    .uk-offcanvas#navbar-offcanvas
+      .uk-offcanvas-bar.uk-offcanvas-bar-flip
+        ul.uk-nav.uk-nav-offcanvas.uk-nav-parent-icon data-uk-nav=""
+          - if current_user
+            li.uk-parent
+              a href="#"
+                i.uk-icon-user
+                span.exo.exo-bold #{current_user.account}
+              ul.uk-nav-sub
+                li
+                  = link_to edit_user_registration_path(current_user.id)  do
+                    i.uk-icon-cog
+                    span.exo Settings
+                li
+                  = link_to destroy_user_session_path, method: :delete
+                    i.uk-icon-sign-out
+                    span.exo Sign out
+          - else
+            li
+              = link_to new_user_session_path
+                i.uk-icon-sign-in
+                span.exo.exo-bold Sign in
 
     .uk-container
       - if notice
