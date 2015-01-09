@@ -10,27 +10,20 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require uikit_components/htmleditor
- *= require uikit_components/placeholder
- *= require uikit.docs.min
- *= require uikit.gradient
- *= require font-awesome
- *= require codemirror
+ *= require uikit/components/htmleditor.gradient.min
+ *= require uikit/components/placeholder.gradient.min
+ *= require uikit/uikit.gradient.min
+ *= require codemirror/codemirror
  *= require_self
  */
 
 .exo {
   font-family: 'Exo', sans-serif !important;
   font-weight: 400;
+  margin-left: 0.5em;
 }
-.exo-bold {
-  font-family: 'Exo', sans-serif !important;
-  font-weight: 600;
-}
-.exo-brand {
-  font-family: 'Exo', sans-serif !important;
-  font-weight: 800;
-}
+.exo-bold { font-weight: 600; }
+.exo-heavy { font-weight: 800; }
 
 .relative { position: relative; }
 .revision {

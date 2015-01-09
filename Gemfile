@@ -58,11 +58,6 @@ end
 gem 'devise'
 gem 'slim-rails'
 gem 'kaminari'
-gem 'font-awesome-rails'
-
-gem 'uikit_rails', git: 'git://github.com/alec-c4/uikit_rails.git'
-gem 'codemirror-rails'
-gem 'marked-rails'
 
 gem 'carrierwave'
-gem 'remotipart', '~> 1.2'
+gem 'remotipart'
