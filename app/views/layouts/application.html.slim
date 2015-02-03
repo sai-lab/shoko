@@ -18,14 +18,14 @@ html
           li#nav-documents
             = link_to documents_path do
               i.uk-icon-file-text
-              span.exo Documents
+              span.exo.exo-bold Documents
         .uk-navbar-flip.uk-hidden-small
           ul.uk-navbar-nav
             - if current_user
               li#nav-new-post
                 = link_to new_document_path do
                   i.uk-icon-file
-                  span.exo New Post
+                  span.exo.exo-bold New Post
               li.uk-parent#nav-user data-uk-dropdown=""
                 a
                   i.uk-icon-user
@@ -82,7 +82,8 @@ html
     .uk-container.uk-container-center.uk-margin-large-top.uk-margin-large-bottom
       = yield
 
-      footer.uk-margin-bottom
+    .uk-container.uk-container-center.uk-margin-bottom
+      footer
         .relative
           small
             | &copy; 香川大学工学部 電子・情報工学科 最所研究室

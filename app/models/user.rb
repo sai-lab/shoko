@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
   has_many :user_documents
   has_many :documents, through: :user_documents
 
+  def self.id_is(id)
+    User.where(id: id.to_i).first
+  end
+
   def email_required?
     false
   end

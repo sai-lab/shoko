@@ -1,10 +1,12 @@
 - @title = @document.title
 
 article.uk-article
-  dd
-    span.uk-article-title.uk-text-muted.uk-margin-right #{@document.title}
+  dd.uk-text-muted
+    span.uk-article-title.uk-margin-right #{@document.title}
     = link_to edit_document_path do
       i.uk-icon-pencil.uk-icon-small.uk-text-muted data-uk-tooltip="" title="編集"
+    .uk-h4 style="padding-top: 7.5px;"
+      Created by #{@document.users.pluck(:name).join('、')} at #{I18n.l @document.updated_at, format: :short}
   hr.uk-article-divider
   #document_markdown
 
