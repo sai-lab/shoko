@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :account
   validates_presence_of :account, :name
 
+  has_many :user_documents
+  has_many :documents, through: :user_documents
+
   def email_required?
     false
   end

@@ -1,0 +1,12 @@
+- @title = 'Documents'
+
+dl.uk-description-list-line
+  - @documents.each do |document|
+    dt
+      = link_to document.title, document_path(document.id), class: 'uk-h2 uk-margin-right'
+      = link_to edit_document_path(document.id) do
+        i.uk-icon-pencil.uk-icon-small data-uk-tooltip="" title="編集"
+    dd Created by #{document.users.pluck(:name).join(', ')} at #{I18n.l document.updated_at, format: :short}
+
+coffee:
+  $('#nav-documents').addClass 'uk-active'

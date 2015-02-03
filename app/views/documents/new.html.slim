@@ -1,0 +1,7 @@
+- @title = 'New Post'
+- document = Document.new
+
+= render partial: 'documents/form', locals: { document: document }
+
+coffee:
+  $('#nav-new-post').addClass 'uk-active'

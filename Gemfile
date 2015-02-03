@@ -17,6 +17,8 @@ gem 'therubyracer',  platforms: :ruby
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+# jQuery plugin for drop-in fix binded events problem caused by Turbolinks
+gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # Use ActiveModel has_secure_password

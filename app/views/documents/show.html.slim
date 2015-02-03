@@ -1,0 +1,16 @@
+- @title = @document.title
+
+article.uk-article
+  dd
+    span.uk-article-title.uk-text-muted.uk-margin-right #{@document.title}
+    = link_to edit_document_path do
+      i.uk-icon-pencil.uk-icon-small.uk-text-muted data-uk-tooltip="" title="編集"
+  hr.uk-article-divider
+  #document_markdown
+
+coffee:
+  $('#nav-documents').addClass 'uk-active'
+
+javascript:
+  markdown = '#{escape_javascript @document.markdown}';
+  $('#document_markdown').html(marked(markdown, { breaks: true, sanitize: true }));

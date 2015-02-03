@@ -11,10 +11,12 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require jquery.turbolinks
 //= require jquery.remotipart
+//= require jquery_ujs
 //= require uikit/uikit.min
 //= require uikit/components/htmleditor.min
+//= require uikit/components/notify.min
 //= require uikit/components/upload.min
 //= require codemirror/codemirror
 //= require codemirror/mode/markdown/markdown

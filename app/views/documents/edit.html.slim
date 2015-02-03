@@ -1,0 +1,6 @@
+- @title = @document.title
+
+= render partial: 'documents/form', locals: { document: @document }
+
+coffee:
+  $('#nav-documents').addClass 'uk-active'

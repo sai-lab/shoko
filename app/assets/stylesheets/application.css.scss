@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require uikit/components/htmleditor.almost-flat.min
+ *= require uikit/components/notify.almost-flat.min
  *= require uikit/components/placeholder.almost-flat.min
  *= require uikit/uikit.almost-flat.min
  *= require codemirror/codemirror
@@ -31,4 +32,33 @@
   right: 0;
   font-family: monospace;
   color: #999999;
+}
+
+.uk-article-divider {
+  border: none;
+  border-top: 2px solid #999999;
+  margin-top: 15px;
+  margin-bottom: 50px;
+}
+.uk-button { width: 100px; }
+.uk-button-large {
+  width: 150px;
+  height: 45px;
+}
+.uk-placeholder { padding: 8px 6px; }
+.uk-description-list-line > dt > a {
+  color: #444444;
+  text-decoration: none;
+}
+.uk-description-list-line > dt > a:hover { color: #222222; }
+.uk-description-list-line > dd { padding-top: 5px; }
+.uk-description-list-line > dt:nth-child(n+2) {
+  margin-top: 15px;
+  padding-top: 15px;
+}
+
+#document_markdown > h2,h3,h4 { font-weight: bold; }
+#document_markdown > h2 {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #444444;
 }

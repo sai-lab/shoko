@@ -10,15 +10,23 @@ html
 
   body
     nav.uk-navbar.uk-navbar-attached
-      .uk-container
+      .uk-container.uk-container-center
         = link_to root_path, class: 'uk-navbar-brand' do
           i.uk-icon-book
           span.exo.exo-heavy Shoko
-        .uk-navbar-nav.uk-hidden-small
+        ul.uk-navbar-nav.uk-hidden-small
+          li#nav-documents
+            = link_to documents_path do
+              i.uk-icon-file-text
+              span.exo Documents
         .uk-navbar-flip.uk-hidden-small
           ul.uk-navbar-nav
             - if current_user
-              li.uk-parent data-uk-dropdown=""
+              li#nav-new-post
+                = link_to new_document_path do
+                  i.uk-icon-file
+                  span.exo New Post
+              li.uk-parent#nav-user data-uk-dropdown=""
                 a
                   i.uk-icon-user
                   span.exo.exo-bold #{current_user.account}
@@ -44,6 +52,14 @@ html
       .uk-offcanvas-bar.uk-offcanvas-bar-flip
         ul.uk-nav.uk-nav-offcanvas.uk-nav-parent-icon data-uk-nav=""
           - if current_user
+            li
+              = link_to documents_path do
+                i.uk-icon-file-text
+                span.exo Documents
+            li
+              = link_to new_document_path do
+                i.uk-icon-file
+                span.exo New Post
             li.uk-parent
               a href="#"
                 i.uk-icon-user
@@ -63,16 +79,7 @@ html
                 i.uk-icon-sign-in
                 span.exo.exo-bold Sign in
 
-    .uk-container
-      - if notice
-        .uk-alert.uk-margin-top data-uk-alert=""
-          a.uk-alert-close.uk-close
-          = notice
-      - if alert
-        .uk-alert.uk-alert-danger.uk-margin-top data-uk-alert=""
-          a.uk-alert-close.uk-close
-          = alert
-
+    .uk-container.uk-container-center.uk-margin-large-top.uk-margin-large-bottom
       = yield
 
       footer.uk-margin-bottom
@@ -81,3 +88,11 @@ html
             | &copy; 香川大学工学部 電子・情報工学科 最所研究室
             - unless Rails.env.production?
               span.revision rev.#{Shoko::Application.config.git_revision}
+
+- if notice
+  javascript:
+    UIkit.notify({ message: '#{notice}', timeout: 3000 });
+
+- if alert
+  javascript:
+    UIkit.notify({ message: '#{alert}', timeout: 3000, status: 'danger' });
