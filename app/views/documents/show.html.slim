@@ -2,6 +2,8 @@
 
 article.uk-article
   dd.uk-text-muted
+    - if @document.draft_flag
+      div.uk-badge.uk-badge-large.uk-badge-draft Draft
     span.uk-article-title.uk-margin-right #{@document.title}
     = link_to edit_document_path do
       i.uk-icon-pencil.uk-icon-small.uk-text-muted data-uk-tooltip="" title="編集"

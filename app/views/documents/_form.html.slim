@@ -1,5 +1,5 @@
 = form_for document, html: { class: 'uk-form uk-form-stacked' }, remote: true do |f|
-  = f.check_box :draft_flag, { class: 'uk-hidden' }, true, false
+  = f.check_box :draft_flag, { class: 'uk-hidden' }
   .uk-form-row
     .uk-grid
       .uk-width-medium-1-3
@@ -21,20 +21,33 @@
       .uk-margin-top.uk-visible-small
       .uk-width-medium-1-3.uk-text-center
         - if document.id
-          button.uk-button.uk-button-large.uk-button-primary#document_publish style="width: 300px;"
-            i.uk-icon-globe
-            span.exo.exo-bold Update
+          - if document.draft_flag
+            .uk-button-group
+              button.uk-button.uk-button-big.uk-button-primary#document_publish
+                i.uk-icon-globe
+                span.exo.exo-bold Publish
+              button.uk-button.uk-button-big#document_draft
+                i.uk-icon-pencil
+                span.exo.exo-bold Update
+          - else
+            button.uk-button.uk-button-large.uk-button-primary#document_publish style="width: 300px;"
+              i.uk-icon-globe
+              span.exo.exo-bold Update
         - else
           .uk-button-group
-            button.uk-button.uk-button-large.uk-button-primary#document_publish
+            button.uk-button.uk-button-big.uk-button-primary#document_publish
               i.uk-icon-globe
               span.exo.exo-bold Publish
-            button.uk-button.uk-button-large#document_draft
+            button.uk-button.uk-button-big#document_draft
               i.uk-icon-pencil
               span.exo.exo-bold Draft
 
 coffee:
-  $('#document_publish').on 'click', ->
-    $('#document_draft_flag').attr 'checked', true
-  $('#document_draft').on 'click', ->
-    $('#document_draft_flag').attr 'checked', false
+  $('#document_publish').on 'click', (event) ->
+    event.preventDefault()
+    $('#document_draft_flag').prop 'checked', false
+    $('.uk-form').submit()
+  $('#document_draft').on 'click', (event) ->
+    event.preventDefault()
+    $('#document_draft_flag').prop 'checked', true
+    $('.uk-form').submit()
