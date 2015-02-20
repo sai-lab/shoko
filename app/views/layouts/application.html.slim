@@ -19,6 +19,10 @@ html
             = link_to documents_path do
               i.uk-icon-file-text
               span.exo.exo-bold Documents
+          li#nav-templates
+            = link_to templates_path do
+              i.uk-icon-file
+              span.exo.exo-bold Templates
         .uk-navbar-flip.uk-hidden-small
           ul.uk-navbar-nav
             - if current_user
@@ -56,6 +60,10 @@ html
               = link_to documents_path do
                 i.uk-icon-file-text
                 span.exo Documents
+            li
+              = link_to templates_path do
+                i.uk-icon-file-text
+                span.exo Templates
             li
               = link_to new_document_path do
                 i.uk-icon-file

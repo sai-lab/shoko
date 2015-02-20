@@ -1,0 +1,8 @@
+- if templates.empty?
+  .uk-alert.uk-alert-warning テンプレートはありません。
+- else
+  dl.uk-description-list-line
+    - templates.each do |template|
+      dt
+        = link_to template.title, template_path(template.id), class: 'uk-h2 uk-margin-right'
+      dd Created at #{I18n.l template.updated_at, format: :short}

@@ -34,6 +34,7 @@
   color: #999999;
 }
 
+.uk-article-title { font-size: 30px; }
 .uk-article-divider {
   border: none;
   border-top: 2px solid #999999;
@@ -69,8 +70,24 @@
   padding-top: 15px;
 }
 
-#document_markdown > h2,h3,h4 { font-weight: bold; }
-#document_markdown > h2 {
+#markdown > h2, h3, h4 { font-weight: bold; }
+#markdown > h2 {
   padding-bottom: 5px;
   border-bottom: 1px solid #444444;
 }
+#markdown > table {
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin-bottom: 15px;
+}
+#markdown > table th, td {
+  padding: 8px 8px;
+  border-bottom: 1px solid #dddddd;
+}
+#markdown > table th {
+  font-weight: bold;
+  text-align: left;
+}
+#markdown > table td { vertical-align: top; }

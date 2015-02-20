@@ -1,0 +1,18 @@
+- @title = @template.title
+
+article.uk-article
+  dd.uk-text-muted
+    span.uk-article-title.uk-margin-right #{@template.title}
+    = link_to edit_template_path do
+      i.uk-icon-pencil.uk-icon-small.uk-text-muted data-uk-tooltip="" title="編集"
+    .uk-h4 style="padding-top: 7.5px;"
+      Created at #{I18n.l @template.updated_at, format: :short}
+  hr.uk-article-divider
+  #markdown
+
+coffee:
+  $('#nav-templates').addClass 'uk-active'
+
+javascript:
+  markdown = '#{escape_javascript @template.markdown}';
+  $('#markdown').html(marked(markdown, { breaks: true, sanitize: true }));

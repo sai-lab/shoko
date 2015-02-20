@@ -10,6 +10,10 @@ class DocumentsController < ApplicationController
   end
 
   def new
+    @document = Document.new
+    @templates = Template.order(:id).each do |template|
+      template.replace_title current_user.name
+    end
   end
 
   def create
@@ -23,6 +27,9 @@ class DocumentsController < ApplicationController
   end
 
   def edit
+    @templates = Template.order(:id).each do |template|
+      template.replace_title current_user.name
+    end
   end
 
   def update
@@ -48,6 +55,6 @@ class DocumentsController < ApplicationController
   end
 
   def document_params
-    params.require(:document).permit(:title, :markdown, :draft_flag)
+    params.require(:document).permit :title, :markdown, :draft_flag
   end
 end

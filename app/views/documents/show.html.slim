@@ -10,11 +10,11 @@ article.uk-article
     .uk-h4 style="padding-top: 7.5px;"
       Created by #{@document.users.pluck(:name).join('、')} at #{I18n.l @document.updated_at, format: :short}
   hr.uk-article-divider
-  #document_markdown
+  #markdown
 
 coffee:
   $('#nav-documents').addClass 'uk-active'
 
 javascript:
   markdown = '#{escape_javascript @document.markdown}';
-  $('#document_markdown').html(marked(markdown, { breaks: true, sanitize: true }));
+  $('#markdown').html(marked(markdown, { breaks: true, sanitize: true }));

@@ -6,6 +6,7 @@ class CreateUserDocuments < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
     add_foreign_key :user_documents, :users
     add_foreign_key :user_documents, :documents
   end
