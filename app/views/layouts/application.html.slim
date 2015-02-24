@@ -25,7 +25,7 @@ html
               span.exo.exo-bold Templates
         .uk-navbar-flip.uk-hidden-small
           ul.uk-navbar-nav
-            - if current_user
+            - if user_signed_in?
               li#nav-new-post
                 = link_to new_document_path do
                   i.uk-icon-file
@@ -43,7 +43,7 @@ html
                     li
                       = link_to destroy_user_session_path, method: :delete
                         i.uk-icon-sign-out
-                        span.exo Sign out
+                        span.exo.exo-bold Sign out
             - else
               li
                 = link_to new_user_session_path
@@ -55,7 +55,7 @@ html
     .uk-offcanvas#navbar-offcanvas
       .uk-offcanvas-bar.uk-offcanvas-bar-flip
         ul.uk-nav.uk-nav-offcanvas.uk-nav-parent-icon data-uk-nav=""
-          - if current_user
+          - if user_signed_in?
             li
               = link_to documents_path do
                 i.uk-icon-file-text
