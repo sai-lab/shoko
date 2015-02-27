@@ -14,22 +14,41 @@ html
         = link_to root_path, class: 'uk-navbar-brand' do
           i.uk-icon-book
           span.exo.exo-heavy Shoko
+
         ul.uk-navbar-nav.uk-hidden-small
-          li#nav-documents
+          li.uk-parent#nav-documents data-uk-dropdown=""
             = link_to documents_path do
               i.uk-icon-file-text
               span.exo.exo-bold Documents
-          li#nav-templates
+            .uk-dropdown.uk-dropdown-navbar
+              ul.uk-nav.uk-nav-navbar
+                li
+                  = link_to new_document_path do
+                    i.uk-icon-plus
+                    span.exo New Document
+                li
+                  = link_to documents_path do
+                    i.uk-icon-bars
+                    span.exo Documents List
+
+          li.uk-parent#nav-templates data-uk-dropdown=""
             = link_to templates_path do
               i.uk-icon-file
               span.exo.exo-bold Templates
+            .uk-dropdown.uk-dropdown-navbar
+              ul.uk-nav.uk-nav-navbar
+                li
+                  = link_to new_template_path do
+                    i.uk-icon-plus
+                    span.exo New Template
+                li
+                  = link_to templates_path do
+                    i.uk-icon-bars
+                    span.exo Templates List
+
         .uk-navbar-flip.uk-hidden-small
           ul.uk-navbar-nav
             - if user_signed_in?
-              li#nav-new-post
-                = link_to new_document_path do
-                  i.uk-icon-file
-                  span.exo.exo-bold New Post
               li.uk-parent#nav-user data-uk-dropdown=""
                 a
                   i.uk-icon-user
@@ -43,12 +62,14 @@ html
                     li
                       = link_to destroy_user_session_path, method: :delete
                         i.uk-icon-sign-out
-                        span.exo.exo-bold Sign out
+                        span.exo Sign Out
+
             - else
               li
                 = link_to new_user_session_path
                   i.uk-icon-sign-in
-                  span.exo.exo-bold Sign in
+                  span.exo.exo-bold Sign In
+
         .uk-navbar-flip.uk-visible-small
           a.uk-navbar-toggle href="#navbar-offcanvas" data-uk-offcanvas=""
 
@@ -56,36 +77,47 @@ html
       .uk-offcanvas-bar.uk-offcanvas-bar-flip
         ul.uk-nav.uk-nav-offcanvas.uk-nav-parent-icon data-uk-nav=""
           - if user_signed_in?
-            li
-              = link_to documents_path do
-                i.uk-icon-file-text
-                span.exo Documents
-            li
-              = link_to templates_path do
-                i.uk-icon-file-text
-                span.exo Templates
+            li.uk-nav-header
+              i.uk-icon-file-text
+              span.exo Documents
             li
               = link_to new_document_path do
-                i.uk-icon-file
-                span.exo New Post
-            li.uk-parent
-              a href="#"
-                i.uk-icon-user
-                span.exo.exo-bold #{current_user.account}
-              ul.uk-nav-sub
-                li
-                  = link_to edit_user_registration_path(current_user.id)  do
-                    i.uk-icon-cog
-                    span.exo Settings
-                li
-                  = link_to destroy_user_session_path, method: :delete
-                    i.uk-icon-sign-out
-                    span.exo Sign out
+                i.uk-icon-plus
+                span.exo New Document
+            li
+              = link_to documents_path do
+                i.uk-icon-bars
+                span.exo Documents List
+
+            li.uk-nav-header
+              i.uk-icon-file
+              span.exo Templates
+            li
+              = link_to new_template_path do
+                i.uk-icon-plus
+                span.exo New Template
+            li
+              = link_to templates_path do
+                i.uk-icon-bars
+                span.exo Templates List
+
+            li.uk-nav-header
+              i.uk-icon-user
+              span.exo #{current_user.account}
+            li
+              = link_to edit_user_registration_path(current_user.id)  do
+                i.uk-icon-cog
+                span.exo Settings
+            li
+              = link_to destroy_user_session_path, method: :delete
+                i.uk-icon-sign-out
+                span.exo Sign Out
+
           - else
             li
               = link_to new_user_session_path
                 i.uk-icon-sign-in
-                span.exo.exo-bold Sign in
+                span.exo.exo-bold Sign In
 
     .uk-container.uk-container-center.uk-margin-large-top.uk-margin-large-bottom
       = yield

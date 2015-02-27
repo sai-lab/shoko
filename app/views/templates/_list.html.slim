@@ -5,4 +5,6 @@
     - templates.each do |template|
       dt
         = link_to template.title, template_path(template.id), class: 'uk-h2 uk-margin-right'
+        = link_to edit_template_path(template.id) do
+          i.uk-icon-pencil.uk-icon-small.uk-text-muted data-uk-tooltip="" title="編集"
       dd Created at #{I18n.l template.updated_at, format: :short}
