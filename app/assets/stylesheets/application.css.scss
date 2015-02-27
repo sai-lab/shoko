@@ -23,10 +23,16 @@
   font-weight: 400;
   margin-left: 0.5em;
 }
-.exo-bold { font-weight: 600; }
-.exo-heavy { font-weight: 800; }
+.exo-bold {
+  font-weight: 600;
+}
+.exo-heavy {
+  font-weight: 800;
+}
 
-.relative { position: relative; }
+.relative {
+  position: relative;
+}
 .revision {
   position: absolute;
   right: 0;
@@ -34,18 +40,32 @@
   color: #999999;
 }
 
-.uk-article-title { font-size: 30px; }
+.uk-nav-header {
+  text-transform: none;
+}
+
+.uk-placeholder {
+  padding: 8px 6px;
+}
+
+.uk-article-title {
+  font-size: 30px;
+}
 .uk-article-divider {
   border: none;
   border-top: 2px solid #999999;
   margin-top: 15px;
   margin-bottom: 50px;
 }
-.uk-button-medium { width: 100px; }
+
+.uk-button-medium {
+  width: 100px;
+}
 .uk-button-big {
   width: 150px;
   height: 45px;
 }
+
 .uk-badge-draft {
   font-size: 12pt;
   background-color: #999999;
@@ -58,36 +78,49 @@
   margin-bottom: 15px;
   padding: 5px 7px;
 }
-.uk-placeholder { padding: 8px 6px; }
-.uk-description-list-line > dt > a {
-  color: #444444;
-  text-decoration: none;
-}
-.uk-description-list-line > dt > a:hover { color: #222222; }
-.uk-description-list-line > dd { padding-top: 5px; }
-.uk-description-list-line > dt:nth-child(n+2) {
-  margin-top: 15px;
-  padding-top: 15px;
+
+.uk-description-list-line {
+  dt > a {
+    color: #444444;
+    text-decoration: none;
+  }
+  dt > a:hover {
+    color: #222222;
+  }
+  dd {
+    padding-top: 5px;
+  }
+  dt:nth-child(n+2) {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
 }
 
-#markdown > h2, h3, h4 { font-weight: bold; }
-#markdown > h2 {
-  padding-bottom: 5px;
-  border-bottom: 1px solid #444444;
+#markdown {
+  h2, h3, h4 {
+    font-weight: bold;
+  }
+  h2 {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #444444;
+  }
+  table {
+    border: 1px solid #dddddd;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    margin-bottom: 15px;
+
+    th, td {
+      padding: 8px 8px;
+      border-bottom: 1px solid #dddddd;
+    }
+    th {
+      font-weight: bold;
+      text-align: left;
+    }
+    td {
+      vertical-align: top;
+    }
+  }
 }
-#markdown > table {
-  border: 1px solid #dddddd;
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  margin-bottom: 15px;
-}
-#markdown > table th, td {
-  padding: 8px 8px;
-  border-bottom: 1px solid #dddddd;
-}
-#markdown > table th {
-  font-weight: bold;
-  text-align: left;
-}
-#markdown > table td { vertical-align: top; }
