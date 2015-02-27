@@ -15,36 +15,37 @@ html
           i.uk-icon-book
           span.exo.exo-heavy Shoko
 
-        ul.uk-navbar-nav.uk-hidden-small
-          li.uk-parent#nav-documents data-uk-dropdown=""
-            = link_to documents_path do
-              i.uk-icon-file-text
-              span.exo.exo-bold Documents
-            .uk-dropdown.uk-dropdown-navbar
-              ul.uk-nav.uk-nav-navbar
-                li
-                  = link_to new_document_path do
-                    i.uk-icon-plus
-                    span.exo New Document
-                li
-                  = link_to documents_path do
-                    i.uk-icon-bars
-                    span.exo Documents List
+        - if user_signed_in?
+          ul.uk-navbar-nav.uk-hidden-small
+            li.uk-parent#nav-documents data-uk-dropdown=""
+              = link_to documents_path do
+                i.uk-icon-file-text
+                span.exo.exo-bold Documents
+              .uk-dropdown.uk-dropdown-navbar
+                ul.uk-nav.uk-nav-navbar
+                  li
+                    = link_to new_document_path do
+                      i.uk-icon-plus
+                      span.exo New Document
+                  li
+                    = link_to documents_path do
+                      i.uk-icon-bars
+                      span.exo Documents List
 
-          li.uk-parent#nav-templates data-uk-dropdown=""
-            = link_to templates_path do
-              i.uk-icon-file
-              span.exo.exo-bold Templates
-            .uk-dropdown.uk-dropdown-navbar
-              ul.uk-nav.uk-nav-navbar
-                li
-                  = link_to new_template_path do
-                    i.uk-icon-plus
-                    span.exo New Template
-                li
-                  = link_to templates_path do
-                    i.uk-icon-bars
-                    span.exo Templates List
+            li.uk-parent#nav-templates data-uk-dropdown=""
+              = link_to templates_path do
+                i.uk-icon-file
+                span.exo.exo-bold Templates
+              .uk-dropdown.uk-dropdown-navbar
+                ul.uk-nav.uk-nav-navbar
+                  li
+                    = link_to new_template_path do
+                      i.uk-icon-plus
+                      span.exo New Template
+                  li
+                    = link_to templates_path do
+                      i.uk-icon-bars
+                      span.exo Templates List
 
         .uk-navbar-flip.uk-hidden-small
           ul.uk-navbar-nav
