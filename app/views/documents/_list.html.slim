@@ -6,7 +6,12 @@
       dt
         - if document.draft_flag
           div.uk-badge.uk-badge-draft Draft
-        = link_to document.title, document_path(document.id), class: 'uk-h2 uk-margin-right'
+        = link_to document.title, document_path(document.id), class: 'uk-h3 uk-margin-right'
         = link_to edit_document_path(document.id) do
-          i.uk-icon-pencil.uk-icon-small.uk-text-muted data-uk-tooltip="" title="編集"
-      dd Created by #{document.users.pluck(:name).join('、')} at #{I18n.l document.updated_at, format: :short}
+          i.uk-icon-pencil.uk-text-muted data-uk-tooltip="" title="編集"
+      dd
+        i.uk-icon-users
+        | &nbsp;#{document.users.pluck(:name).join('、')}
+        i.uk-icon-calendar.uk-margin-left
+        | &nbsp;#{I18n.l document.updated_at, format: :short}
+B

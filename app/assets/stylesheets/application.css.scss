@@ -48,14 +48,20 @@
   padding: 8px 6px;
 }
 
+.uk-article {
+  dd > p {
+    margin-top: 7.5px;
+  }
+}
 .uk-article-title {
-  font-size: 30px;
+  font-size: 24px;
+  line-height: normal;
 }
 .uk-article-divider {
   border: none;
   border-top: 2px solid #999999;
   margin-top: 15px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .uk-button-medium {

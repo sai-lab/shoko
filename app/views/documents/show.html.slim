@@ -7,8 +7,11 @@ article.uk-article
     span.uk-article-title.uk-margin-right #{@document.title}
     = link_to edit_document_path do
       i.uk-icon-pencil.uk-icon-small.uk-text-muted data-uk-tooltip="" title="編集"
-    .uk-h4 style="padding-top: 7.5px;"
-      Created by #{@document.users.pluck(:name).join('、')} at #{I18n.l @document.updated_at, format: :short}
+    p
+      i.uk-icon-users
+      | &nbsp;#{@document.users.pluck(:name).join('、')}
+      i.uk-icon-calendar.uk-margin-left
+      | &nbsp;#{I18n.l @document.updated_at, format: :short}
   hr.uk-article-divider
   #markdown
 
