@@ -12,7 +12,7 @@ class DocumentsController < ApplicationController
   def new
     @document = Document.new
     @templates = Template.order(:id).each do |template|
-      template.replace_title current_user.name
+      template.replace_title current_user
     end
   end
 
@@ -28,7 +28,7 @@ class DocumentsController < ApplicationController
 
   def edit
     @templates = Template.order(:id).each do |template|
-      template.replace_title current_user.name
+      template.replace_title current_user
     end
   end
 

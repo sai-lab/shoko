@@ -9,11 +9,6 @@ class TemplatesController < ApplicationController
   def show
   end
 
-  def insert
-    day = Time.now
-    @template.replace_title current_user.name
-  end
-
   def new
     @template = Template.new
   end
@@ -39,7 +34,7 @@ class TemplatesController < ApplicationController
   end
 
   def select
-    @template.replace_title current_user.name
+    @template.replace_title current_user
   end
 
   private

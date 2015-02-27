@@ -16,11 +16,12 @@ class Template < ActiveRecord::Base
     Template.where(id: id.to_i).first
   end
 
-  def replace_title(user_name)
+  def replace_title(user)
     day = Time.now
     title.gsub! '%{year}', day.strftime('%y')
     title.gsub! '%{month}', day.strftime('%m')
     title.gsub! '%{day}', day.strftime('%d')
-    title.gsub! '%{name}', user_name
+    title.gsub! '%{account}', user.account
+    title.gsub! '%{name}', user.name
   end
 end
