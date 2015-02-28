@@ -6,7 +6,7 @@ article.uk-article
     = link_to edit_document_path do
       i.uk-icon-pencil.uk-icon-small.uk-text-muted data-uk-tooltip="" title="編集"
     p
-      - if @document.draft_flag
+      - if @document.draft?
         i.uk-icon-file
         | &nbsp;下書き
       - else

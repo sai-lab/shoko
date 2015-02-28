@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
     User.where(id: id.to_i).first
   end
 
+  def have?(document_id)
+    self.user_documents.where(document_id: document_id)
+  end
+
   def email_required?
     false
   end

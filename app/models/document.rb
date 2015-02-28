@@ -22,4 +22,12 @@ class Document < ActiveRecord::Base
   def self.id_is(id)
     Document.where(id: id.to_i).first
   end
+
+  def draft?
+    draft_flag
+  end
+
+  def publish?
+    !draft_flag
+  end
 end

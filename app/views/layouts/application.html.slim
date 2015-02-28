@@ -24,13 +24,17 @@ html
               .uk-dropdown.uk-dropdown-navbar
                 ul.uk-nav.uk-nav-navbar
                   li
+                    = link_to documents_path do
+                      i.uk-icon-bars
+                      span.exo Documents List
+                  li
                     = link_to new_document_path do
                       i.uk-icon-plus
                       span.exo New Document
                   li
-                    = link_to documents_path do
-                      i.uk-icon-bars
-                      span.exo Documents List
+                    = link_to draft_documents_path do
+                      i.uk-icon-file
+                      span.exo Draft Documents
 
             li.uk-parent#nav-templates data-uk-dropdown=""
               = link_to templates_path do
@@ -39,13 +43,13 @@ html
               .uk-dropdown.uk-dropdown-navbar
                 ul.uk-nav.uk-nav-navbar
                   li
-                    = link_to new_template_path do
-                      i.uk-icon-plus
-                      span.exo New Template
-                  li
                     = link_to templates_path do
                       i.uk-icon-bars
                       span.exo Templates List
+                  li
+                    = link_to new_template_path do
+                      i.uk-icon-plus
+                      span.exo New Template
 
         .uk-navbar-flip.uk-hidden-small
           ul.uk-navbar-nav
@@ -82,25 +86,29 @@ html
               i.uk-icon-file-text
               span.exo Documents
             li
+              = link_to documents_path do
+                i.uk-icon-bars
+                span.exo Documents List
+            li
               = link_to new_document_path do
                 i.uk-icon-plus
                 span.exo New Document
             li
-              = link_to documents_path do
-                i.uk-icon-bars
-                span.exo Documents List
+              = link_to draft_documents_path do
+                i.uk-icon-file
+                span.exo Draft Documents
 
             li.uk-nav-header
               i.uk-icon-file
               span.exo Templates
             li
-              = link_to new_template_path do
-                i.uk-icon-plus
-                span.exo New Template
-            li
               = link_to templates_path do
                 i.uk-icon-bars
                 span.exo Templates List
+            li
+              = link_to new_template_path do
+                i.uk-icon-plus
+                span.exo New Template
 
             li.uk-nav-header
               i.uk-icon-user

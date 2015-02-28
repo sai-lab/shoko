@@ -3,10 +3,13 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :documents
-  get 'documentes/:id/delete' => 'documentes#delete', as: :delete_document
+  resources :documents do
+    get :draft, on: :collection
+    get :delete, on: :member
+  end
 
-  resources :templates
-  get 'templates/:id/delete' => 'templates#delete', as: :delete_template
-  get 'templates/:id/select' => 'templates#select', as: :select_template
+  resources :templates do
+    get :delete, on: :member
+    get :select, on: :member
+  end
 end

@@ -3,10 +3,17 @@ class DocumentsController < ApplicationController
   before_action :load_document
 
   def index
-    @documents = Document.order(updated_at: :desc).page(params[:page]).per(10)
+    @documents = Document.publish.order(updated_at: :desc).page(params[:page]).per(10)
+  end
+
+  def draft
+    @documents = current_user.documents.draft.order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   def show
+    if @document.draft? && !current_user.have?(@document.id)
+      render file: "#{Rails.root}/public/404.html", layout: false, status: 404
+    end
   end
 
   def new
@@ -21,8 +28,11 @@ class DocumentsController < ApplicationController
     @result = @document.save
     if @result
       @document.user_documents.create user_id: current_user.id
-      flash[:notice] = 'ドキュメントを下書きしました。' if @document.draft_flag
-      flash[:notice] = 'ドキュメントを公開しました。' unless @document.draft_flag
+      if @document.draft?
+        flash[:notice] = 'ドキュメントを下書きしました。'
+      else
+        flash[:notice] = 'ドキュメントを公開しました。'
+      end
     end
   end
 

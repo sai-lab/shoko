@@ -8,7 +8,7 @@
         = link_to edit_document_path(document.id) do
           i.uk-icon-pencil.uk-text-muted data-uk-tooltip="" title="Edit"
       dd
-        - if document.draft_flag
+        - if document.draft?
           i.uk-icon-file
           | &nbsp;下書き
         - else

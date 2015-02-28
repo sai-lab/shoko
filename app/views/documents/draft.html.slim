@@ -1,0 +1,7 @@
+- @title = 'Drafts'
+
+= render partial: 'documents/list', locals: { documents: @documents }
+= paginate @documents
+
+coffee:
+  $('#nav-documents').addClass 'uk-active'
