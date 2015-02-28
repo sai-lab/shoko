@@ -2,14 +2,16 @@
 
 article.uk-article
   dd.uk-text-muted
-    - if @document.draft_flag
-      div.uk-badge.uk-badge-large.uk-badge-draft Draft
-    span.uk-article-title.uk-margin-right #{@document.title}
+    span.uk-article-title.uk-margin-small-right #{@document.title}
     = link_to edit_document_path do
       i.uk-icon-pencil.uk-icon-small.uk-text-muted data-uk-tooltip="" title="編集"
     p
-      i.uk-icon-users
-      | &nbsp;#{@document.users.pluck(:name).join('、')}
+      - if @document.draft_flag
+        i.uk-icon-file
+        | &nbsp;下書き
+      - else
+        i.uk-icon-users
+        | &nbsp;#{@document.users.pluck(:name).join('、')}
       i.uk-icon-calendar.uk-margin-left
       | &nbsp;#{I18n.l @document.updated_at, format: :short}
   hr.uk-article-divider
