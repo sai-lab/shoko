@@ -1,6 +1,7 @@
 - @title = 'Templates'
 
 = render partial: 'templates/list', locals: { templates: @templates }
+= paginate @templates
 
 coffee:
   $('#nav-templates').addClass 'uk-active'

@@ -199,3 +199,10 @@ ja:
       long: ! '%Y年%m月%d日(%a) %H時%M分%S秒 %z'
       short: ! '%y/%m/%d %H:%M'
     pm: 午後
+  views:
+    pagination:
+      first: "<span><i class=\"uk-icon-angle-double-left\"></i></span>"
+      last: "<span><i class=\"uk-icon-angle-double-right\"></i></span>"
+      previous: "<span><i class=\"uk-icon-angle-left\"></i></span>"
+      next: "<span><i class=\"uk-icon-angle-right\"></i></span>"
+      truncate: "..."

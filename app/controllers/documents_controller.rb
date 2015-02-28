@@ -3,7 +3,7 @@ class DocumentsController < ApplicationController
   before_action :load_document
 
   def index
-    @documents = Document.order(updated_at: :desc)
+    @documents = Document.order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   def show
