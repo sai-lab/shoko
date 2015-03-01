@@ -1,5 +1,7 @@
 - if documents.empty?
-  .uk-alert.uk-alert-warning No Documentes
+  .uk-alert.uk-alert-warning
+    i.uk-icon-times
+    span.exo No Documentes
 - else
   dl.uk-description-list-line
     - documents.each do |document|

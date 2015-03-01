@@ -1,5 +1,7 @@
 - if templates.empty?
-  .uk-alert.uk-alert-warning No Templates
+  .uk-alert.uk-alert-warning
+    i.uk-icon-times
+    span.exo No Templates
 - else
   dl.uk-description-list-line
     - templates.each do |template|
