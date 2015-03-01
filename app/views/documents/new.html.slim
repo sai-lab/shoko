@@ -1,7 +1,6 @@
-- @title = 'New Post'
-- document = Document.new
+- @title = 'New Document'
 
-= render partial: 'documents/form', locals: { document: document }
+= render partial: 'documents/form', locals: { document: @document, templates: @templates }
 
 coffee:
   $('#nav-documents').addClass 'uk-active'

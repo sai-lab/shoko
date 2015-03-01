@@ -3,7 +3,7 @@
   .uk-form-row
     .uk-grid
       .uk-width-medium-1-3
-        = collection_select :select, :template, @templates, :id, :title, {}, { class: 'uk-form-large uk-width-1-1' }
+        = collection_select :select, :template, templates, :id, :title, {}, { class: 'uk-form-large uk-width-1-1' }
       .uk-margin-top.uk-visible-small
       .uk-width-medium-2-3
         = f.text_field :title, autofocus: true, class: 'uk-form-large uk-width-1-1', placeholder: 'タイトル'
