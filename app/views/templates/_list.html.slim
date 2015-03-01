@@ -1,5 +1,5 @@
 - if templates.empty?
-  .uk-alert.uk-alert-warning テンプレートはありません。
+  .uk-alert.uk-alert-warning No Templates
 - else
   dl.uk-description-list-line
     - templates.each do |template|
@@ -7,6 +7,7 @@
         = link_to template.title, template_path(template.id), class: 'uk-h3 uk-margin-small-right'
         = link_to edit_template_path(template.id) do
           i.uk-icon-pencil.uk-text-muted data-uk-tooltip="" title="編集"
+
       dd
         i.uk-icon-calendar
         | &nbsp;#{I18n.l template.updated_at, format: :short}

@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :documents do
-    get :draft, on: :collection
     get :delete, on: :member
   end
 

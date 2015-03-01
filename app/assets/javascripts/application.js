@@ -18,6 +18,7 @@
 //= require uikit/components/htmleditor.min
 //= require uikit/components/notify.min
 //= require uikit/components/upload.min
+//= require uikit/components/datepicker.min
 //= require codemirror/codemirror
 //= require codemirror/mode/markdown/markdown
 //= require codemirror/mode/xml/xml

@@ -5,6 +5,10 @@
     h3.uk-panel-title
       i.uk-icon-sign-in
       span.exo.exo-bold Sign In
+
+    .uk-nav-side
+      .uk-nav-divider
+
     = form_for :user, html: { class: 'uk-form uk-form-stacked' }, url: { controller: 'devise/sessions', action: 'new' } do |f|
       .uk-form-row.uk-form-icon
         i.uk-icon-user

@@ -13,10 +13,18 @@
  *= require uikit/components/htmleditor.almost-flat.min
  *= require uikit/components/notify.almost-flat.min
  *= require uikit/components/placeholder.almost-flat.min
+ *= require uikit/components/datepicker.almost-flat.min
  *= require uikit/uikit.almost-flat.min
  *= require codemirror/codemirror
  *= require_self
  */
+
+mark {
+  color: #e28327;
+  background: transparent;
+  font-weight: bold;
+  padding: 0 5px;
+}
 
 .exo {
   font-family: 'Exo', sans-serif !important;
@@ -40,12 +48,51 @@
   color: #999999;
 }
 
+.uk-placeholder {
+  padding: 8px 6px;
+}
+
 .uk-nav-header {
   text-transform: none;
 }
+.uk-nav-divider {
+  margin: 10px 15px;
+}
+.uk-form {
+  .uk-nav-divider {
+    margin: 10px 0;
+  }
+}
 
-.uk-placeholder {
-  padding: 8px 6px;
+.uk-dropdown {
+  width: auto;
+
+  .uk-form-row+.uk-form-row {
+    margin-top: 5px;
+  }
+}
+.uk-parent {
+  .uk-dropdown {
+    width: 175px;
+  }
+}
+
+.uk-panel-box {
+  .uk-panel-title {
+    margin-bottom: 0;
+  }
+  .uk-form-row+.uk-form-row {
+    margin-top: 10px;
+  }
+  .uk-form-row+.uk-panel-title {
+    margin-top: 10px;
+  }
+  .uk-form-icon {
+    width: 100%;
+  }
+  input[type="text"], input[type="password"] {
+    width: 100%;
+  }
 }
 
 .uk-article {

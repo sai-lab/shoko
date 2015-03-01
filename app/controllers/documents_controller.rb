@@ -3,11 +3,15 @@ class DocumentsController < ApplicationController
   before_action :load_document
 
   def index
-    @documents = Document.publish.order(updated_at: :desc).page(params[:page]).per(10)
-  end
-
-  def draft
-    @documents = current_user.documents.draft.order(updated_at: :desc).page(params[:page]).per(10)
+    if params[:draft]
+      @documents = Document.draft
+    else
+      @documents = Document.publish
+    end
+    @documents = @documents.search_created_at(params[:date])  if params[:date].present?
+    @documents = @documents.search_title(params[:title])      if params[:title].present?
+    @documents = @documents.search_markdown(params[:keyword]) if params[:keyword].present?
+    @documents = @documents.order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   def show

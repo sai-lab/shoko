@@ -1,5 +1,5 @@
 - if documents.empty?
-  .uk-alert.uk-alert-warning ドキュメントはありません。
+  .uk-alert.uk-alert-warning No Documentes
 - else
   dl.uk-description-list-line
     - documents.each do |document|
@@ -7,13 +7,17 @@
         = link_to document.title, document_path(document.id), class: 'uk-h3 uk-margin-small-right'
         = link_to edit_document_path(document.id) do
           i.uk-icon-pencil.uk-text-muted data-uk-tooltip="" title="Edit"
+
       dd
         - if document.draft?
           i.uk-icon-file
           | &nbsp;下書き
         - else
           i.uk-icon-users
-          | &nbsp;#{document.users.pluck(:name).join('、')}
+          | &nbsp;#{document.users.pluck(:name).join(', ')}
         i.uk-icon-calendar.uk-margin-left
         | &nbsp;#{I18n.l document.updated_at, format: :short}
-B
+
+      - if params[:keyword].present?
+        dd
+          = highlight excerpt(document.markdown, params[:keyword], radius: 30, omission: ''), params[:keyword]

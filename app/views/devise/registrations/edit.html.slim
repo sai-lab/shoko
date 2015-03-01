@@ -12,10 +12,15 @@
     h3.uk-panel-title
       i.uk-icon-cog
       span.exo.exo-bold Settings
+
+    .uk-nav-side
+      .uk-nav-divider
+
     = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked' }, url: registration_path(resource_name) do |f|
       .uk-form-row
         = f.label :current_password, '現在のパスワード', class: "uk-form-label #{'uk-text-danger' if current_password_error}"
-        .uk-form-control
+        .uk-form-control.uk-form-icon
+          i.uk-icon-lock
           = f.password_field :current_password, autofocus: true, class: "uk-form-width-large #{'uk-form-danger' if current_password_error}"
         - if current_password_error
           p.uk-form-help-block
@@ -24,7 +29,8 @@
                 li 現在のパスワード#{message}
       .uk-form-row
         = f.label :password, '新しいパスワード', class: "uk-form-label #{'uk-text-danger' if password_error}"
-        .uk-form-control
+        .uk-form-control.uk-form-icon
+          i.uk-icon-lock
           = f.password_field :password, class: "uk-form-width-large #{'uk-form-danger' if password_error}"
         - if password_error
           p.uk-form-help-block
@@ -33,7 +39,8 @@
                 li 新しいパスワード#{message}
       .uk-form-row
         = f.label :password_confirmation, '新しいパスワード(確認)', class: "uk-form-label #{'uk-text-danger' if password_confirmation_error}"
-        .uk-form-control
+        .uk-form-control.uk-form-icon
+          i.uk-icon-lock
           = f.password_field :password_confirmation, class: "uk-form-width-large #{'uk-form-danger' if password_confirmation_error}"
         - if password_confirmation_error
           p.uk-form-help-block

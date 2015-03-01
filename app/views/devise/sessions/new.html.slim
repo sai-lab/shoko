@@ -5,6 +5,10 @@
     h3.uk-panel-title
       i.uk-icon-sign-in
       span.exo.exo-bold Sign In
+
+    .uk-nav-side
+      .uk-nav-divider
+
     = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked' }, url: session_path(resource_name) do |f|
       .uk-form-row.uk-form-icon
         i.uk-icon-user

@@ -14,6 +14,15 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# http://easyramble.com/escape-like-on-rails-active-record.html
+module ActiveRecord
+  class Base
+    def self.escape_like(string)
+      string.gsub(/[\\%_]/){ |m| "\\#{m}" }
+    end
+  end
+end
+
 module Shoko
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

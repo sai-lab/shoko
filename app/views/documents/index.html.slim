@@ -1,7 +1,15 @@
 - @title = 'Documents'
 
-= render partial: 'documents/list', locals: { documents: @documents }
-= paginate @documents
+.uk-visible-small.uk-margin-bottom
+  = render partial: 'documents/dropdown'
+
+.uk-grid
+  .uk-width-medium-3-10
+    .uk-hidden-small
+      = render partial: 'documents/sidebar'
+  .uk-width-medium-7-10
+    = render partial: 'documents/list', locals: { documents: @documents }
+    = paginate @documents
 
 coffee:
   $('#nav-documents').addClass 'uk-active'
