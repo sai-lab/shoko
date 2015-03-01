@@ -4,7 +4,7 @@ class DocumentsController < ApplicationController
 
   def index
     if params[:draft]
-      @documents = Document.draft
+      @documents = current_user.documents.draft
     else
       @documents = Document.publish
     end
