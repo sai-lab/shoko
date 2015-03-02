@@ -1,6 +1,6 @@
 .uk-panel.uk-panel-box
   = form_tag documents_path, method: :get, class: 'uk-form uk-form-stacked' do
-    h3.uk-panel-title
+    .uk-panel-title
       i.uk-icon-file
       span.exo.exo-bold Draft
 
@@ -12,7 +12,7 @@
         = check_box_tag :draft, params[:draft], params[:draft]
         span.exo Check
 
-    h3.uk-panel-title
+    .uk-panel-title
       i.uk-icon-search
       span.exo.exo-bold Search
 
