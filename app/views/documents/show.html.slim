@@ -4,7 +4,10 @@ article.uk-article
   dd.uk-text-muted
     span.uk-article-title.uk-margin-small-right #{@document.title}
     = link_to edit_document_path do
-      i.uk-icon-pencil.uk-icon-small.uk-text-muted data-uk-tooltip="" title="編集"
+      i.uk-icon-pencil.uk-icon-small.uk-text-success.uk-margin-small-left data-uk-tooltip="" title="Edit"
+    = link_to delete_document_path, remote: true do
+      i.uk-icon-trash.uk-icon-small.uk-text-danger.uk-margin-small-left data-uk-tooltip="" title="Delete"
+
     p
       - if @document.draft?
         i.uk-icon-file
@@ -14,6 +17,7 @@ article.uk-article
         | &nbsp;#{@document.users.pluck(:name).join('、')}
       i.uk-icon-calendar.uk-margin-left
       | &nbsp;#{I18n.l @document.updated_at, format: :short}
+
   hr.uk-article-divider
   #markdown
 

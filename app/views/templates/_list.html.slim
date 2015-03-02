@@ -8,7 +8,9 @@
       dt
         = link_to template.title, template_path(template.id), class: 'uk-h3 uk-margin-small-right'
         = link_to edit_template_path(template.id) do
-          i.uk-icon-pencil.uk-text-muted data-uk-tooltip="" title="編集"
+          i.uk-icon-pencil.uk-text-success.uk-margin-small-left data-uk-tooltip="" title="Edit"
+        = link_to delete_template_path(template.id), remote: true do
+          i.uk-icon-trash.uk-text-danger.uk-margin-small-left data-uk-tooltip="" title="Delete"
 
       dd
         i.uk-icon-calendar

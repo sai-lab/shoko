@@ -31,6 +31,13 @@ class TemplatesController < ApplicationController
   end
 
   def destroy
+    @result = @template.destroy
+    if @result
+      flash[:notice] = 'テンプレートを削除しました。'
+    else
+      flash[:alert] = 'テンプレートを削除できませんでした。'
+    end
+    render :reload
   end
 
   def select

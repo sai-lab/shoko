@@ -60,6 +60,13 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
+    @result = @document.destroy
+    if @result
+      flash[:notice] = 'ドキュメントを削除しました。'
+    else
+      flash[:alert] = 'ドキュメントを削除できませんでした。'
+    end
+    render :reload
   end
 
   private

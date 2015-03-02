@@ -13,7 +13,7 @@
 class Document < ActiveRecord::Base
   validates_presence_of :title, :markdown
 
-  has_many :user_documents
+  has_many :user_documents, dependent: :destroy
   has_many :users, through: :user_documents
 
   scope :draft, -> { where(draft_flag: true) }

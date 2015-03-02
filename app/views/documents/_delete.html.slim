@@ -1,0 +1,18 @@
+.uk-modal-dialog
+  a.uk-modal-close.uk-close
+
+  .uk-modal-header
+    h4
+      i.uk-icon-trash
+      span.exo.exo-bold Delete Document
+
+  | ドキュメント「#{document.title}」を削除しますか?
+
+  .uk-modal-footer.uk-text-right
+    .uk-button-group
+      button.uk-button.uk-button-medium.uk-modal-close
+        i.uk-icon-times
+        span.exo.exo-bold Cancel
+      = link_to document_path, method: :delete, remote: true, class: 'uk-button uk-button-danger uk-button-medium' do
+        i.uk-icon-trash
+        span.exo.exo-bold Delete
