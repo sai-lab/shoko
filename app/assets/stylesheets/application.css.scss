@@ -10,10 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require uikit/components/datepicker.almost-flat.min
  *= require uikit/components/htmleditor.almost-flat.min
  *= require uikit/components/notify.almost-flat.min
  *= require uikit/components/placeholder.almost-flat.min
- *= require uikit/components/datepicker.almost-flat.min
  *= require uikit/uikit.almost-flat.min
  *= require codemirror/codemirror
  *= require_self

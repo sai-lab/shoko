@@ -60,6 +60,4 @@ end
 gem 'devise'
 gem 'slim-rails'
 gem 'kaminari'
-
-gem 'carrierwave'
-gem 'remotipart'
+gem 'paperclip'
