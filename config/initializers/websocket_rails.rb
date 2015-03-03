@@ -12,11 +12,6 @@ WebsocketRails.setup do |config|
   # such as the keepalive `websocket_rails.ping` event.
   # config.log_internal_events = false
 
-  # Change to true to enable standalone server mode
-  # Start the standalone server with rake websocket_rails:start_server
-  # * Requires Redis
-  config.standalone = false
-
   # Change to true to enable channel synchronization between
   # multiple server instances.
   # * Requires Redis.
@@ -37,7 +32,7 @@ WebsocketRails.setup do |config|
   # config.keep_subscribers_when_private = false
 
   # Set to true if you wish to broadcast channel subscriber_join and
-  # subscriber_part events. All subscribers of a channel will be 
+  # subscriber_part events. All subscribers of a channel will be
   # notified when other clients join and part the channel. If you are
   # using the UserManager, the current_user object will be sent along
   # with the event.

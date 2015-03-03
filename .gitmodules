@@ -1,0 +1,3 @@
+[submodule "playbook"]
+	path = playbook
+	url = git://github.com/hico-horiuchi/ansible-rails-deploy.git

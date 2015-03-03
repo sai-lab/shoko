@@ -77,3 +77,11 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
+
+WebsocketRails.setup do |config|
+  # Change to true to enable standalone server mode
+  # Start the standalone server with rake websocket_rails:start_server
+  # * Requires Redis
+  config.standalone = true
+  config.standalone_port = 3245
+end
