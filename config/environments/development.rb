@@ -42,11 +42,4 @@ Rails.application.configure do
   config.middleware.delete Rack::Lock
 end
 
-WebsocketRails.setup do |config|
-  # Change to true to enable standalone server mode
-  # Start the standalone server with rake websocket_rails:start_server
-  # * Requires Redis
-  config.standalone = false
-end
-
 BetterErrors::Middleware.allow_ip! '0.0.0.0'

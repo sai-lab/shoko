@@ -1,4 +1,13 @@
 WebsocketRails.setup do |config|
+  # Change to true to enable standalone server mode
+  # Start the standalone server with rake websocket_rails:start_server
+  # * Requires Redis
+  if Rails.env.production?
+    config.standalone = true
+    config.standalone_port = 3245
+  else
+    config.standalone = false
+  end
 
   # Uncomment to override the default log level. The log level can be
   # any of the standard Logger log levels. By default it will mirror the
