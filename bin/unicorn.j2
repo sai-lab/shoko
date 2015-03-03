@@ -6,6 +6,7 @@ TIMEOUT=${TIMEOUT-60}
 APP_ROOT={{ dest }}
 PID=/tmp/unicorn.pid
 RAILS_ENV=production
+SECRET_KEY_BASE={{ secret_key_base }}
 CMD="bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E $RAILS_ENV"
 action="$1"
 set -u
