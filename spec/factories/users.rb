@@ -8,6 +8,7 @@
 #  name               :string           default(""), not null
 #  created_at         :datetime
 #  updated_at         :datetime
+#  admin_flag         :boolean          default("false"), not null
 #
 
 FactoryGirl.define do

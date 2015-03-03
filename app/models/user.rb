@@ -8,6 +8,7 @@
 #  name               :string           default(""), not null
 #  created_at         :datetime
 #  updated_at         :datetime
+#  admin_flag         :boolean          default("false"), not null
 #
 
 class User < ActiveRecord::Base
@@ -24,6 +25,10 @@ class User < ActiveRecord::Base
 
   def have?(document_id)
     self.user_documents.where(document_id: document_id)
+  end
+
+  def is_admin?
+    admin_flag
   end
 
   def email_required?
