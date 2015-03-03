@@ -5,15 +5,12 @@ set -e
 TIMEOUT=${TIMEOUT-60}
 APP_ROOT={{ dest }}
 PID=/tmp/unicorn.pid
-RAILS_ENV=production
-CMD="bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E $RAILS_ENV"
+CMD="bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb"
 action="$1"
 set -u
 
 old_pid="$PID.oldbin"
 cd $APP_ROOT || exit 1
-
-export SECRET_KEY_BASE={{ secret_key_base }}
 
 sig () {
     test -s "$PID" && kill -$1 `cat $PID`
