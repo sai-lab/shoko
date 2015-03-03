@@ -3,7 +3,7 @@
 
 set -e
 TIMEOUT=${TIMEOUT-60}
-APP_ROOT=/path/to/shoko
+APP_ROOT={{ dest }}
 PID=/tmp/unicorn.pid
 RAILS_ENV=production
 CMD="bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E $RAILS_ENV"

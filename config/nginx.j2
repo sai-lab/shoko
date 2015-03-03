@@ -8,7 +8,7 @@ server {
     client_max_body_size  4G;
     server_name           _;
     keepalive_timeout     5;
-    root                  /path/to/shoko/public;
+    root                  {{ dest }}/public;
 
     location /websocket {
         proxy_pass          http://localhost:3245/websocket;
@@ -20,7 +20,7 @@ server {
     }
 
     location ~ ^/(assets|pictures)/ {
-        root  /path/to/shoko/public;
+        root  {{ dest }}/public;
     }
 
     location / {
@@ -32,6 +32,6 @@ server {
 
     error_page 500 502 503 504 /500.html;
     location = /500.html {
-        root  /path/to/shoko/public;
+        root  {{ dest }}/public;
     }
 }
