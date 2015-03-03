@@ -3,16 +3,16 @@
 
   .uk-modal-header
     h4
-      i.uk-icon-user
-      span.exo.exo-bold Delete User
+      i.uk-icon-photo
+      span.exo.exo-bold Delete Picture
 
-  | ユーザ「#{user.account}」を削除しますか?
+  | 画像「#{picture.attachment_file_name}」を削除しますか?
 
   .uk-modal-footer.uk-text-right
     .uk-button-group
       button.uk-button.uk-button-medium.uk-modal-close
         i.uk-icon-times
         span.exo.exo-bold Cancel
-      = link_to admin_user_path, method: :delete, class: 'uk-button uk-button-danger uk-button-medium' do
+      = link_to admin_picture_path, method: :delete, class: 'uk-button uk-button-danger uk-button-medium' do
         i.uk-icon-trash
         span.exo.exo-bold Delete

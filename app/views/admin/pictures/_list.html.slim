@@ -1,0 +1,32 @@
+- if pictures.empty?
+  .uk-alert.uk-alert-warning
+    i.uk-icon-times
+    span.exo No Pictures
+- else
+  .uk-overflow-container
+    table.uk-table.uk-table-striped
+      thead
+        tr
+          th style="width: 75px;"
+          th.exo.exo-bold File name
+          th.exo.exo-bold style="width: 175px;" Content-type
+          th.exo.exo-bold style="width: 175px;" Created at
+          th.exo.exo-bold style="width: 75px;"
+      tbody
+        - pictures.each do |picture|
+          tr
+            td
+              = link_to delete_admin_picture_path(picture.id), class: 'uk-button uk-button-mini uk-button-danger', remote: true do
+                i.uk-icon-trash
+                span.exo Delete
+            td #{picture.attachment_file_name}
+            td #{picture.attachment_content_type}
+            td #{I18n.l picture.created_at, format: :short}
+            td
+              a.uk-button.uk-button-mini.uk-button-success href="#attachment-#{picture.id}" data-uk-modal="{ center: true }"
+                i.uk-icon-external-link
+                span.exo Show
+              .uk-modal id="attachment-#{picture.id}"
+                .uk-modal-dialog.uk-modal-dialog-lightbox
+                  a.uk-modal-close.uk-close.uk-close-alt
+                  img src="#{picture.attachment.url}" alt="picture.attachment_file_name"

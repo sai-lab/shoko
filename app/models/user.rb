@@ -23,10 +23,6 @@ class User < ActiveRecord::Base
     User.where(id: id.to_i).first
   end
 
-  def have?(document_id)
-    self.user_documents.where(document_id: document_id)
-  end
-
   def update_without_current_password(params, *options)
     params.delete(:current_password)
     params.delete(:password) if params[:password].blank?

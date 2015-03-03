@@ -1,0 +1,7 @@
+- @title = 'Pictures'
+
+= render partial: 'admin/pictures/list', locals: { pictures: @pictures }
+= paginate @pictures
+
+coffee:
+  $('#nav-admin').addClass 'uk-active'

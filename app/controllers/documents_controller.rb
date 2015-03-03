@@ -16,7 +16,7 @@ class DocumentsController < ApplicationController
   end
 
   def show
-    if @document.draft? && !current_user.have?(@document.id)
+    if @document.draft? && !@document.users.id_is(current_user.id)
       render file: "#{Rails.root}/public/404.html", layout: false, status: 404
     end
   end

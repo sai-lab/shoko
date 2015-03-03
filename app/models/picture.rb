@@ -20,4 +20,8 @@ class Picture < ActiveRecord::Base
   validates_attachment :attachment,
     presence: true,
     content_type: { content_type: /^image\/(jpeg|png|gif)/ }
+
+  def self.id_is(id)
+    Picture.where(id: id.to_i).first
+  end
 end

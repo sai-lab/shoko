@@ -79,9 +79,9 @@ coffee:
       }
   $('#document-publish').on 'click', (event) ->
     event.preventDefault()
-    $('#document-draft_flag').prop 'checked', false
+    $('#document_draft_flag').prop 'checked', false
     $('.uk-form').submit()
   $('#document-draft').on 'click', (event) ->
     event.preventDefault()
-    $('#document-draft_flag').prop 'checked', true
+    $('#document_draft_flag').prop 'checked', true
     $('.uk-form').submit()

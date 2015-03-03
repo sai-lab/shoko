@@ -18,5 +18,9 @@ Rails.application.routes.draw do
     resources :users do
       get :delete, on: :member
     end
+
+    resources :pictures, only: [:index, :destroy] do
+      get :delete, on: :member
+    end
   end
 end

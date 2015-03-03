@@ -63,6 +63,10 @@ html
                         = link_to admin_users_path  do
                           i.uk-icon-users
                           span.exo Users
+                      li
+                        = link_to admin_pictures_path  do
+                          i.uk-icon-photo
+                          span.exo Pictures
               li.uk-parent#nav-user data-uk-dropdown=""
                 a
                   i.uk-icon-user
@@ -114,6 +118,19 @@ html
               = link_to new_template_path do
                 i.uk-icon-plus
                 span.exo New Template
+
+            - if current_user.is_admin?
+              li.uk-nav-header
+                i.uk-icon-cog
+                span.exo.exo Admin
+              li
+                = link_to admin_users_path  do
+                  i.uk-icon-users
+                  span.exo Users
+              li
+                = link_to admin_pictures_path  do
+                  i.uk-icon-photo
+                  span.exo Pictures
 
             li.uk-nav-header
               i.uk-icon-user
