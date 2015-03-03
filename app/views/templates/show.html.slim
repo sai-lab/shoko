@@ -19,5 +19,5 @@ coffee:
   $('#nav-templates').addClass 'uk-active'
 
 javascript:
-  markdown = '#{escape_javascript @template.markdown}';
-  $('#markdown').html(marked(markdown, { breaks: true, sanitize: true }));
+  markdown = '#{raw escape_javascript(@template.markdown)}';
+  $('#markdown').html(marked(markdown, { breaks: true }));
