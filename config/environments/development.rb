@@ -39,5 +39,7 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  BetterErrors::Middleware.allow_ip! '133.92.147.0/24'
+  config.middleware.delete Rack::Lock
 end
+
+BetterErrors::Middleware.allow_ip! '0.0.0.0'

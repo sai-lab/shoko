@@ -8,6 +8,7 @@ class DocumentsController < ApplicationController
     else
       @documents = Document.publish
     end
+
     @documents = @documents.search_created_at(params[:date])  if params[:date].present?
     @documents = @documents.search_title(params[:title])      if params[:title].present?
     @documents = @documents.search_markdown(params[:keyword]) if params[:keyword].present?
@@ -30,6 +31,7 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new document_params
     @result = @document.save
+
     if @result
       @document.user_documents.create user_id: current_user.id
       if @document.draft?
@@ -48,6 +50,7 @@ class DocumentsController < ApplicationController
 
   def update
     @result = @document.update document_params
+
     if @result
       unless @document.users.id_is(current_user.id)
         @document.user_documents.create user_id: current_user.id
@@ -61,11 +64,13 @@ class DocumentsController < ApplicationController
 
   def destroy
     @result = @document.destroy
+
     if @result
       flash[:notice] = 'ドキュメントを削除しました。'
     else
       flash[:alert] = 'ドキュメントを削除できませんでした。'
     end
+
     render :reload
   end
 

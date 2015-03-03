@@ -15,33 +15,59 @@
         .uk-placeholder.uk-text-center#upload-drop
           i.uk-icon-cloud-upload.uk-icon-medium.uk-text-muted.uk-margin-small-right
           | 画像をドラッグまたは
-          a.uk-form-file.uk-margin-small-left.uk-margin-small-right 選択
+          a.uk-form-file.uk-margin-small-left.uk-margin-small-right
+            | 選択
+            input#upload-select type="file" multiple="multiple"
           | してアップロード
       .uk-margin-top.uk-visible-small
       .uk-width-medium-1-3.uk-text-center
         - if document.id
           - if document.draft?
             .uk-button-group
-              button.uk-button.uk-button-big.uk-button-primary#document_publish
+              button.uk-button.uk-button-big.uk-button-primary#document-publish
                 i.uk-icon-globe
                 span.exo.exo-bold Publish
-              button.uk-button.uk-button-big#document_draft
+              button.uk-button.uk-button-big#document-draft
                 i.uk-icon-pencil
                 span.exo.exo-bold Update
           - else
-            button.uk-button.uk-button-large.uk-button-primary#document_publish style="width: 250px;"
+            button.uk-button.uk-button-large.uk-button-primary#document-publish style="width: 250px;"
               i.uk-icon-globe
               span.exo.exo-bold Update
         - else
           .uk-button-group
-            button.uk-button.uk-button-big.uk-button-primary#document_publish
+            button.uk-button.uk-button-big.uk-button-primary#document-publish
               i.uk-icon-globe
               span.exo.exo-bold Publish
-            button.uk-button.uk-button-big#document_draft
+            button.uk-button.uk-button-big#document-draft
               i.uk-icon-pencil
               span.exo.exo-bold Draft
 
+javascript:
+  websocket_url = '#{request.raw_host_with_port}/websocket'
+  user_account = '#{current_user.account}'
+
 coffee:
+  dispatcher = new WebSocketRails websocket_url
+  channel = dispatcher.subscribe user_account
+  channel.bind 'create_picture', ( data ) ->
+    content = '\n![' + data.file_name + '](' + data.url + ' \"' + data.file_name + '\")\n'
+    $('.CodeMirror')[0].CodeMirror.replaceSelection content
+  uk_upload_settings = {
+    action: '/pictures',
+    allow: '*.(jpeg|jpg|png|gif)',
+    notallowed: ->
+      UIkit.notify { message: '不正なファイルです', timeout: 3000, status: 'danger' }
+    error: ->
+      UIkit.notify { message: 'エラーが発生しました', timeout: 3000, status: 'danger' }
+    abort: ->
+      UIkit.notify { message: 'アップロードに失敗しました', timeout: 3000, status: 'danger' }
+    params: {
+      authenticity_token: $('meta[name=\"csrf-token\"]').attr('content')
+    }
+  }
+  uk_select = UIkit.uploadSelect $('#upload-select'), uk_upload_settings
+  uk_drop = UIkit.uploadDrop $('#upload-drop'), uk_upload_settings
   $('#select_template').prepend '<option value=\"-1\">テンプレート</option>'
   $('#select_template').val '-1'
   $('#select_template').on 'change', ->
@@ -51,11 +77,11 @@ coffee:
         'type': 'GET',
         'data-type': 'html'
       }
-  $('#document_publish').on 'click', (event) ->
+  $('#document-publish').on 'click', (event) ->
     event.preventDefault()
-    $('#document_draft_flag').prop 'checked', false
+    $('#document-draft_flag').prop 'checked', false
     $('.uk-form').submit()
-  $('#document_draft').on 'click', (event) ->
+  $('#document-draft').on 'click', (event) ->
     event.preventDefault()
-    $('#document_draft_flag').prop 'checked', true
+    $('#document-draft_flag').prop 'checked', true
     $('.uk-form').submit()

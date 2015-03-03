@@ -24,4 +24,5 @@
 //= require codemirror/mode/gfm/gfm
 //= require codemirror/addon/mode/overlay
 //= require marked/marked.min
+//= require websocket_rails/main
 //= require turbolinks

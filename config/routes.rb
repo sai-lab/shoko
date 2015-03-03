@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     get :delete, on: :member
     get :select, on: :member
   end
+
+  resources :pictures, only: [:create]
 end
