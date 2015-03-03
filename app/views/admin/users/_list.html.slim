@@ -1,0 +1,36 @@
+- if users.empty?
+  .uk-alert.uk-alert-warning
+    i.uk-icon-times
+    span.exo No Users
+- else
+  .uk-overflow-container
+    table.uk-table.uk-table-striped
+      thead
+        tr
+          th style="width: 150px;"
+            = link_to new_admin_user_path, class: 'uk-button uk-button-mini uk-button-primary', remote: true do
+              i.uk-icon-plus
+              span.exo Add
+          th.exo.exo-bold style="width: 175px;" Account
+          th.exo.exo-bold style="width: 175px;" Name
+          th.exo.exo-bold style="width: 75px;" Admin
+          th.exo.exo-bold Documents
+      tbody
+        - users.each do |user|
+          tr
+            td
+              = link_to edit_admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-success uk-margin-small-right', remote: true do
+                i.uk-icon-pencil
+                span.exo Edit
+              = link_to delete_admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-danger', remote: true do
+                i.uk-icon-trash
+                span.exo Delete
+            td #{user.account}
+            td #{user.name}
+            td.uk-text-center
+              - if user.is_admin?
+                i.uk-icon-check
+            td
+              = link_to admin_user_path(user.id) do
+                i.uk-icon-files-o
+                span.exo #{user.documents.publish.size} documents

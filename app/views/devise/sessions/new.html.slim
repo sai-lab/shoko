@@ -1,4 +1,4 @@
-- @title = 'ログイン'
+- @title = 'Sign in'
 
 .uk-width-medium-1-2.uk-container-center
   .uk-panel.uk-panel-box
@@ -12,10 +12,10 @@
     = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked' }, url: session_path(resource_name) do |f|
       .uk-form-row.uk-form-icon
         i.uk-icon-user
-        = f.text_field :account, autofocus: true, class: 'uk-form-width-large',placeholder: 'アカウント名 (例: s10t200)'
+        = f.text_field :account, autofocus: true, placeholder: 'Account', style: 'width: 80%;'
       .uk-form-row.uk-form-icon
         i.uk-icon-lock
-        = f.password_field :password, class: 'uk-form-width-large',placeholder: 'パスワード'
+        = f.password_field :password, placeholder: 'Password', style: 'width: 80%;'
       .uk-form-row
         button.uk-button.uk-button-medium.uk-button-primary type="submit"
           i.uk-icon-sign-in

@@ -1,0 +1,7 @@
+- @title = 'Users'
+
+= render partial: 'admin/users/list', locals: { users: @users }
+= paginate @users
+
+coffee:
+  $('#nav-admin').addClass 'uk-active'

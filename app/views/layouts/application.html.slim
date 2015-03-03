@@ -52,6 +52,17 @@ html
         .uk-navbar-flip.uk-hidden-small
           ul.uk-navbar-nav
             - if user_signed_in?
+              - if current_user.is_admin?
+                li.uk-parent#nav-admin data-uk-dropdown=""
+                  a
+                    i.uk-icon-cog
+                    span.exo.exo-bold Admin
+                  .uk-dropdown.uk-dropdown-navbar
+                    ul.uk-nav.uk-nav-navbar
+                      li
+                        = link_to admin_users_path  do
+                          i.uk-icon-users
+                          span.exo Users
               li.uk-parent#nav-user data-uk-dropdown=""
                 a
                   i.uk-icon-user

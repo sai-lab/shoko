@@ -16,7 +16,8 @@ class TemplatesController < ApplicationController
   def create
     @template = Template.new template_params
     @result = @template.save
-    flash[:notice] = 'テンプレートを作成しました。'
+    flash[:notice] = 'テンプレートを作成しました。' if @result
+    render :submit
   end
 
   def edit
@@ -24,7 +25,8 @@ class TemplatesController < ApplicationController
 
   def update
     @result = @template.update template_params
-    flash[:notice] = 'テンプレートを更新しました。'
+    flash[:notice] = 'テンプレートを更新しました。' if @result
+    render :submit
   end
 
   def delete
@@ -39,7 +41,7 @@ class TemplatesController < ApplicationController
       flash[:alert] = 'テンプレートを削除できませんでした。'
     end
 
-    render :reload
+    redirect_to templates_path
   end
 
   def select

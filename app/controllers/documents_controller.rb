@@ -40,6 +40,8 @@ class DocumentsController < ApplicationController
         flash[:notice] = 'ドキュメントを公開しました。'
       end
     end
+
+    render :submit
   end
 
   def edit
@@ -57,6 +59,8 @@ class DocumentsController < ApplicationController
       end
       flash[:notice] = 'ドキュメントを更新しました。'
     end
+
+    render :submit
   end
 
   def delete
@@ -71,7 +75,7 @@ class DocumentsController < ApplicationController
       flash[:alert] = 'ドキュメントを削除できませんでした。'
     end
 
-    render :reload
+    redirect_to documents_path
   end
 
   private
