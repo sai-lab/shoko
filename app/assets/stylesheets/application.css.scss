@@ -46,7 +46,7 @@ mark {
   position: absolute;
   right: 0;
   font-family: monospace;
-  color: #999999;
+  color: #999;
 }
 
 .uk-modal-dialog {
@@ -144,7 +144,7 @@ mark {
 }
 .uk-article-divider {
   border: none;
-  border-top: 2px solid #999999;
+  border-top: 2px solid #999;
   margin-top: 15px;
   margin-bottom: 30px;
 }
@@ -168,11 +168,11 @@ mark {
 
 .uk-description-list-line {
   dt > a {
-    color: #444444;
+    color: #444;
     text-decoration: none;
   }
   dt > a:hover {
-    color: #222222;
+    color: #222;
   }
   dd {
     padding-top: 5px;
@@ -189,10 +189,10 @@ mark {
   }
   h2 {
     padding-bottom: 5px;
-    border-bottom: 1px solid #444444;
+    border-bottom: 1px solid #444;
   }
   table {
-    border: 1px solid #dddddd;
+    border: 1px solid #ddd;
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
@@ -200,7 +200,7 @@ mark {
 
     th, td {
       padding: 8px 8px;
-      border-bottom: 1px solid #dddddd;
+      border: 1px solid #ddd;
     }
     th {
       font-weight: bold;
@@ -208,6 +208,10 @@ mark {
     }
     td {
       vertical-align: top;
+    }
+
+    thead th {
+      border-bottom: 2px solid #ddd;
     }
   }
 }
