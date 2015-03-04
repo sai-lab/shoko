@@ -49,6 +49,8 @@ module Shoko
     config.generators.javascripts = false
     config.generators.helper      = false
 
+    config.active_job.queue_adapter = :sidekiq
+
     # Current git revision
     config.git_revision = `git log --abbrev-commit --pretty=oneline | head -1 | cut -d' ' -f1`
   end

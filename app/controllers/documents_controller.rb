@@ -37,6 +37,7 @@ class DocumentsController < ApplicationController
       if @document.draft?
         flash[:notice] = 'ドキュメントを下書きしました。'
       else
+        @document.create_markdown
         flash[:notice] = 'ドキュメントを公開しました。'
       end
     end
@@ -51,12 +52,15 @@ class DocumentsController < ApplicationController
   end
 
   def update
+    old_title = @document.title
     @result = @document.update document_params
 
     if @result
       unless @document.users.id_is(current_user.id)
         @document.user_documents.create user_id: current_user.id
       end
+
+      @document.update_markdown old_title
       flash[:notice] = 'ドキュメントを更新しました。'
     end
 
@@ -67,6 +71,7 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
+    @document.destroy_markdown
     @result = @document.destroy
 
     if @result

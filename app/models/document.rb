@@ -37,6 +37,18 @@ class Document < ActiveRecord::Base
     where 'markdown LIKE ?', "%#{escape_like keyword}%"
   end
 
+  def create_markdown
+    FileJob.perform_later id, nil
+  end
+
+  def update_markdown(old_title)
+    FileJob.perform_later id, old_title
+  end
+
+  def destroy_markdown
+    FileJob.perform_later nil, title
+  end
+
   def draft?
     draft_flag
   end

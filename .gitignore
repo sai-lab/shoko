@@ -25,5 +25,5 @@
 # Ignore assets pipeline files.
 /public/assets
 
-# Ignore CarrierWave uploaded files.
-/public/uploads
+/public/pictures
+/public/documents
