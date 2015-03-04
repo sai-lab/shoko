@@ -13,7 +13,7 @@
           i.uk-icon-trash.uk-text-danger.uk-margin-small-left data-uk-tooltip="" title="Delete"
 
       dd
-        - if document.draft?
+        - if document.is_draft?
           i.uk-icon-file
           | &nbsp;下書き
         - else

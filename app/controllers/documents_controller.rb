@@ -16,7 +16,7 @@ class DocumentsController < ApplicationController
   end
 
   def show
-    if @document.draft? && !@document.users.id_is(current_user.id)
+    if @document.is_draft? && !@document.users.id_is(current_user.id)
       render file: "#{Rails.root}/public/404.html", layout: false, status: 404
     end
   end
@@ -34,7 +34,7 @@ class DocumentsController < ApplicationController
 
     if @result
       @document.user_documents.create user_id: current_user.id
-      if @document.draft?
+      if @document.is_draft?
         flash[:notice] = 'ドキュメントを下書きしました。'
       else
         @document.create_markdown

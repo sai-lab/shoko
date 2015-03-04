@@ -9,7 +9,7 @@ article.uk-article
       i.uk-icon-trash.uk-icon-small.uk-text-danger.uk-margin-small-left data-uk-tooltip="" title="Delete"
 
     p
-      - if @document.draft?
+      - if @document.is_draft?
         i.uk-icon-file
         | &nbsp;下書き
       - else

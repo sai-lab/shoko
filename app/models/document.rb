@@ -49,11 +49,11 @@ class Document < ActiveRecord::Base
     FileJob.perform_later nil, title
   end
 
-  def draft?
+  def is_draft?
     draft_flag
   end
 
-  def publish?
+  def is_publish?
     !draft_flag
   end
 end
