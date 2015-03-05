@@ -1,16 +1,6 @@
 .uk-panel.uk-panel-box
   = form_tag documents_path, method: :get, class: 'uk-form uk-form-stacked' do
-    .uk-panel-title
-      i.uk-icon-file
-      span.exo.exo-bold Draft
-
-    .uk-nav-side
-      .uk-nav-divider
-
-    .uk-form-row
-      label
-        = check_box_tag :draft, params[:draft], params[:draft]
-        span.exo Check
+    = check_box_tag :draft, params[:draft], params[:draft], class: 'uk-hidden'
 
     .uk-panel-title
       i.uk-icon-search
@@ -39,7 +29,3 @@
       button.uk-button.uk-button-medium.uk-button-primary
         i.uk-icon-check
         span.exo.exo-bold Submit&nbsp;
-
-coffee:
-  $('input#draft').on 'change', (data) ->
-    $('.uk-form').submit()

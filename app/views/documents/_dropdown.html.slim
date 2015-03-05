@@ -1,42 +1,44 @@
-.uk-button-dropdown data-uk-dropdown="{ mode:'click' }"
-  button.uk-button.uk-button-medium
-    i.uk-icon-caret-down
-    span.exo.exo-bold Options
+ul.uk-tab data-uk-tab=""
+  li data-uk-dropdown="{ mode:'click' }"
+    a
+      i.uk-icon-caret-down
+      span.exo Options
 
-  .uk-dropdown style="width: auto;"
-    = form_tag documents_path, method: :get, class: 'uk-form uk-form-stacked' do
-      .uk-nav.uk-nav-dropdown
-        .uk-nav-header
-          i.uk-icon-file
-          span.exo.exo-bold Draft
+    .uk-dropdown style="width: auto;"
+      = form_tag documents_path, method: :get, class: 'uk-form uk-form-stacked' do
+        = check_box_tag :draft, params[:draft], params[:draft], class: 'uk-hidden'
 
-      .uk-form-row
-        label
-          = check_box_tag :draft, params[:draft], params[:draft]
-          span.exo Check
+        .uk-nav.uk-nav-dropdown
+          .uk-nav-header
+            i.uk-icon-search
+            span.exo.exo-bold Search
 
-      .uk-nav.uk-nav-dropdown
-        .uk-nav-header
-          i.uk-icon-search
-          span.exo.exo-bold Search
+        .uk-form-row
+          .uk-form-icon
+            i.uk-icon-calendar
+            = text_field_tag :date, params[:date], placeholder: 'Created at', 'data-uk-datepicker' => '{ format: "YY / MM / DD" }'
+        .uk-form-row
+          .uk-form-icon
+            i.uk-icon-tag
+            = text_field_tag :title, params[:title], placeholder: 'Title'
+        .uk-form-row
+          .uk-form-icon
+            i.uk-icon-paragraph
+            = text_field_tag :keyword, params[:keyword], placeholder: 'Keyword'
 
-      .uk-form-row
-        .uk-form-icon
-          i.uk-icon-calendar
-          = text_field_tag :date, params[:date], placeholder: 'Created at', 'data-uk-datepicker' => '{ format: "YY / MM / DD" }'
-      .uk-form-row
-        .uk-form-icon
-          i.uk-icon-tag
-          = text_field_tag :title, params[:title], placeholder: 'Title'
-      .uk-form-row
-        .uk-form-icon
-          i.uk-icon-paragraph
-          = text_field_tag :keyword, params[:keyword], placeholder: 'Keyword'
+        .uk-nav-side
+          .uk-nav-divider
 
-      .uk-nav-side
-        .uk-nav-divider
+        .uk-form-row
+          button.uk-button.uk-button-medium.uk-button-primary onClick="$('.uk-form-stacked').submit()"
+            i.uk-icon-check
+            span.exo.exo-bold Submit
 
-      .uk-form-row
-        button.uk-button.uk-button-medium.uk-button-primary
-          i.uk-icon-check
-          span.exo.exo-bold Submit
+  li#publish-tab
+    a
+      i.uk-icon-globe
+      span.exo Publish
+  li#draft-tab
+    a
+      i.uk-icon-pencil
+      span.exo Draft

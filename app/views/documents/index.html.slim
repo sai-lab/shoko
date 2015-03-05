@@ -8,8 +8,29 @@
     .uk-hidden-small
       = render partial: 'documents/sidebar'
   .uk-width-medium-7-10
+    .uk-hidden-small
+      ul.uk-tab data-uk-tab=""
+        li#publish-tab
+          a
+            i.uk-icon-globe
+            span.exo Publish
+        li#draft-tab
+          a
+            i.uk-icon-pencil
+            span.exo Draft
+
     = render partial: 'documents/list', locals: { documents: @documents }
     = paginate @documents
 
 coffee:
   $('#nav-documents').addClass 'uk-active'
+  if $('input#draft').prop('checked')
+    $('[id=draft-tab]').addClass 'uk-active'
+  else
+    $('[id=publish-tab]').addClass 'uk-active'
+  $('[id=publish-tab]').on 'click', () ->
+    $('input#draft').prop 'checked', false
+    $('.uk-form').submit()
+  $('[id=draft-tab]').on 'click', () ->
+    $('input#draft').prop 'checked', true
+    $('.uk-form').submit()
