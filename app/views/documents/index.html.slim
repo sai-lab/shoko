@@ -28,9 +28,14 @@ coffee:
     $('[id=draft-tab]').addClass 'uk-active'
   else
     $('[id=publish-tab]').addClass 'uk-active'
+  documentsFormSubmit = ->
+    if $(window).width() < 768
+      $('.uk-dropdown > .uk-form').submit()
+    else
+      $('.uk-panel > .uk-form').submit()
   $('[id=publish-tab]').on 'click', () ->
     $('input#draft').prop 'checked', false
-    $('.uk-form').submit()
+    documentsFormSubmit()
   $('[id=draft-tab]').on 'click', () ->
     $('input#draft').prop 'checked', true
-    $('.uk-form').submit()
+    documentsFormSubmit()
