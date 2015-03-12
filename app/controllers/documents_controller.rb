@@ -12,7 +12,7 @@ class DocumentsController < ApplicationController
     @documents = @documents.search_created_at(params[:date])  if params[:date].present?
     @documents = @documents.search_title(params[:title])      if params[:title].present?
     @documents = @documents.search_markdown(params[:keyword]) if params[:keyword].present?
-    @documents = @documents.order(updated_at: :desc).page(params[:page]).per(1)
+    @documents = @documents.order(updated_at: :desc).page(params[:page]).per(5)
   end
 
   def show
