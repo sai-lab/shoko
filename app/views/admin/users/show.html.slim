@@ -6,7 +6,7 @@ h2
   span.uk-h4.uk-text-muted.uk-margin-small-left
     | (#{@user.name})
 
-= render partial: 'documents/list', locals: { documents: @documents }
+= render partial: 'admin/documents/list', locals: { documents: @documents }
 = paginate @documents
 
 coffee:

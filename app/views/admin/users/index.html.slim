@@ -1,5 +1,9 @@
 - @title = 'Users'
 
+h2
+  i.uk-icon-users
+  span.exo.exo-bold Users
+
 = render partial: 'admin/users/list', locals: { users: @users }
 = paginate @users
 
