@@ -4,7 +4,10 @@ class Admin::PicturesController < ApplicationController
   before_action :load_picture
 
   def index
-    @pictures = Picture.order(updated_at: :desc).page(params[:page]).per(10)
+    @pictures = Picture.order(updated_at: :desc).page(params[:page]).per(15)
+  end
+
+  def show
   end
 
   def delete

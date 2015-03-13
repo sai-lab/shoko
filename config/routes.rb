@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
     resources :documents, only: [:show]
 
-    resources :pictures, only: [:index, :destroy] do
+    resources :pictures, only: [:index, :show, :destroy] do
       get :delete, on: :member
     end
   end
