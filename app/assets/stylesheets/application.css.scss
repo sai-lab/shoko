@@ -52,6 +52,10 @@ mark {
 .uk-modal-dialog {
   min-height: 0;
 }
+.uk-modal-dialog-large {
+  max-height: 500px;
+  overflow: auto;
+}
 
 .uk-placeholder {
   padding: 8px 6px;

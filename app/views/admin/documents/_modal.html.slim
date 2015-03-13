@@ -1,0 +1,7 @@
+.uk-modal-dialog.uk-modal-dialog-large
+  a.uk-modal-close.uk-close
+  #markdown
+
+javascript:
+  markdown = '#{raw escape_javascript(document.markdown)}';
+  $('#markdown').html(marked(markdown, { breaks: true }));

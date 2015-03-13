@@ -28,6 +28,6 @@
               - if document.is_draft?
                 i.uk-icon-check
             td
-              = link_to document_path(document.id) do
+              = link_to admin_document_path(document.id), remote: true do
                 i.uk-icon-file-text-o.uk-margin-small-right
                 | #{excerpt(document.markdown, '', radius: 25, omission: '…')}
