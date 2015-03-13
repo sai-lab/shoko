@@ -3,20 +3,22 @@ class DocumentsController < ApplicationController
   before_action :load_document
 
   def index
+    @users = User.all
+
     if params[:draft]
       @documents = current_user.documents.draft
     else
       @documents = Document.publish
     end
 
-    @documents = @documents.search_created_at(params[:date])  if params[:date].present?
-    @documents = @documents.search_title(params[:title])      if params[:title].present?
-    @documents = @documents.search_markdown(params[:keyword]) if params[:keyword].present?
+    @documents = @documents.search_title(params[:user])                 if params[:user].present?
+    @documents = @documents.search_title(params[:date].gsub(' / ', '')) if params[:date].present?
+    @documents = @documents.search_markdown(params[:keyword])           if params[:keyword].present?
     @documents = @documents.order(updated_at: :desc).page(params[:page]).per(5)
   end
 
   def show
-    if @document.is_draft? && !@document.users.id_is(current_user.id)
+    if @document.is_draft? && !@document.users.id_is(current_user.id) && !current_user.is_admin?
       render file: "#{Rails.root}/public/404.html", layout: false, status: 404
     end
   end

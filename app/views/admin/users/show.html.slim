@@ -1,15 +1,13 @@
-- @title = 'Documents'
+- @title = @user.account
 
-.uk-visible-small.uk-margin-bottom
-  = render partial: 'admin/documents/dropdown'
+h2
+  i.uk-icon-user
+  span.exo.exo-bold #{@user.account}
+  span.uk-h4.uk-text-muted.uk-margin-small-left
+    | (#{@user.name})
 
-.uk-grid
-  .uk-width-medium-3-10
-    .uk-hidden-small
-      = render partial: 'admin/documents/sidebar'
-  .uk-width-medium-7-10
-    = render partial: 'admin/documents/list', locals: { documents: @documents }
-    = paginate @documents
+= render partial: 'documents/list', locals: { documents: @documents }
+= paginate @documents
 
 coffee:
   $('#nav-admin').addClass 'uk-active'

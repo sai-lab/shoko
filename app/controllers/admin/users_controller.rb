@@ -8,11 +8,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @documents = @user.documents.publish
-    @documents = @documents.search_created_at(params[:date])  if params[:date].present?
-    @documents = @documents.search_title(params[:title])      if params[:title].present?
-    @documents = @documents.search_markdown(params[:keyword]) if params[:keyword].present?
-    @documents = @documents.order(updated_at: :desc).page(params[:page]).per(5)
+    @documents = @user.documents.order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   def new

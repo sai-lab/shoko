@@ -23,12 +23,6 @@ class Document < ActiveRecord::Base
     Document.where(id: id.to_i).first
   end
 
-  def self.search_created_at(date)
-    from = Time.strptime(date, '%y / %m / %d')
-    to = from + 1.day
-    where(created_at: from...to)
-  end
-
   def self.search_title(keyword)
     where 'title LIKE ?', "%#{escape_like keyword}%"
   end
