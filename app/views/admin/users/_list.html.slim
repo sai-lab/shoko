@@ -16,7 +16,7 @@
           th.exo.exo-bold style="width: 50px;" Admin
           th.exo.exo-bold Documents
       tbody
-        - users.each do |user|
+        - users.includes(:documents).each do |user|
           tr
             td
               = link_to edit_admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-success uk-margin-small-right', remote: true do

@@ -4,7 +4,7 @@
     span.exo No Documentes
 - else
   dl.uk-description-list-line
-    - documents.each do |document|
+    - documents.includes(:users).each do |document|
       dt
         = link_to document.title, document_path(document.id), class: 'uk-h3'
         = link_to edit_document_path(document.id) do
