@@ -16,7 +16,7 @@
     .uk-nav-side
       .uk-nav-divider
 
-    = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked' }, url: registration_path(resource_name) do |f|
+    = form_for resource, as: resource_name, turboboost: true, html: { class: 'uk-form uk-form-stacked' }, url: registration_path(resource_name) do |f|
       .uk-form-row
         .uk-grid
           .uk-width-medium-1-3
