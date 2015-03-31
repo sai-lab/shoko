@@ -23,5 +23,6 @@
         | &nbsp;#{I18n.l document.updated_at, format: :short}
 
       - if params[:keyword].present?
+        - keywords = params[:keyword].split ' '
         dd
-          = highlight excerpt(document.markdown, params[:keyword], radius: 30, omission: ''), params[:keyword]
+          = highlight excerpt(document.markdown, keywords.first, radius: 30, omission: ''), keywords

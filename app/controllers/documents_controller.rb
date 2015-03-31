@@ -11,9 +11,20 @@ class DocumentsController < ApplicationController
       @documents = Document.publish
     end
 
-    @documents = @documents.search_title(params[:user])                 if params[:user].present?
-    @documents = @documents.search_title(params[:date].gsub(' / ', '')) if params[:date].present?
-    @documents = @documents.search_markdown(params[:keyword])           if params[:keyword].present?
+    @documents = @documents.search_title params[:user] if params[:user].present?
+
+    if params[:title].present?
+      params[:title].split(' ').each do |title|
+        @documents = @documents.search_title title
+      end
+    end
+
+    if params[:keyword].present?
+      params[:keyword].split(' ').each do |keyword|
+        @documents = @documents.search_markdown keyword
+      end
+    end
+
     @documents = @documents.order(updated_at: :desc).page(params[:page]).per(5)
   end
 
