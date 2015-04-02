@@ -7,4 +7,4 @@
     - pictures.each do |picture|
       li
         = link_to admin_picture_path(picture.id), remote: true do
-          img src="#{picture.attachment.url}" alt="#{picture.attachment_file_name}"
+          img.uk-thumbnail src="#{picture.attachment.url}" alt="#{picture.attachment_file_name}"
