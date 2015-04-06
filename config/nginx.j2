@@ -4,9 +4,19 @@ upstream unicorn {
 }
 
 server {
-    listen                80;
+    listen       80;
+    server_name  {{ ansible_fqdn }};
+    return       301 https://$host$request_uri;
+}
+
+server {
+    listen               443;
+    ssl                  on;
+    ssl_certificate      /etc/nginx/ssl/{{ ansible_hostname }}.crt;
+    ssl_certificate_key  /etc/nginx/ssl/{{ ansible_hostname }}.key;
+
+    server_name           {{ ansible_fqdn }};
     client_max_body_size  4G;
-    server_name           _;
     keepalive_timeout     5;
     root                  {{ dest }}/public;
 
@@ -24,9 +34,10 @@ server {
     }
 
     location / {
-        proxy_set_header  X-Real-IP        $remote_addr;
-        proxy_set_header  X-Forwarded-For  $proxy_add_x_forwarded_for;
-        proxy_set_header  Host             $http_host;
+        proxy_set_header  X-Real-IP          $remote_addr;
+        proxy_set_header  X-Forwarded-Proto  $scheme;
+        proxy_set_header  X-Forwarded-For    $proxy_add_x_forwarded_for;
+        proxy_set_header  Host               $http_host;
         proxy_pass        http://unicorn;
     }
 
