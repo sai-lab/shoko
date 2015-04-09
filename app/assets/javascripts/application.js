@@ -15,6 +15,7 @@
 //= require uikit/uikit.min
 //= require uikit/components/htmleditor.min
 //= require uikit/components/notify.min
+//= require uikit/components/tooltip.min
 //= require uikit/components/upload.min
 //= require codemirror/codemirror
 //= require codemirror/mode/markdown/markdown

@@ -7,18 +7,16 @@
     - documents.includes(:users).each do |document|
       dt
         = link_to document.title, document_path(document.id), class: 'uk-h3'
+        - if document.is_draft?
+          i.uk-icon-file.uk-text-muted.uk-margin-small-left data-uk-tooltip="" title="Draft"
         = link_to edit_document_path(document.id) do
           i.uk-icon-pencil.uk-text-success.uk-margin-small-left data-uk-tooltip="" title="Edit"
         = link_to delete_document_path(document.id), remote: true do
           i.uk-icon-trash.uk-text-danger.uk-margin-small-left data-uk-tooltip="" title="Delete"
 
       dd
-        - if document.is_draft?
-          i.uk-icon-file
-          | &nbsp;下書き
-        - else
-          i.uk-icon-users
-          | &nbsp;#{document.users.pluck(:name).join(', ')}
+        i.uk-icon-users
+        | &nbsp;#{document.users.pluck(:name).join(', ')}
         i.uk-icon-calendar.uk-margin-left
         | &nbsp;#{I18n.l document.updated_at, format: :short}
 

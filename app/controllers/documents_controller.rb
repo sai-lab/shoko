@@ -5,13 +5,17 @@ class DocumentsController < ApplicationController
   def index
     @users = User.all
 
-    if params[:draft]
-      @documents = current_user.documents.draft
+    if params[:user].present?
+      @documents = User.id_is(params[:user]).documents
     else
-      @documents = Document.publish
+      @documents = Document.all
     end
 
-    @documents = @documents.search_title params[:user] if params[:user].present?
+    if params[:draft]
+      @documents = @documents.draft
+    else
+      @documents = @documents.publish
+    end
 
     if params[:title].present?
       params[:title].split(' ').each do |title|
@@ -29,9 +33,6 @@ class DocumentsController < ApplicationController
   end
 
   def show
-    if @document.is_draft? && !@document.users.id_is(current_user.id) && !current_user.is_admin?
-      render file: "#{Rails.root}/public/404.html", layout: false, status: 404
-    end
   end
 
   def new
