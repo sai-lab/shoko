@@ -67,6 +67,7 @@ class DocumentsController < ApplicationController
 
   def update
     old_title = @document.title
+    is_draft = @document.is_draft?
     @result = @document.update document_params
 
     if @result
@@ -74,7 +75,12 @@ class DocumentsController < ApplicationController
         @document.user_documents.create user_id: current_user.id
       end
 
-      @document.update_markdown old_title
+      if is_draft
+        @document.create_markdown
+      else
+        @document.update_markdown old_title
+      end
+
       flash[:notice] = 'ドキュメントを更新しました。'
     end
 
