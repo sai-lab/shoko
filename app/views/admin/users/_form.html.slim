@@ -24,6 +24,13 @@
     .uk-form-row
       .uk-grid
         .uk-width-medium-1-3
+          = f.label :account, 'Account', class: 'exo exo-bold'
+        .uk-width-medium-2-3
+          = f.select :grade, Grade::SELECT, {}, { class: 'uk-form-width-medium' }
+          .uk-form-help-block#user-grade-error
+    .uk-form-row
+      .uk-grid
+        .uk-width-medium-1-3
           = f.label :password, 'Password', class: 'exo exo-bold'
         .uk-width-medium-2-3
           = f.password_field :password, autofocus: true, class: 'uk-form-width-medium'

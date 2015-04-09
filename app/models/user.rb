@@ -8,7 +8,8 @@
 #  name               :string           default(""), not null
 #  created_at         :datetime
 #  updated_at         :datetime
-#  admin_flag         :boolean          default("false"), not null
+#  admin_flag         :boolean          default(FALSE), not null
+#  grade              :integer          default(1), not null
 #
 
 class User < ActiveRecord::Base
@@ -18,6 +19,8 @@ class User < ActiveRecord::Base
 
   has_many :user_documents, dependent: :destroy
   has_many :documents, through: :user_documents
+
+  include Grade
 
   def self.id_is(id)
     User.where(id: id.to_i).first

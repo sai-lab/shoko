@@ -13,6 +13,7 @@
               span.exo Add
           th.exo.exo-bold style="width: 175px;" Account
           th.exo.exo-bold style="width: 175px;" Name
+          th.exo.exo-bold style="width: 50px;" Grade
           th.exo.exo-bold style="width: 50px;" Admin
           th.exo.exo-bold Documents
       tbody
@@ -27,6 +28,7 @@
                 span.exo Delete
             td #{user.account}
             td #{user.name}
+            td #{user.grade_text}
             td.uk-text-center
               - if user.is_admin?
                 i.uk-icon-check
