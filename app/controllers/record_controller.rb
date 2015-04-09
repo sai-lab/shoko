@@ -6,7 +6,7 @@ class RecordController < ApplicationController
 
     date = Date.strptime(params[:date], '%y / %m / %d')
     date_str = date.strftime('%y%m%d')
-    documents = Document.publish.search_title(params[:title]).search_title(date_str).includes(:users).order('users.account')
+    documents = Document.publish.search_title(params[:title]).search_title(date_str).includes(:users).order('users.grade desc', 'users.account asc')
 
     attends = {}
     outline_str = ''

@@ -5,9 +5,11 @@
     .uk-form-icon
       i.uk-icon-font
       = text_field_tag :title, params[:title], placeholder: 'Title'
+    | &nbsp;
     .uk-form-icon
       i.uk-icon-calendar
       = text_field_tag :date, params[:date], placeholder: 'Date', 'data-uk-datepicker' => '{ format: "YY / MM / DD" }'
+    | &nbsp;
     button.uk-button.uk-button-medium.uk-button-primary
       i.uk-icon-check
       span.exo.exo-bold Submit&nbsp;
