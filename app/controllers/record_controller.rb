@@ -3,7 +3,7 @@ class RecordController < ApplicationController
 
   def index
     @templates = Template.where.not(pattern: '')
-    return unless params[:title].present? && params[:date].present?
+    return unless params[:template].present? && params[:date].present?
     template = Template.id_is(params[:template])
 
     date = Date.strptime(params[:date], '%y / %m / %d')
@@ -30,6 +30,6 @@ class RecordController < ApplicationController
       attend_str += "○ #{Grade::TEXT[grade]} #{names.join('、')}\n"
     end
 
-    @record = "□ {#template.name}議事録 #{date_str}\n\n● 出席\n\n#{attend_str}\n● 活動概要\n\n#{outline_str}".chomp
+    @record = "□ #{template.name}議事録 #{date_str}\n\n● 出席\n\n#{attend_str}\n● 活動概要\n\n#{outline_str}".chomp
   end
 end
