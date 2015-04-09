@@ -1,0 +1,20 @@
+- @title = 'Record'
+
+= form_tag record_index_path, method: :get, turboboost: true, class: 'uk-form' do
+  fieldset data-uk-margin=""
+    .uk-form-icon
+      i.uk-icon-font
+      = text_field_tag :title, params[:title], placeholder: 'Title'
+    .uk-form-icon
+      i.uk-icon-calendar
+      = text_field_tag :date, params[:date], placeholder: 'Date', 'data-uk-datepicker' => '{ format: "YY / MM / DD" }'
+    button.uk-button.uk-button-medium.uk-button-primary
+      i.uk-icon-check
+      span.exo.exo-bold Submit&nbsp;
+
+.uk-panel.uk-panel-box.uk-margin-top.monospace
+  - if @record
+    | #{simple_format @record}
+
+coffee:
+  $('#nav-record').addClass 'uk-active'

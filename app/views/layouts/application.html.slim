@@ -50,6 +50,11 @@ html
                       i.uk-icon-plus
                       span.exo New Template
 
+            li#nav-record
+              = link_to record_index_path do
+                i.uk-icon-leanpub
+                span.exo.exo-bold Record
+
         .uk-navbar-flip.uk-hidden-small
           ul.uk-navbar-nav
             - if user_signed_in?
@@ -119,6 +124,14 @@ html
               = link_to new_template_path do
                 i.uk-icon-plus
                 span.exo New Template
+
+            li.uk-nav-header
+              i.uk-icon-leanpub
+              span.exo Record
+            li
+              = link_to record_index_path do
+                i.uk-icon-leanpub
+                span.exo.exo-bold Record
 
             - if current_user.is_admin?
               li.uk-nav-header

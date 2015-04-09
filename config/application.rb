@@ -44,7 +44,7 @@ module Shoko
     config.middleware.delete 'Rack::Sendfile'
     config.active_job.queue_adapter = :sidekiq
 
-    # Current git revision
     config.git_revision = `git log --abbrev-commit --pretty=oneline | head -1 | cut -d' ' -f1`
+    config.record_pattern = /## 活動概要\r\n\r\n([\s\S]*)\r\n\r\n## 活動時間/
   end
 end

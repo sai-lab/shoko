@@ -13,6 +13,7 @@
 //= require turboboost
 //= require jquery.turbolinks
 //= require uikit/uikit.min
+//= require uikit/components/datepicker.min
 //= require uikit/components/htmleditor.min
 //= require uikit/components/notify.min
 //= require uikit/components/tooltip.min

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :pictures, only: [:create]
 
+  resources :record, only: [:index]
+
   namespace :admin do
     resources :users do
       get :delete, on: :member
