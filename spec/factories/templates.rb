@@ -7,6 +7,8 @@
 #  markdown   :text             default(""), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  name       :string           default(""), not null
+#  pattern    :string           default("")
 #
 
 FactoryGirl.define do

@@ -2,21 +2,33 @@
 
 = form_tag record_index_path, method: :get, turboboost: true, class: 'uk-form' do
   fieldset data-uk-margin=""
-    .uk-form-icon
-      i.uk-icon-font
-      = text_field_tag :title, params[:title], placeholder: 'Title'
-    | &nbsp;
-    .uk-form-icon
-      i.uk-icon-calendar
-      = text_field_tag :date, params[:date], placeholder: 'Date', 'data-uk-datepicker' => '{ format: "YY / MM / DD" }'
-    | &nbsp;
-    button.uk-button.uk-button-medium.uk-button-primary
-      i.uk-icon-check
-      span.exo.exo-bold Submit&nbsp;
+    .uk-grid
+      .uk-width-medium-1-4
+        = select_tag :template, options_from_collection_for_select(@templates, :id, :name), { prompt: 'Template', class: 'uk-width-1-1' }
+      .uk-margin-small-top.uk-visible-small
+      .uk-width-medium-1-4
+        .uk-form-icon.uk-width-1-1
+          i.uk-icon-calendar
+          = text_field_tag :date, params[:date], placeholder: 'Date', class: 'uk-width-1-1', 'data-uk-datepicker' => '{ format: "YY / MM / DD" }'
+      .uk-margin-small-top.uk-visible-small
+      .uk-width-medium-1-4
+        button.uk-button.uk-button-medium.uk-button-primary
+          i.uk-icon-check
+          span.exo.exo-bold Submit&nbsp;
 
 .uk-panel.uk-panel-box.uk-margin-top.monospace
   - if @record
     | #{simple_format @record}
 
+javascript:
+  template = '#{params[:template]}'
+
 coffee:
   $('#nav-record').addClass 'uk-active'
+  $('#template').val template
+  $('#template').on 'change', ->
+    if $(this).val() is ''
+      $(this).addClass 'placeholder'
+    else
+      $(this).removeClass 'placeholder'
+  $('#template').change()

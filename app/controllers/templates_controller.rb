@@ -55,6 +55,6 @@ class TemplatesController < ApplicationController
   end
 
   def template_params
-    params.require(:template).permit :title, :markdown
+    params.require(:template).permit :name, :title, :markdown, :pattern
   end
 end

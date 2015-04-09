@@ -3,10 +3,10 @@
   .uk-form-row
     .uk-grid
       .uk-width-medium-1-3
-        = collection_select :select, :template, templates, :id, :title, {}, { class: 'uk-form-large uk-width-1-1' }
+        = select_tag :template, options_from_collection_for_select(templates, :id, :title), { prompt: 'Template', class: 'uk-form-large uk-width-1-1' }
       .uk-margin-top.uk-visible-small
       .uk-width-medium-2-3
-        = f.text_field :title, autofocus: true, class: 'uk-form-large uk-width-1-1', placeholder: 'タイトル'
+        = f.text_field :title, autofocus: true, class: 'uk-form-large uk-width-1-1', placeholder: 'Title'
   .uk-form-row
     = f.text_area :markdown, 'data-uk-htmleditor' => '{ markdown: true }'
   .uk-form-row
@@ -14,11 +14,11 @@
       .uk-width-medium-2-3
         .uk-placeholder.uk-text-center#upload-drop
           i.uk-icon-cloud-upload.uk-icon-medium.uk-text-muted.uk-margin-small-right
-          | 画像をドラッグまたは
-          a.uk-form-file.uk-margin-small-left.uk-margin-small-right
-            | 選択
+          | Attach images by dropping them here or&nbsp;
+          a.uk-form-file
+            | selecting one
             input#upload-select type="file" multiple="multiple"
-          | してアップロード
+          | .
       .uk-margin-top.uk-visible-small
       .uk-width-medium-1-3.uk-text-center
         .uk-button-group
@@ -58,15 +58,18 @@ coffee:
   }
   uk_select = UIkit.uploadSelect $('#upload-select'), uk_upload_settings
   uk_drop = UIkit.uploadDrop $('#upload-drop'), uk_upload_settings
-  $('#select_template').prepend '<option value=\"-1\">テンプレート</option>'
-  $('#select_template').val '-1'
-  $('#select_template').on 'change', ->
-    if $(':selected').attr('value') isnt '-1'
+  $('#template').on 'change', ->
+    if $(this).val() is ''
+      $(this).addClass 'placeholder'
+    else
+      $(this).removeClass 'placeholder'
+    if $(':selected').attr('value') isnt ''
       $.ajax {
         'url': '/templates/' + $(':selected').attr('value') + '/select',
         'type': 'GET',
         'data-type': 'html'
       }
+  $('#template').change()
   $('#document-publish').on 'click', (event) ->
     event.preventDefault()
     $('#document_draft_flag').prop 'checked', false

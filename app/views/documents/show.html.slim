@@ -4,11 +4,11 @@ article.uk-article
   dd.uk-text-muted
     span.uk-article-title.uk-margin-small-right #{@document.title}
     - if @document.is_draft?
-      i.uk-icon-file.uk-icon-small.uk-text-muted.uk-margin-small-left data-uk-tooltip="" title="Draft"
+      i.uk-icon-file.uk-text-muted.uk-margin-small-left data-uk-tooltip="" title="Draft"
     = link_to edit_document_path do
-      i.uk-icon-pencil.uk-icon-small.uk-text-success.uk-margin-small-left data-uk-tooltip="" title="Edit"
+      i.uk-icon-pencil.uk-text-success.uk-margin-small-left data-uk-tooltip="" title="Edit"
     = link_to delete_document_path, remote: true do
-      i.uk-icon-trash.uk-icon-small.uk-text-danger.uk-margin-small-left data-uk-tooltip="" title="Delete"
+      i.uk-icon-trash.uk-text-danger.uk-margin-small-left data-uk-tooltip="" title="Delete"
 
     p
       i.uk-icon-users

@@ -7,10 +7,12 @@
 #  markdown   :text             default(""), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  name       :string           default(""), not null
+#  pattern    :string           default("")
 #
 
 class Template < ActiveRecord::Base
-  validates_presence_of :title, :markdown
+  validates_presence_of :name, :title, :markdown
 
   def self.id_is(id)
     Template.where(id: id.to_i).first

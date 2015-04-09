@@ -27,7 +27,6 @@ javascript:
 
 coffee:
   $('#nav-documents').addClass 'uk-active'
-  $('select#user').prepend '<option value>User</option>'
   $('select#user').val user
   $('select#user').on 'change', ->
     if $(this).val() is ''

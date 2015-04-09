@@ -6,7 +6,8 @@
   dl.uk-description-list-line
     - templates.each do |template|
       dt
-        = link_to template.title, template_path(template.id), class: 'uk-h3 uk-margin-small-right'
+        = link_to template.name, template_path(template.id), class: 'uk-h3 uk-margin-small-right'
+        | (#{template.title})
         = link_to edit_template_path(template.id) do
           i.uk-icon-pencil.uk-text-success.uk-margin-small-left data-uk-tooltip="" title="Edit"
         = link_to delete_template_path(template.id), remote: true do
