@@ -26,5 +26,11 @@ Rails.application.routes.draw do
     resources :pictures, only: [:index, :show, :destroy] do
       get :delete, on: :member
     end
+
+    resources :sidekiq, only: %w( index )
+  end
+
+  authenticate :user, lambda { |u| u.is_admin? } do
+    mount Sidekiq::Web => '/sidekiq'
   end
 end

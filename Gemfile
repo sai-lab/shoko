@@ -61,3 +61,4 @@ gem 'kaminari'
 gem 'paperclip'
 gem 'websocket-rails'
 gem 'sidekiq'
+gem 'sinatra', require: false
