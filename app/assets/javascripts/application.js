@@ -10,8 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require turboboost
+//= require jquery
 //= require jquery.turbolinks
+//= require jquery_ujs
 //= require uikit/uikit.min
 //= require uikit/components/datepicker.min
 //= require uikit/components/htmleditor.min
@@ -25,3 +26,4 @@
 //= require codemirror/addon/mode/overlay
 //= require marked/marked.min
 //= require websocket_rails/main
+//= require turbolinks

@@ -1,6 +1,6 @@
 - @title = 'Record'
 
-= form_tag record_index_path, method: :get, turboboost: true, class: 'uk-form' do
+= form_tag record_index_path, method: :get, class: 'uk-form' do
   fieldset data-uk-margin=""
     .uk-grid
       .uk-width-medium-1-4
@@ -9,7 +9,7 @@
       .uk-width-medium-1-4
         .uk-form-icon.uk-width-1-1
           i.uk-icon-calendar
-          = text_field_tag :date, params[:date], placeholder: 'Date', class: 'uk-width-1-1', 'data-uk-datepicker' => '{ format: "YY / MM / DD" }'
+          = text_field_tag :date, params[:date], placeholder: 'Date', readonly: true, class: 'uk-width-1-1', 'data-uk-datepicker' => '{ format: "YY / MM / DD" }'
       .uk-margin-small-top.uk-visible-small
       .uk-width-medium-1-4
         button.uk-button.uk-button-medium.uk-button-primary

@@ -5,7 +5,7 @@ ul.uk-tab data-uk-tab=""
       span.exo Options
 
     .uk-dropdown style="width: auto;"
-      = form_tag documents_path, method: :get, turboboost: true, class: 'uk-form uk-form-stacked' do
+      = form_tag documents_path, method: :get, class: 'uk-form uk-form-stacked' do
         = check_box_tag :draft, params[:draft], params[:draft], class: 'uk-hidden'
 
         .uk-nav.uk-nav-dropdown

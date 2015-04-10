@@ -55,7 +55,6 @@ group :production do
   gem 'unicorn'
 end
 
-gem 'turboboost'
 gem 'devise'
 gem 'slim-rails'
 gem 'kaminari'
