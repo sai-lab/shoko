@@ -14,9 +14,7 @@
 class Template < ActiveRecord::Base
   validates_presence_of :name, :title, :markdown
 
-  def self.id_is(id)
-    Template.where(id: id.to_i).first
-  end
+  scope :id_is, ->(id) { find_by(id: id.to_i) }
 
   def replace_title(user)
     day = Time.now

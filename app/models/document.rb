@@ -16,20 +16,11 @@ class Document < ActiveRecord::Base
   has_many :user_documents, dependent: :destroy
   has_many :users, through: :user_documents
 
+  scope :id_is, ->(id) { find_by(id: id.to_i) }
   scope :draft, -> { where(draft_flag: true) }
   scope :publish, -> { where(draft_flag: false) }
-
-  def self.id_is(id)
-    Document.where(id: id.to_i).first
-  end
-
-  def self.search_title(keyword)
-    where 'title LIKE ?', "%#{escape_like keyword}%"
-  end
-
-  def self.search_markdown(keyword)
-    where 'markdown LIKE ?', "%#{escape_like keyword}%"
-  end
+  scope :search_title, ->(keyword) { keyword ? Document.where(['title LIKE ?', "%#{PGconn.escape(keyword)}%"]) : Document.all }
+  scope :search_markdown, ->(keyword) { keyword ? Document.where(['markdown LIKE ?', "%#{PGconn.escape(keyword)}%"]) : Document.all }
 
   def create_markdown
     FileJob.perform_later id, nil

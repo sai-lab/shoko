@@ -21,7 +21,5 @@ class Picture < ActiveRecord::Base
     presence: true,
     content_type: { content_type: /^image\/(jpeg|png|gif)/ }
 
-  def self.id_is(id)
-    Picture.where(id: id.to_i).first
-  end
+  scope :id_is, ->(id) { find_by(id: id.to_i) }
 end
