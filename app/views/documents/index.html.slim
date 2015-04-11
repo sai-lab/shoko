@@ -1,12 +1,12 @@
 - @title = 'Documents'
 
 .uk-visible-small.uk-margin-bottom
-  = render partial: 'documents/dropdown'
+  = render partial: 'documents/dropdown', locals: { users: @users }
 
 .uk-grid
   .uk-width-medium-3-10
     .uk-hidden-small
-      = render partial: 'documents/sidebar'
+      = render partial: 'documents/sidebar', locals: { users: @users }
   .uk-width-medium-7-10
     .uk-hidden-small
       ul.uk-tab data-uk-tab=""

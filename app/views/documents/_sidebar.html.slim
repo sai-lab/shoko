@@ -10,7 +10,7 @@
       .uk-nav-divider
 
     .uk-form-row
-      = select_tag :user, options_from_collection_for_select(@users, :id, :name), { prompt: 'User', class: 'uk-width-1-1' }
+      = select_tag :user, options_from_collection_for_select(users, :id, :name), { prompt: 'User', class: 'uk-width-1-1' }
     .uk-form-row
       .uk-form-icon
         i.uk-icon-font
