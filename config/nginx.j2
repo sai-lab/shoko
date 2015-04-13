@@ -41,6 +41,16 @@ server {
         proxy_pass        http://unicorn;
     }
 
+    error_page 403 404 /404.html;
+    location = /404.html {
+        root  {{ dest }}/public;
+    }
+
+    error_page 422 /422.html;
+    location = /422.html {
+        root  {{ dest }}/public;
+    }
+
     error_page 500 502 503 504 /500.html;
     location = /500.html {
         root  {{ dest }}/public;
