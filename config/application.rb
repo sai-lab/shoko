@@ -43,6 +43,7 @@ module Shoko
     config.generators.helper      = false
 
     config.middleware.delete 'Rack::Sendfile'
+    config.autoload_paths += %W(#{config.root}/lib)
     config.active_job.queue_adapter = :sidekiq
 
     config.git_revision = `git log --abbrev-commit --pretty=oneline | head -1 | cut -d' ' -f1`
