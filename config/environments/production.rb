@@ -78,4 +78,4 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 end
 
-ENV['SIDEKIQ_MEMORY_KILLER_MAX_RSS'] = '131072'
+ENV['SIDEKIQ_MEMORY_KILLER_MAX_RSS'] = '196608'

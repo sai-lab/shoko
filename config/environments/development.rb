@@ -42,5 +42,4 @@ Rails.application.configure do
   config.middleware.delete Rack::Lock
 end
 
-ENV['SIDEKIQ_MEMORY_KILLER_MAX_RSS'] = '131072'
 BetterErrors::Middleware.allow_ip! '0.0.0.0'
