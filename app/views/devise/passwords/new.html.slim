@@ -20,7 +20,7 @@
           .uk-width-medium-1-3
             = f.label :email, 'Email', class: "exo exo-bold #{'uk-text-danger' if email_error}"
           .uk-width-medium-2-3
-            = f.password_field :email, autofocus: true, class: "uk-form-width-medium #{'uk-form-danger' if email_error}"
+            = f.text_field :email, autofocus: true, class: "uk-form-width-medium #{'uk-form-danger' if email_error}"
             - if email_error
               .uk-form-help-block
                 ul.uk-text-danger
