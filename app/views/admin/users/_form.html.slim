@@ -10,10 +10,10 @@
     .uk-form-row
       .uk-grid
         .uk-width-medium-1-3
-          = f.label :account, 'Account', class: 'exo exo-bold'
+          = f.label :email, 'Email', class: 'exo exo-bold'
         .uk-width-medium-2-3
-          = f.text_field :account, autofocus: true, class: 'uk-form-width-medium'
-          .uk-form-help-block#user-account-error
+          = f.text_field :email, autofocus: true, class: 'uk-form-width-medium'
+          .uk-form-help-block#user-email-error
     .uk-form-row
       .uk-grid
         .uk-width-medium-1-3
@@ -24,7 +24,7 @@
     .uk-form-row
       .uk-grid
         .uk-width-medium-1-3
-          = f.label :account, 'Account', class: 'exo exo-bold'
+          = f.label :grade, 'Grade', class: 'exo exo-bold'
         .uk-width-medium-2-3
           = f.select :grade, Grade::SELECT, {}, { class: 'uk-form-width-medium' }
           .uk-form-help-block#user-grade-error

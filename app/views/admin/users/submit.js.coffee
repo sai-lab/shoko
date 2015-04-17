@@ -3,9 +3,9 @@
 <% else %>
   $('.uk-form-width-medium' ).removeClass('has-error')
   $('.uk-form-help-block').empty()
-  <% if @user.errors.messages[:account] %>
-  $('#user_account').addClass('uk-form-danger')
-  $('#user-account-error').html('<%= escape_javascript(render partial: "error/form", locals: { label: "アカウント", messages: @user.errors.messages[:account] }) %>')
+  <% if @user.errors.messages[:email] %>
+  $('#user_email').addClass('uk-form-danger')
+  $('#user-email-error').html('<%= escape_javascript(render partial: "error/form", locals: { label: "メールアドレス", messages: @user.errors.messages[:email] }) %>')
   <% end %>
   <% if @user.errors.messages[:name] %>
   $('#user_name').addClass('uk-form-danger')

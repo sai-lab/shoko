@@ -7,5 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 admin_password = SecureRandom.hex 8
-User.create account: 'shoko-admin', name: '書庫管理者', admin_flag: true, password: admin_password, password_confirmation: admin_password
+User.create email: 'shoko-admin@example.com', name: '書庫管理者', admin_flag: true, password: admin_password, password_confirmation: admin_password
 print "\e[31m!! shoko-admin : #{admin_password} !!\e[0m\n"

@@ -19,4 +19,7 @@
       .uk-form-row
         button.uk-button.uk-button-medium.uk-button-primary type="submit"
           i.uk-icon-sign-in
-          span.exo.exo-bold Sign in
+          span.exo.exo-bold Sign In
+        = link_to new_password_path(:user), class: 'uk-button uk-margin-small-left' do
+          i.uk-icon-key
+          span.exo.exo-bold Forget Password

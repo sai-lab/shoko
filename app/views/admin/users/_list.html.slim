@@ -11,8 +11,8 @@
             = link_to new_admin_user_path, class: 'uk-button uk-button-mini uk-button-primary', remote: true do
               i.uk-icon-plus
               span.exo Add
-          th.exo.exo-bold style="width: 175px;" Account
-          th.exo.exo-bold style="width: 175px;" Name
+          th.exo.exo-bold style="width: 300px;" Email
+          th.exo.exo-bold style="width: 150px;" Name
           th.exo.exo-bold style="width: 50px;" Grade
           th.exo.exo-bold style="width: 50px;" Admin
           th.exo.exo-bold Documents
@@ -26,7 +26,7 @@
               = link_to delete_admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-danger', remote: true do
                 i.uk-icon-trash
                 span.exo Delete
-            td #{user.account}
+            td #{user.email}
             td #{user.name}
             td #{user.grade_text}
             td.uk-text-center

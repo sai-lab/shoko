@@ -1,0 +1,47 @@
+- @title = 'Reset Password'
+- password_error = resource.errors.messages[:password].present?
+- password_confirmation_error = resource.errors.messages[:password_confirmation].present?
+
+- unless devise_error_messages!.empty?
+  javascript:
+    UIkit.notify({ message: '#{devise_error_messages!}', timeout: 3000, status: 'danger' });
+
+.uk-width-medium-1-2.uk-container-center
+  .uk-panel.uk-panel-box
+    h3.uk-panel-title
+      i.uk-icon-cog
+      span.exo.exo-bold Settings
+
+    .uk-nav-side
+      .uk-nav-divider
+
+    = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked' }, url: registration_path(resource_name) do |f|
+      .uk-form-row
+        .uk-grid
+          .uk-width-medium-1-3
+            = f.label :password, 'New password', class: "exo exo-bold #{'uk-text-danger' if password_error}"
+          .uk-width-medium-2-3
+            = f.password_field :password, class: "uk-form-width-medium #{'uk-form-danger' if password_error}"
+            - if password_error
+              .uk-form-help-block
+                ul.uk-text-danger
+                  - resource.errors.messages[:password].each do |message|
+                    li 新しいパスワード#{message}
+      .uk-form-row
+        .uk-grid
+          .uk-width-medium-1-3
+            = f.label :password_confirmation, 'Confirmation', class: "exo exo-bold #{'uk-text-danger' if password_confirmation_error}"
+          .uk-width-medium-2-3
+            = f.password_field :password_confirmation, class: "uk-form-width-medium #{'uk-form-danger' if password_confirmation_error}"
+            - if password_confirmation_error
+              .uk-form-help-block
+                ul.uk-text-danger
+                  - resource.errors.messages[:password_confirmation].each do |message|
+                    li 確認のパスワード#{message}
+      .uk-form-row
+        button.uk-button.uk-button-medium.uk-button-primary type="submit"
+          i.uk-icon-refresh
+          span.exo.exo-bold Reset
+        = link_to new_user_session_path, class: 'uk-button uk-medium uk-margin-small-left' do
+          i.uk-icon-sign-in
+          span.exo.exo-bold Sign In
