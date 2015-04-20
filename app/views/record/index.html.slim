@@ -20,10 +20,10 @@ javascript:
 
 coffee:
   $('#nav-record').addClass 'uk-active'
-  $('#template').val template
-  $('#template').on 'change', ->
+  $('select#template').val template
+  $('select#template').on 'change', ->
     if $(this).val() is ''
       $(this).addClass 'placeholder'
     else
       $(this).removeClass 'placeholder'
-  $('#template').change()
+  $('select#template').change()
