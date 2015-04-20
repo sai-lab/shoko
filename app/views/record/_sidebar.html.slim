@@ -1,0 +1,21 @@
+.uk-panel.uk-panel-box
+  = form_tag record_index_path, method: :get, class: 'uk-form  uk-form-stacked' do
+    h3.uk-panel-title.bold
+      = fa_icon 'print', text: '生成'
+
+    .uk-nav-side
+      .uk-nav-divider
+
+    .uk-form-row
+      = select_tag :template, options_from_collection_for_select(@templates, :id, :name), { prompt: 'テンプレート', class: 'uk-width-1-1' }
+    .uk-form-row
+      .uk-form-icon
+        i.uk-icon-calendar
+        = text_field_tag :date, params[:date], placeholder: '日付', readonly: true, 'data-uk-datepicker' => '{ format: "YY / MM / DD" }'
+
+    .uk-nav-side
+      .uk-nav-divider
+
+    .uk-form-row
+      button.uk-button.uk-button-medium.uk-button-primary onClick="$('.uk-panel > .uk-form').submit()"
+        = fa_icon 'print', text: '生成'

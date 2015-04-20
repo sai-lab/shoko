@@ -1,7 +1,7 @@
 - if pictures.empty?
   .uk-alert.uk-alert-warning
-    i.uk-icon-times
-    span.exo No Pictures
+    = fa_icon 'times', text: '画像は存在しません。'
+
 - else
   ul.uk-thumbnav.uk-grid-width-1-5
     - pictures.each do |picture|

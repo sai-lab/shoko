@@ -1,10 +1,9 @@
-- @title = 'Sign in'
+- @title = 'ログイン'
 
 .uk-width-medium-1-2.uk-container-center
   .uk-panel.uk-panel-box
-    h3.uk-panel-title
-      i.uk-icon-sign-in
-      span.exo.exo-bold Sign In
+    .uk-panel-title.bold
+      = fa_icon 'sign-in', text: @title
 
     .uk-nav-side
       .uk-nav-divider
@@ -12,14 +11,13 @@
     = form_for :user, html: { class: 'uk-form uk-form-stacked' }, url: { controller: 'devise/sessions', action: 'new' } do |f|
       .uk-form-row.uk-form-icon
         i.uk-icon-user
-        = f.text_field :account, autofocus: true, placeholder: 'Account', style: 'width: 80%;'
+        = f.text_field :account, autofocus: true, placeholder: 'アカウント名', style: 'width: 80%;'
       .uk-form-row.uk-form-icon
-        i.uk-icon-lock
-        = f.password_field :password, placeholder: 'Password', style: 'width: 80%;'
+        i.uk-icon-key
+        = f.password_field :password, placeholder: 'パスワード', style: 'width: 80%;'
       .uk-form-row
-        button.uk-button.uk-button-medium.uk-button-primary type="submit"
-          i.uk-icon-sign-in
-          span.exo.exo-bold Sign In
-        = link_to new_password_path(:user), class: 'uk-button uk-margin-small-left' do
-          i.uk-icon-key
-          span.exo.exo-bold Forget Password
+        .uk-button-group
+          button.uk-button.uk-button-primary type="submit"
+            = fa_icon 'sign-in', text: 'ログイン'
+          = link_to new_password_path(:user), class: 'uk-button' do
+            = fa_icon 'key', text: 'パスワードを忘れたら'

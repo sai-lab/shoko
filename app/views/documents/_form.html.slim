@@ -3,10 +3,10 @@
   .uk-form-row
     .uk-grid
       .uk-width-medium-1-3
-        = select_tag :template, options_from_collection_for_select(templates, :id, :title), { prompt: 'Template', class: 'uk-form-large uk-width-1-1' }
+        = select_tag :template, options_from_collection_for_select(templates, :id, :title), { prompt: 'テンプレート', class: 'uk-form-large uk-width-1-1' }
       .uk-margin-top.uk-visible-small
       .uk-width-medium-2-3
-        = f.text_field :title, autofocus: true, class: 'uk-form-large uk-width-1-1', placeholder: 'Title'
+        = f.text_field :title, autofocus: true, class: 'uk-form-large uk-width-1-1', placeholder: 'タイトル'
   .uk-form-row
     = f.text_area :markdown, 'data-uk-htmleditor' => '{ markdown: true }'
   .uk-form-row
@@ -14,20 +14,18 @@
       .uk-width-medium-2-3
         .uk-placeholder.uk-text-center#upload-drop
           i.uk-icon-cloud-upload.uk-icon-medium.uk-text-muted.uk-margin-small-right
-          | Attach images by dropping them here or&nbsp;
+          | 画像をドラッグもしくは
           a.uk-form-file
-            | selecting one
+            | 選択
             input#upload-select type="file" multiple="multiple"
-          | .
+          | してアップロード
       .uk-margin-top.uk-visible-small
       .uk-width-medium-1-3.uk-text-center
         .uk-button-group
           button.uk-button.uk-button-big.uk-button-primary#document-publish
-            i.uk-icon-globe
-            span.exo.exo-bold Publish
+            = fa_icon 'globe', text: '公開'
           button.uk-button.uk-button-big#document-draft
-            i.uk-icon-pencil
-            span.exo.exo-bold Draft
+            = fa_icon 'pencil', text: '下書き'
 
 - if document.id && document.is_publish?
   coffee:
@@ -47,11 +45,11 @@ coffee:
     action: '/pictures',
     allow: '*.(jpeg|jpg|png|gif)',
     notallowed: ->
-      UIkit.notify { message: '不正なファイルです', timeout: 3000, status: 'danger' }
+      UIkit.notify { message: '不正な画像ファイルです。', timeout: 3000, status: 'danger' }
     error: ->
-      UIkit.notify { message: 'エラーが発生しました', timeout: 3000, status: 'danger' }
+      UIkit.notify { message: 'アップロード中にエラーが発生しました。', timeout: 3000, status: 'danger' }
     abort: ->
-      UIkit.notify { message: 'アップロードに失敗しました', timeout: 3000, status: 'danger' }
+      UIkit.notify { message: 'アップロードを中断しました。', timeout: 3000, status: 'danger' }
     params: {
       authenticity_token: $('meta[name=\"csrf-token\"]').attr('content')
     }

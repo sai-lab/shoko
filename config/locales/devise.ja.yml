@@ -18,7 +18,7 @@ ja:
       confirmation_instructions:
         subject: アカウントの登録方法
       reset_password_instructions:
-        subject: 【Shoko】パスワードの再設定
+        subject: 【書庫】パスワードの再設定
       unlock_instructions:
         subject: アカウントの凍結解除
     omniauth_callbacks:

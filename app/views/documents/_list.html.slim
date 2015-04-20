@@ -1,24 +1,28 @@
 - if documents.empty?
   .uk-alert.uk-alert-warning
-    i.uk-icon-times
-    span.exo No Documentes
+    = fa_icon 'times', text: 'ドキュメントは存在しません。'
+
 - else
   dl.uk-description-list-line
     - documents.includes(:users).each do |document|
       dt
         = link_to document.title, document_path(document.id), class: 'uk-h3'
         - if document.is_draft?
-          i.uk-icon-file.uk-text-muted.uk-margin-small-left data-uk-tooltip="" title="Draft"
+          span.uk-text-muted.uk-margin-left data-uk-tooltip="" title="下書き"
+            = fa_icon 'file'
         = link_to edit_document_path(document.id) do
-          i.uk-icon-pencil.uk-text-success.uk-margin-small-left data-uk-tooltip="" title="Edit"
+          span.uk-text-success.uk-margin-small-left data-uk-tooltip="" title="編集"
+            = fa_icon 'pencil'
         = link_to delete_document_path(document.id), remote: true do
-          i.uk-icon-trash.uk-text-danger.uk-margin-small-left data-uk-tooltip="" title="Delete"
+          span.uk-text-danger.uk-margin-small-left data-uk-tooltip="" title="削除"
+            = fa_icon 'trash'
 
       dd
-        i.uk-icon-users
-        | &nbsp;#{document.users.pluck(:name).join(', ')}
-        i.uk-icon-calendar.uk-margin-left
-        | &nbsp;#{I18n.l document.updated_at, format: :short}
+        = fa_icon 'users'
+        span.uk-margin-small-left #{document.users.pluck(:name).join(', ')}
+        span.uk-margin-left
+        = fa_icon 'calendar'
+        span.uk-margin-small-left #{I18n.l document.updated_at, format: :short}
 
       - if params[:keyword].present?
         - keywords = params[:keyword].split ' '

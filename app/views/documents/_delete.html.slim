@@ -2,17 +2,14 @@
   a.uk-modal-close.uk-close
 
   .uk-modal-header
-    h4
-      i.uk-icon-file-text
-      span.exo.exo-bold Delete Document
+    h4.bold
+      = fa_icon 'trash', text: 'ドキュメント削除'
 
-  | ドキュメント「#{document.title}」を削除しますか?
+  | 「#{document.title}」を削除しますか?
 
   .uk-modal-footer.uk-text-right
     .uk-button-group
-      button.uk-button.uk-button-medium.uk-modal-close
-        i.uk-icon-times
-        span.exo.exo-bold Cancel
-      = link_to document_path, method: :delete, class: 'uk-button uk-button-danger uk-button-medium' do
-        i.uk-icon-trash
-        span.exo.exo-bold Delete
+      = link_to document_path, method: :delete, class: 'uk-button uk-button-danger' do
+        = fa_icon 'trash', text: '削除'
+      button.uk-button.uk-modal-close
+        = fa_icon 'times', text: 'キャンセル'

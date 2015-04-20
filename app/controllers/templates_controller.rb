@@ -3,7 +3,7 @@ class TemplatesController < ApplicationController
   before_action :load_template
 
   def index
-    @templates = Template.order(updated_at: :desc).page(params[:page]).per(5)
+    @templates = Template.order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   def show

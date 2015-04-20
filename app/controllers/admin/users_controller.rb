@@ -4,11 +4,11 @@ class Admin::UsersController < ApplicationController
   before_action :load_user
 
   def index
-    @users = User.order(updated_at: :desc).page(params[:page]).per(10)
+    @users = User.order(updated_at: :desc).page(params[:page]).per(20)
   end
 
   def show
-    @documents = @user.documents.order(updated_at: :desc).page(params[:page]).per(10)
+    @documents = @user.documents.order(updated_at: :desc).page(params[:page]).per(20)
   end
 
   def new

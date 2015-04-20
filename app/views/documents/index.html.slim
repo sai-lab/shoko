@@ -1,28 +1,16 @@
-- @title = 'Documents'
+- @title = 'ドキュメント'
 
-h2
-  i.uk-icon-file-text
-  span.exo.exo-bold Documents
-
-.uk-visible-small.uk-margin-bottom
-  = render partial: 'documents/dropdown', locals: { users: @users }
+.relative
+  h2.bold
+    = fa_stacked_icon 'file-text inverse', base: 'square', text: @title
+  .absolute-top.absolute-right.uk-visible-small
+    = render partial: 'documents/dropdown', locals: { users: @users }
 
 .uk-grid
   .uk-width-medium-3-10
     .uk-hidden-small
       = render partial: 'documents/sidebar', locals: { users: @users }
   .uk-width-medium-7-10
-    .uk-hidden-small
-      ul.uk-tab data-uk-tab=""
-        li#publish-tab
-          a
-            i.uk-icon-globe
-            span.exo Publish
-        li#draft-tab
-          a
-            i.uk-icon-pencil
-            span.exo Draft
-
     = render partial: 'documents/list', locals: { documents: @documents }
     = paginate @documents
 
@@ -38,18 +26,3 @@ coffee:
     else
       $(this).removeClass 'placeholder'
   $('select#user').change()
-  if $('input#draft').prop('checked')
-    $('[id=draft-tab]').addClass 'uk-active'
-  else
-    $('[id=publish-tab]').addClass 'uk-active'
-  documentsFormSubmit = ->
-    if $(window).width() < 768
-      $('.uk-dropdown > .uk-form').submit()
-    else
-      $('.uk-panel > .uk-form').submit()
-  $('[id=publish-tab]').on 'click', () ->
-    $('input#draft').prop 'checked', false
-    documentsFormSubmit()
-  $('[id=draft-tab]').on 'click', () ->
-    $('input#draft').prop 'checked', true
-    documentsFormSubmit()

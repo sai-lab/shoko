@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require font-awesome
  *= require uikit/components/datepicker.almost-flat.min
  *= require uikit/components/form-advanced.almost-flat.min
  *= require uikit/components/form-file.almost-flat.min
@@ -29,28 +30,37 @@ mark {
   padding: 0 5px;
 }
 
+@font-face {
+  font-family: 'LogoTypeGothic';
+  src: font-url('logo_type_gothic.eot');
+  src: font-url('logo_type_gothic.eot?#iefix') format('embedded-opentype'),
+       font-url('logo_type_gothic.woff') format('woff'),
+       font-url('logo_type_gothic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.brand {
+  font-family: 'LogoTypeGothic';
+}
+.bold {
+  font-weight: bold;
+}
 .monospace {
   font-family: monospace !important;
-}
-
-.exo {
-  font-family: 'Exo', sans-serif !important;
-  font-weight: 400;
-  margin-left: 0.5em;
-}
-.exo-bold {
-  font-weight: 600;
-}
-.exo-heavy {
-  font-weight: 800;
 }
 
 .relative {
   position: relative;
 }
-.revision {
+.absolute-top {
+  position: absolute;
+  top: 0;
+}
+.absolute-right {
   position: absolute;
   right: 0;
+}
+.revision {
   font-family: monospace;
   color: #999;
 }
@@ -107,12 +117,12 @@ mark {
   }
 }
 
-.uk-form-width-medium {
-  width: 80%;
-}
 .uk-form-help-block {
   ul {
-    margin-bottom: 5px;
+    margin-bottom: 0;
+  }
+  ul + ul {
+    margin-top: 0;
   }
   ul > li {
     font-size: 12px;
@@ -132,6 +142,9 @@ mark {
     font-size: 16px;
     margin-bottom: 0;
   }
+}
+
+.uk-form-stacked {
   .uk-form-row+.uk-form-row {
     margin-top: 10px;
   }
@@ -163,9 +176,6 @@ mark {
   margin-bottom: 30px;
 }
 
-.uk-button-medium {
-  width: 100px;
-}
 .uk-button-mini {
   width: 70px;
 }

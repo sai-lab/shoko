@@ -2,16 +2,14 @@
   a.uk-modal-close.uk-close
 
   .uk-modal-header
-    h4
-      i.uk-icon-photo
-      span.exo.exo-bold #{picture.attachment_file_name}
-      span.exo.exo-bold.uk-h6.uk-text-muted.uk-margin-small-left
-        | (#{picture.attachment_content_type})
+    span.uk-h4.bold
+      = fa_icon 'photo', text: picture.attachment_file_name
+    span.uk-h6.uk-text-muted.uk-margin-small-left
+      | (#{picture.attachment_content_type})
 
   .uk-text-center
     img src="#{picture.attachment.url}" alt="#{picture.attachment_file_name}"
 
   .uk-modal-footer.uk-text-right
-    = link_to delete_admin_picture_path(picture.id), class: 'uk-button uk-button-danger', remote: true do
-      i.uk-icon-trash
-      span.exo.exo-bold Delete
+    button.uk-button.uk-modal-close
+      = fa_icon 'times', text: '閉じる'

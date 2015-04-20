@@ -11,12 +11,6 @@ class DocumentsController < ApplicationController
       @documents = Document.all
     end
 
-    if params[:draft]
-      @documents = @documents.draft
-    else
-      @documents = @documents.publish
-    end
-
     if params[:title].present?
       params[:title].split(' ').each do |title|
         @documents = @documents.search_title title
@@ -29,7 +23,7 @@ class DocumentsController < ApplicationController
       end
     end
 
-    @documents = @documents.order(updated_at: :desc).page(params[:page]).per(5)
+    @documents = @documents.order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   def show

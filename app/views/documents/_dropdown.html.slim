@@ -1,42 +1,23 @@
-ul.uk-tab data-uk-tab=""
-  li data-uk-dropdown="{ mode:'click' }"
-    a
-      i.uk-icon-caret-down
-      span.exo Options
+.uk-button-dropdown data-uk-dropdown="{ mode: 'click' }"
+  button.uk-button.uk-button-large.uk-button-primary
+    = fa_icon 'search'
 
-    .uk-dropdown style="width: auto;"
-      = form_tag documents_path, method: :get, class: 'uk-form uk-form-stacked' do
-        = check_box_tag :draft, params[:draft], params[:draft], class: 'uk-hidden'
+  .uk-dropdown style="width: auto;"
+    = form_tag documents_path, method: :get, class: 'uk-form uk-form-stacked' do
+      .uk-form-row
+        = select_tag :user, options_from_collection_for_select(users, :id, :name), { prompt: 'ユーザー', class: 'uk-width-1-1' }
+      .uk-form-row
+        .uk-form-icon
+          i.uk-icon-font
+          = text_field_tag :title, params[:title], placeholder: 'タイトル'
+      .uk-form-row
+        .uk-form-icon
+          i.uk-icon-paragraph
+          = text_field_tag :keyword, params[:keyword], placeholder: 'キーワード'
 
-        .uk-nav.uk-nav-dropdown
-          .uk-nav-header
-            i.uk-icon-search
-            span.exo.exo-bold Search
+      .uk-nav-side
+        .uk-nav-divider
 
-        .uk-form-row
-          = select_tag :user, options_from_collection_for_select(users, :id, :name), { prompt: 'User', class: 'uk-width-1-1' }
-        .uk-form-row
-          .uk-form-icon
-            i.uk-icon-font
-            = text_field_tag :title, params[:title], placeholder: 'Title'
-        .uk-form-row
-          .uk-form-icon
-            i.uk-icon-paragraph
-            = text_field_tag :keyword, params[:keyword], placeholder: 'Keyword'
-
-        .uk-nav-side
-          .uk-nav-divider
-
-        .uk-form-row
-          button.uk-button.uk-button-medium.uk-button-primary onClick="$('.uk-dropdown > .uk-form').submit()"
-            i.uk-icon-check
-            span.exo.exo-bold Submit
-
-  li#publish-tab
-    a
-      i.uk-icon-globe
-      span.exo Publish
-  li#draft-tab
-    a
-      i.uk-icon-pencil
-      span.exo Draft
+      .uk-form-row
+        button.uk-button.uk-button-primary onClick="$('.uk-dropdown > .uk-form').submit()"
+          = fa_icon 'search', text: '検索'

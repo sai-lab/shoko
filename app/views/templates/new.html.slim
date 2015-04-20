@@ -1,8 +1,7 @@
-- @title = 'New Template'
+- @title = 'テンプレート作成'
 
-h2
-  i.uk-icon-file
-  span.exo.exo-bold Templates
+h2.bold
+  = fa_stacked_icon 'file inverse', base: 'square', text: @title
 
 = render partial: 'templates/form', locals: { template: @template }
 

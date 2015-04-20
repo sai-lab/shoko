@@ -3,7 +3,6 @@ ruby '2.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
-gem 'sprockets', '~> 2.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -59,6 +58,7 @@ end
 
 gem 'devise'
 gem 'slim-rails'
+gem 'font-awesome-rails'
 gem 'kaminari'
 gem 'paperclip'
 gem 'websocket-rails'

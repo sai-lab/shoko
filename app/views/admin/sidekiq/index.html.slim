@@ -1,10 +1,9 @@
 - @title = 'Sidekiq'
 
-h2
-  i.uk-icon-child
-  span.exo.exo-bold Sidekiq
+h2.bold
+  = fa_stacked_icon 'child inverse', base: 'square', text: @title
 
 iframe.uk-panel.uk-panel-box src="/sidekiq"
 
 coffee:
-  $( '#nav-admin' ).addClass 'active'
+  $('#nav-admin').addClass 'active'

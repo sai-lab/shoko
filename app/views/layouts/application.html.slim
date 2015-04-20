@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title #{@title} | Shoko
+    title #{@title} | 書庫
     meta name="viewport" content="width=device-width, initial-scale=1"
     link href="https://fonts.googleapis.com/css?family=Exo:400,600,800" rel="stylesheet" type="text/css"
     = stylesheet_link_tag    'application', 'data-turbolinks-track' => true, media: 'all'
@@ -15,45 +15,37 @@ html
     nav.uk-navbar.uk-navbar-attached
       .uk-container.uk-container-center
         = link_to root_path, class: 'uk-navbar-brand' do
-          i.uk-icon-book
-          span.exo.exo-heavy Shoko
+          span.brand.bold 書庫
 
         - if user_signed_in?
           ul.uk-navbar-nav.uk-hidden-small
             li.uk-parent#nav-documents data-uk-dropdown=""
               = link_to documents_path do
-                i.uk-icon-file-text
-                span.exo.exo-bold Documents
+                = fa_icon 'file-text', text: 'ドキュメント'
               .uk-dropdown.uk-dropdown-navbar
                 ul.uk-nav.uk-nav-navbar
                   li
                     = link_to documents_path do
-                      i.uk-icon-bars
-                      span.exo Documents List
+                      = fa_icon 'bars fw', text: 'ドキュメント一覧'
                   li
                     = link_to new_document_path do
-                      i.uk-icon-plus
-                      span.exo New Document
+                      = fa_icon 'plus fw', text: 'ドキュメント作成'
 
             li.uk-parent#nav-templates data-uk-dropdown=""
               = link_to templates_path do
-                i.uk-icon-file
-                span.exo.exo-bold Templates
+                = fa_icon 'file', text: 'テンプレート'
               .uk-dropdown.uk-dropdown-navbar
                 ul.uk-nav.uk-nav-navbar
                   li
                     = link_to templates_path do
-                      i.uk-icon-bars
-                      span.exo Templates List
+                      = fa_icon 'bars fw', text: 'テンプレート一覧'
                   li
                     = link_to new_template_path do
-                      i.uk-icon-plus
-                      span.exo New Template
+                      = fa_icon 'plus fw', text: 'テンプレート作成'
 
             li#nav-record
               = link_to record_index_path do
-                i.uk-icon-leanpub
-                span.exo.exo-bold Record
+                = fa_icon 'leanpub', text: '議事録'
 
         .uk-navbar-flip.uk-hidden-small
           ul.uk-navbar-nav
@@ -61,42 +53,34 @@ html
               - if current_user.is_admin?
                 li.uk-parent#nav-admin data-uk-dropdown=""
                   a
-                    i.uk-icon-cog
-                    span.exo.exo-bold Admin
+                    = fa_icon 'cog', text: '管理'
                   .uk-dropdown.uk-dropdown-navbar
                     ul.uk-nav.uk-nav-navbar
                       li
                         = link_to admin_users_path  do
-                          i.uk-icon-users
-                          span.exo Users
+                          = fa_icon 'users fw', text: 'ユーザー'
                       li
                         = link_to admin_pictures_path  do
-                          i.uk-icon-photo
-                          span.exo Pictures
+                          = fa_icon 'photo fw', text: '画像'
                       li
                         = link_to admin_sidekiq_index_path  do
-                          i.uk-icon-child
-                          span.exo Sidekiq
+                          = fa_icon 'child fw', text: 'Sidekiq'
               li.uk-parent#nav-user data-uk-dropdown=""
                 a
-                  i.uk-icon-user
-                  span.exo.exo-bold #{current_user.account}
+                  = fa_icon 'user', text: current_user.account
                 .uk-dropdown.uk-dropdown-navbar
                   ul.uk-nav.uk-nav-navbar
                     li
                       = link_to edit_user_registration_path(current_user.id)  do
-                        i.uk-icon-cog
-                        span.exo Settings
+                        = fa_icon 'pencil fw', text: '編集'
                     li
                       = link_to destroy_user_session_path, method: :delete
-                        i.uk-icon-sign-out
-                        span.exo Sign Out
+                        = fa_icon 'sign-out fw', text: 'ログアウト'
 
             - else
               li
                 = link_to new_user_session_path
-                  i.uk-icon-sign-in
-                  span.exo.exo-bold Sign In
+                  = fa_icon 'sign-in', text: 'ログイン'
 
         .uk-navbar-flip.uk-visible-small
           a.uk-navbar-toggle href="#navbar-offcanvas" data-uk-offcanvas=""
@@ -106,71 +90,55 @@ html
         ul.uk-nav.uk-nav-offcanvas.uk-nav-parent-icon data-uk-nav=""
           - if user_signed_in?
             li.uk-nav-header
-              i.uk-icon-file-text
-              span.exo Documents
+              = fa_icon 'file-text fw', text: 'ドキュメント'
             li
               = link_to documents_path do
-                i.uk-icon-bars
-                span.exo Documents List
+                = fa_icon 'bars fw', text: 'ドキュメント一覧'
             li
               = link_to new_document_path do
-                i.uk-icon-plus
-                span.exo New Document
+                = fa_icon 'plus fw', text: 'ドキュメント作成'
 
             li.uk-nav-header
-              i.uk-icon-file
-              span.exo Templates
+              = fa_icon 'file fw', text: 'テンプレート'
             li
               = link_to templates_path do
-                i.uk-icon-bars
-                span.exo Templates List
+                = fa_icon 'bars fw', text: 'テンプレート一覧'
             li
               = link_to new_template_path do
-                i.uk-icon-plus
-                span.exo New Template
+                = fa_icon 'plus fw', text: 'テンプレート作成'
 
             li.uk-nav-header
-              i.uk-icon-leanpub
-              span.exo Record
+              = fa_icon 'leanpub fw', text: '議事録'
             li
               = link_to record_index_path do
-                i.uk-icon-leanpub
-                span.exo.exo-bold Record
+                = fa_icon 'leanpub fw', text: '議事録'
 
             - if current_user.is_admin?
               li.uk-nav-header
-                i.uk-icon-cog
-                span.exo.exo Admin
+                = fa_icon 'cog fw', text: '管理'
               li
                 = link_to admin_users_path  do
-                  i.uk-icon-users
-                  span.exo Users
+                  = fa_icon 'users fw', text: 'ユーザー'
               li
                 = link_to admin_pictures_path  do
-                  i.uk-icon-photo
-                  span.exo Pictures
+                  = fa_icon 'photo fw', text: '画像'
               li
                 = link_to admin_sidekiq_index_path  do
-                  i.uk-icon-child
-                  span.exo Sidekiq
+                  = fa_icon 'child fw', text: 'Sidekiq'
 
             li.uk-nav-header
-              i.uk-icon-user
-              span.exo #{current_user.account}
+              = fa_icon 'user fw', text: current_user.account
             li
               = link_to edit_user_registration_path(current_user.id)  do
-                i.uk-icon-cog
-                span.exo Settings
+                = fa_icon 'cog fw', text: '設定'
             li
               = link_to destroy_user_session_path, method: :delete
-                i.uk-icon-sign-out
-                span.exo Sign Out
+                = fa_icon 'sign-out fw', text: 'ログアウト'
 
           - else
             li
               = link_to new_user_session_path
-                i.uk-icon-sign-in
-                span.exo.exo-bold Sign In
+                = fa_icon 'sign-in fw', text: 'ログイン'
 
     .uk-container.uk-container-center.uk-margin-top.uk-margin-bottom
       = yield
@@ -179,9 +147,9 @@ html
       footer
         .relative
           small
-            span.exo &copy; Saisho Laboratory, Kagawa University
+            | &copy; #{Shoko::Application.config.copyright}
             - unless Rails.env.production?
-              span.revision rev.#{Shoko::Application.config.git_revision}
+              span.absolute-right.revision rev.#{Shoko::Application.config.git_revision}
 
 - if notice
   javascript:

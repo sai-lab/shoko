@@ -1,7 +1,7 @@
 <% if @user.errors.empty? %>
   location.reload true
 <% else %>
-  $('.uk-form-width-medium' ).removeClass('has-error')
+  $('[id^=user_]' ).removeClass('uk-form-danger')
   $('.uk-form-help-block').empty()
   <% if @user.errors.messages[:email] %>
   $('#user_email').addClass('uk-form-danger')

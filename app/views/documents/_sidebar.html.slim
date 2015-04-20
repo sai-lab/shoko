@@ -1,29 +1,25 @@
 .uk-panel.uk-panel-box
   = form_tag documents_path, method: :get, class: 'uk-form uk-form-stacked' do
-    = check_box_tag :draft, params[:draft], params[:draft], class: 'uk-hidden'
-
-    .uk-panel-title
-      i.uk-icon-search
-      span.exo.exo-bold Search
+    .uk-panel-title.bold
+      = fa_icon 'search', text: '検索'
 
     .uk-nav-side
       .uk-nav-divider
 
     .uk-form-row
-      = select_tag :user, options_from_collection_for_select(users, :id, :name), { prompt: 'User', class: 'uk-width-1-1' }
+      = select_tag :user, options_from_collection_for_select(users, :id, :name), { prompt: 'ユーザー', class: 'uk-width-1-1' }
     .uk-form-row
       .uk-form-icon
         i.uk-icon-font
-        = text_field_tag :title, params[:title], placeholder: 'Title'
+        = text_field_tag :title, params[:title], placeholder: 'タイトル'
     .uk-form-row
       .uk-form-icon
         i.uk-icon-paragraph
-        = text_field_tag :keyword, params[:keyword], placeholder: 'Keyword'
+        = text_field_tag :keyword, params[:keyword], placeholder: 'キーワード'
 
     .uk-nav-side
       .uk-nav-divider
 
     .uk-form-row
-      button.uk-button.uk-button-medium.uk-button-primary onClick="$('.uk-panel > .uk-form').submit()"
-        i.uk-icon-check
-        span.exo.exo-bold Submit
+      button.uk-button.uk-button-primary onClick="$('.uk-panel > .uk-form').submit()"
+        = fa_icon 'search', text: '検索'

@@ -2,17 +2,31 @@
   .uk-form-row
     .uk-grid
       .uk-width-medium-1-3
-        = f.text_field :name, autofocus: true, class: 'uk-form-large uk-width-1-1', placeholder: 'Name'
+        = f.text_field :name, autofocus: true, class: 'uk-form-large uk-width-1-1', placeholder: 'テンプレート名'
       .uk-margin-top.uk-visible-small
       .uk-width-medium-2-3
-        = f.text_field :title, autofocus: true, class: 'uk-form-large uk-width-1-1', placeholder: 'Title'
+        = f.text_field :title, autofocus: true, class: 'uk-form-large uk-width-1-1', placeholder: 'ドキュメントタイトル'
+        .uk-form-help-block
+          ul.uk-text-warning.fa-ul
+            li
+              = fa_icon 'li exclamation-triangle'
+              tt %{year}
+              | (年)、
+              tt %{month}
+              | (月)、
+              tt %{day}
+              | (日)、
+              tt %{account}
+              | (アカウント名)、
+              tt %{name}
+              | (名前)が使えます。
   .uk-form-row
     = f.text_area :markdown, 'data-uk-htmleditor' => '{ markdown: true }'
   .uk-form-row
     .uk-grid
       .uk-width-medium-2-3
-        = f.text_field :pattern, autofocus: true, class: 'uk-form-large uk-width-1-1', placeholder: 'RegExp for Record'
+        = f.text_field :pattern, autofocus: true, class: 'uk-form-large uk-width-1-1', placeholder: '議事録生成用 正規表現 (グループ1つ含む)'
+      .uk-margin-top.uk-visible-small
       .uk-width-medium-1-3.uk-text-center
         button.uk-button.uk-button-large.uk-button-primary style="width: 250px;"
-          i.uk-icon-floppy-o
-          span.exo.exo-bold Save
+          = fa_icon 'floppy-o', text: '保存'

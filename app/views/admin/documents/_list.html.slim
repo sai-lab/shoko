@@ -1,33 +1,30 @@
 - if documents.empty?
   .uk-alert.uk-alert-warning
-    i.uk-icon-times
-    span.exo No Documentes
+    = fa_icon 'times', text: 'ドキュメントは存在しません。'
+
 - else
   .uk-overflow-container
     table.uk-table.uk-table-striped
       thead
         tr
           th style="width: 150px;"
-          th.exo.exo-bold style="width: 300px;" Title
-          th.exo.exo-bold style="width: 150px;" Update
-          th.exo.exo-bold style="width: 50px;" Draft
+          th.exo.exo-bold style="width: 300px;" ドキュメント
+          th.exo.exo-bold style="width: 150px;" 最終更新日
+          th.exo.exo-bold style="width: 50px;" 下書き
           th.exo.exo-bold Markdown
       tbody
         - documents.each do |document|
           tr
             td
               = link_to edit_document_path(document.id), class: 'uk-button uk-button-mini uk-button-success uk-margin-small-right' do
-                i.uk-icon-pencil
-                span.exo Edit
+                = fa_icon 'pencil', text: '編集'
               = link_to delete_document_path(document.id), class: 'uk-button uk-button-mini uk-button-danger', remote: true do
-                i.uk-icon-trash
-                span.exo Delete
+                = fa_icon 'trash', text: '削除'
             td #{document.title}
             td #{I18n.l document.updated_at, format: :short}
             td.uk-text-center
               - if document.is_draft?
-                i.uk-icon-check
+                = fa_icon 'check'
             td
               = link_to admin_document_path(document.id), remote: true do
-                i.uk-icon-file-text-o.uk-margin-small-right
-                | #{excerpt(document.markdown, '', radius: 25, omission: '…')}
+                = fa_icon 'file-text-o', text: excerpt(document.markdown, '', radius: 25, omission: '…')

@@ -1,8 +1,7 @@
-- @title = @document.title
+- @title = 'ドキュメント編集'
 
-h2
-  i.uk-icon-file-text
-  span.exo.exo-bold Documents
+h2.bold
+  = fa_stacked_icon 'file-text inverse', base: 'square', text: @title
 
 = render partial: 'documents/form', locals: { document: @document, templates: @templates }
 

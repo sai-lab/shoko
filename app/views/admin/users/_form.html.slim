@@ -3,57 +3,39 @@
 
   = form_for [:admin, user], html: { class: 'uk-form uk-form-stacked' }, remote: true do |f|
     .uk-modal-header
-      h4
-        i.uk-icon-user
-        span.exo.exo-bold #{title}
+      h4.bold
+        = fa_icon 'user', text: title
 
     .uk-form-row
-      .uk-grid
-        .uk-width-medium-1-3
-          = f.label :email, 'Email', class: 'exo exo-bold'
-        .uk-width-medium-2-3
-          = f.text_field :email, autofocus: true, class: 'uk-form-width-medium'
-          .uk-form-help-block#user-email-error
+      .uk-form-icon
+        i.uk-icon-envelope
+        = f.text_field :email, autofocus: true, placeholder: 'メールアドレス', style: 'padding-left: 30px;'
+      .uk-form-help-block#user-email-error
     .uk-form-row
-      .uk-grid
-        .uk-width-medium-1-3
-          = f.label :name, 'Name', class: 'exo exo-bold'
-        .uk-width-medium-2-3
-          = f.text_field :name, autofocus: true, class: 'uk-form-width-medium'
-          .uk-form-help-block#user-name-error
+      .uk-form-icon
+        i.uk-icon-font
+        = f.text_field :name, placeholder: '名前', style: 'padding-left: 30px;'
+      .uk-form-help-block#user-name-error
     .uk-form-row
-      .uk-grid
-        .uk-width-medium-1-3
-          = f.label :grade, 'Grade', class: 'exo exo-bold'
-        .uk-width-medium-2-3
-          = f.select :grade, Grade::SELECT, {}, { class: 'uk-form-width-medium' }
-          .uk-form-help-block#user-grade-error
+      = f.select :grade, Grade::SELECT, {}, { class: 'uk-width-1-1' }
+      .uk-form-help-block#user-grade-error
     .uk-form-row
-      .uk-grid
-        .uk-width-medium-1-3
-          = f.label :password, 'Password', class: 'exo exo-bold'
-        .uk-width-medium-2-3
-          = f.password_field :password, autofocus: true, class: 'uk-form-width-medium'
-          .uk-form-help-block#user-password-error
+      .uk-form-icon
+        i.uk-icon-key
+        = f.password_field :password, autocomplete: 'off', placeholder: 'パスワード', style: 'padding-left: 30px;'
+      .uk-form-help-block#user-password-error
     .uk-form-row
-      .uk-grid
-        .uk-width-medium-1-3
-          = f.label :password_confirmation, 'Confirmation', class: 'exo exo-bold'
-        .uk-width-medium-2-3
-          = f.password_field :password_confirmation, autofocus: true, class: 'uk-form-width-medium'
-          .uk-form-help-block#user-password-confirmation-error
+      .uk-form-icon
+        i.uk-icon-key
+        = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'パスワード (確認)', style: 'padding-left: 30px;'
+      .uk-form-help-block#user-password-confirmation-error
     .uk-form-row
-      .uk-grid
-        .uk-width-medium-1-3
-          = f.label :admin_flag, 'Admin', class: 'exo exo-bold'
-        .uk-width-medium-2-3
-          = f.check_box :admin_flag
+      = f.check_box :admin_flag, class: 'uk-margin-left'
+      = f.label :admin_flag, '管理者', class: 'uk-margin-left'
 
     .uk-modal-footer.uk-text-right
       .uk-button-group
-        button.uk-button.uk-button-medium.uk-modal-close
-          i.uk-icon-times
-          span.exo.exo-bold Cancel
-        button.uk-button.uk-button-primary.uk-button-medium
-          i.uk-icon-floppy-o
-          span.exo.exo-bold #{caption}
+        button.uk-button.uk-button-primary
+          = fa_icon 'floppy-o', text: '保存'
+        button.uk-button.uk-modal-close
+          = fa_icon 'times', text: 'キャンセル'
