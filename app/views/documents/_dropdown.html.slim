@@ -2,7 +2,7 @@
   button.uk-button.uk-button-large.uk-button-primary
     = fa_icon 'search'
 
-  .uk-dropdown style="width: auto;"
+  .uk-dropdown
     = form_tag documents_path, method: :get, class: 'uk-form uk-form-stacked' do
       .uk-form-row
         = select_tag :user, options_from_collection_for_select(users, :id, :name), { prompt: 'ユーザー', class: 'uk-width-1-1' }

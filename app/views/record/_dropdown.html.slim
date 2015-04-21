@@ -2,7 +2,7 @@
   button.uk-button.uk-button-large.uk-button-primary
     = fa_icon 'print'
 
-  .uk-dropdown style="width: auto;"
+  .uk-dropdown
     = form_tag record_index_path, method: :get, class: 'uk-form  uk-form-stacked' do
       .uk-form-row
         = select_tag :template, options_from_collection_for_select(@templates, :id, :name), { prompt: 'テンプレート', class: 'uk-width-1-1' }
