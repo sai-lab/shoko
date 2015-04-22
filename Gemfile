@@ -56,6 +56,7 @@ group :production do
   gem 'unicorn-worker-killer'
 end
 
+gem 'yajl-ruby'
 gem 'devise'
 gem 'slim-rails'
 gem 'font-awesome-rails'

@@ -27,6 +27,10 @@ Rails.application.routes.draw do
       get :delete, on: :member
     end
 
+    resources :web_hooks, except: [:show] do
+      get :delete, on: :member
+    end
+
     resources :sidekiq, only: %w( index )
   end
 

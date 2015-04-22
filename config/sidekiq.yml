@@ -5,3 +5,4 @@
 :concurrency:  1
 :queues:
   - file
+  - web_hook

@@ -45,6 +45,7 @@ class DocumentsController < ApplicationController
       if @document.is_draft?
         flash[:notice] = 'ドキュメントを下書きしました。'
       else
+        WebHookJob.perform_later current_user.id, @document.id, 'create'
         @document.create_markdown
         flash[:notice] = 'ドキュメントを公開しました。'
       end
@@ -70,8 +71,10 @@ class DocumentsController < ApplicationController
       end
 
       if is_draft
+        WebHookJob.perform_later current_user.id, @document.id, 'create'
         @document.create_markdown
       else
+        WebHookJob.perform_later current_user.id, @document.id, 'update'
         @document.update_markdown old_title
       end
 

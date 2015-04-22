@@ -1,0 +1,20 @@
+.uk-modal-dialog style="padding-bottom: 0"
+  a.uk-modal-close.uk-close
+
+  = form_for [:admin, web_hook], html: { class: 'uk-form uk-form-stacked' }, remote: true do |f|
+    .uk-modal-header
+      h4.bold
+        = fa_icon 'anchor', text: title
+
+    .uk-form-row
+      .uk-form-icon
+        i.uk-icon-link
+        = f.text_field :url, autofocus: true, placeholder: 'URL', style: 'padding-left: 30px;'
+      .uk-form-help-block#web_hook-url-error
+
+    .uk-modal-footer.uk-text-right
+      .uk-button-group
+        button.uk-button.uk-button-primary
+          = fa_icon 'floppy-o', text: '保存'
+        button.uk-button.uk-modal-close
+          = fa_icon 'times', text: 'キャンセル'

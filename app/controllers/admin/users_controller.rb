@@ -18,7 +18,7 @@ class Admin::UsersController < ApplicationController
   def create
     @user = User.new user_params
     @result = @user.save
-    flash[:notice] = 'ユーザを作成しました。' if @result
+    flash[:notice] = 'ユーザーを作成しました。' if @result
     render :submit
   end
 
@@ -27,7 +27,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     @result = @user.update_without_current_password user_params
-    flash[:notice] = 'ユーザを更新しました。' if @result
+    flash[:notice] = 'ユーザーを更新しました。' if @result
     render :submit
   end
 
@@ -38,9 +38,9 @@ class Admin::UsersController < ApplicationController
     @result = @user.destroy
 
     if @result
-      flash[:notice] = 'ユーザを削除しました。'
+      flash[:notice] = 'ユーザーを削除しました。'
     else
-      flash[:alert] = 'ユーザを削除できませんでした。'
+      flash[:alert] = 'ユーザーを削除できませんでした。'
     end
 
     redirect_to admin_users_path

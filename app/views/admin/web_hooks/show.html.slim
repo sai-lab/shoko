@@ -1,0 +1,13 @@
+- @title = @user.account
+
+p
+  span.uk-h2.bold
+    = fa_stacked_icon 'user inverse', base: 'square', text: @title
+  span.uk-h4.uk-text-muted.uk-margin-small-left
+    | (#{@user.name})
+
+= render partial: 'admin/documents/list', locals: { documents: @documents }
+= paginate @documents
+
+coffee:
+  $('#nav-admin').addClass 'uk-active'

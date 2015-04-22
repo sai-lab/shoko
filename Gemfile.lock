@@ -271,6 +271,7 @@ GEM
       redis
       redis-objects
       thin
+    yajl-ruby (1.2.1)
 
 PLATFORMS
   ruby
@@ -305,3 +306,4 @@ DEPENDENCIES
   unicorn
   unicorn-worker-killer
   websocket-rails
+  yajl-ruby

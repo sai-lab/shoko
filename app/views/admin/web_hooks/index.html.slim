@@ -1,0 +1,10 @@
+- @title = 'WebHook'
+
+h2.bold
+  = fa_stacked_icon 'anchor inverse', base: 'square', text: @title
+
+= render partial: 'admin/web_hooks/list', locals: { web_hooks: @web_hooks }
+= paginate @web_hooks
+
+coffee:
+  $('#nav-admin').addClass 'uk-active'

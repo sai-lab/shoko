@@ -1,34 +1,29 @@
-- if users.empty?
-  .uk-alert.uk-alert-warning
-    = fa_icon 'times', text: 'ユーザーは存在しません。'
-
-- else
-  .uk-overflow-container
-    table.uk-table.uk-table-striped
-      thead
+.uk-overflow-container
+  table.uk-table.uk-table-striped
+    thead
+      tr
+        th style="width: 150px;"
+          = link_to new_admin_user_path, class: 'uk-button uk-button-mini uk-button-primary', remote: true do
+            = fa_icon 'plus', text: '作成'
+        th.bold style="width: 300px;" メールアドレス
+        th.bold style="width: 150px;" 名前
+        th.bold style="width: 50px;" 学年
+        th.bold style="width: 50px;" 管理者
+        th.bold ドキュメント
+    tbody
+      - users.includes(:documents).each do |user|
         tr
-          th style="width: 150px;"
-            = link_to new_admin_user_path, class: 'uk-button uk-button-mini uk-button-primary', remote: true do
-              = fa_icon 'plus', text: '作成'
-          th.bold style="width: 300px;" メールアドレス
-          th.bold style="width: 150px;" 名前
-          th.bold style="width: 50px;" 学年
-          th.bold style="width: 50px;" 管理者
-          th.bold ドキュメント
-      tbody
-        - users.includes(:documents).each do |user|
-          tr
-            td
-              = link_to edit_admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-success uk-margin-small-right', remote: true do
-                = fa_icon 'pencil', text: '編集'
-              = link_to delete_admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-danger', remote: true do
-                = fa_icon 'trash', text: '削除'
-            td #{user.email}
-            td #{user.name}
-            td #{user.grade_text}
-            td.uk-text-center
-              - if user.is_admin?
-                = fa_icon 'check'
-            td
-              = link_to admin_user_path(user.id) do
-                = fa_icon 'files-o', text: "#{user.documents.size} ドキュメント"
+          td
+            = link_to edit_admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-success uk-margin-small-right', remote: true do
+              = fa_icon 'pencil', text: '編集'
+            = link_to delete_admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-danger', remote: true do
+              = fa_icon 'trash', text: '削除'
+          td #{user.email}
+          td #{user.name}
+          td #{user.grade_text}
+          td.uk-text-center
+            - if user.is_admin?
+              = fa_icon 'check'
+          td
+            = link_to admin_user_path(user.id) do
+              = fa_icon 'files-o', text: "#{user.documents.size} ドキュメント"

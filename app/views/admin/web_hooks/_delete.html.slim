@@ -1,0 +1,17 @@
+.uk-modal-dialog
+  a.uk-modal-close.uk-close
+
+  .uk-modal-header
+    h4.bold
+      = fa_icon 'trash', text: 'WebHook削除'
+
+  | 「
+  tt #{web_hook.url}
+  | 」を削除しますか?
+
+  .uk-modal-footer.uk-text-right
+    .uk-button-group
+      = link_to admin_web_hook_path, method: :delete, class: 'uk-button uk-button-danger' do
+        = fa_icon 'trash', text: '削除'
+      button.uk-button.uk-modal-close
+        = fa_icon 'times', text: 'キャンセル'
