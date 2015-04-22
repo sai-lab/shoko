@@ -1,66 +1,63 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  body {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
-
-  div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
-</head>
-
-<body>
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+  <head>
+    <title>500 Internal Server Error | 書庫</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta charset="UTF-8" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.19.0/css/uikit.almost-flat.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+    <style type="text/css">
+      @font-face {
+        font-family: 'LogoTypeGothic';
+        src: url(/fonts/logo_type_gothic.eot);
+        src: url(/fonts/logo_type_gothic.eot?#iefix) format("embedded-opentype"), url(/fonts/logo_type_gothic.woff) format("woff"), url(/fonts/logo_type_gothic.ttf) format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+      .brand {
+        font-family: 'LogoTypeGothic';
+      }
+      .bold {
+        font-weight: bold;
+      }
+      .wide-line {
+        line-height: 200%;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="uk-navbar uk-navbar-attached">
+      <div class="uk-container uk-container-center">
+        <a class="uk-navbar-brand" href="/">
+          <span class="brand bold">書庫</span>
+        </a>
+      </div>
+    </nav>
+    <div class="uk-container uk-container-center uk-margin-top uk-margin-bottom">
+      <div class="uk-width-medium-2-3 uk-container-center">
+        <div class="uk-panel uk-panel-box uk-text-center">
+          <h1>
+            <i class="fa fa-bug fa-5x"></i>
+          </h1>
+          <h2 class="bold">
+            ページが表示できません。
+          </h2>
+          <p class="wide-line">
+            ご不便をおかけし申し訳ございません。
+            <br />
+            正常にご覧いただけるよう、解決に取り組んでおります。
+          </p>
+          <a href="/" class="uk-button uk-button-danger uk-margin-bottom">
+            <i class="fa fa-reply"></i> トップに戻る
+          </a>
+        </div>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
-</body>
+    <div class="uk-container uk-container-center uk-margin-bottom">
+      <footer>
+        <small>&copy; Shoko</small>
+      </footer>
+    </div>
+  </body>
 </html>
