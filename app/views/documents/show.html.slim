@@ -2,12 +2,12 @@
 
 article.uk-article
   dd.uk-text-muted
-    span.uk-article-title #{@document.title}
+    span.uk-article-title.uk-margin-right #{@document.title}
     - if @document.is_draft?
-      span.uk-text-muted.uk-margin-left data-uk-tooltip="" title="下書き"
+      span.uk-text-muted.uk-margin-small-right data-uk-tooltip="" title="下書き"
         = fa_icon 'file'
     = link_to edit_document_path do
-      span.uk-text-success.uk-margin-small-left data-uk-tooltip="" title="編集"
+      span.uk-text-success data-uk-tooltip="" title="編集"
         = fa_icon 'pencil'
     = link_to delete_document_path, remote: true do
       span.uk-text-danger.uk-margin-small-left data-uk-tooltip="" title="削除"
