@@ -105,6 +105,8 @@ mark {
 }
 
 .uk-dropdown {
+  width: auto;
+
   .uk-form-row+.uk-form-row {
     margin-top: 5px;
   }
@@ -112,6 +114,11 @@ mark {
 .uk-parent {
   .uk-dropdown {
     width: 175px;
+  }
+}
+.uk-button-dropdown {
+  .uk-dropdown {
+    width: 250px;
   }
 }
 
