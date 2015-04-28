@@ -62,7 +62,7 @@ class DocumentsController < ApplicationController
 
   def update
     old_title = @document.title
-    is_draft = @document.is_draft?
+    was_draft = @document.is_draft?
     @result = @document.update document_params
 
     if @result
@@ -70,10 +70,10 @@ class DocumentsController < ApplicationController
         @document.user_documents.create user_id: current_user.id
       end
 
-      if is_draft
+      if was_draft && @document.is_publish?
         WebHookJob.perform_later current_user.id, @document.id, 'create'
         @document.create_markdown
-      else
+      elsif @document.is_publish?
         WebHookJob.perform_later current_user.id, @document.id, 'update'
         @document.update_markdown old_title
       end
