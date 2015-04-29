@@ -29,7 +29,9 @@ javascript:
 coffee:
   $('#nav-documents').addClass 'uk-active'
   marked.setOptions {
+    breaks: true,
+    gfm: true,
     highlight: (code) ->
       return hljs.highlightAuto(code).value
   }
-  $('#markdown').html marked(markdown, { breaks: true })
+  $('#markdown').html marked(markdown)

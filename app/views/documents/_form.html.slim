@@ -36,6 +36,10 @@ javascript:
   user_account = '#{current_user.account}'
 
 coffee:
+  marked.setOptions {
+    breaks: true,
+    gfm: true
+  }
   dispatcher = new WebSocketRails websocket_url
   channel = dispatcher.subscribe user_account
   channel.bind 'create_picture', ( data ) ->
