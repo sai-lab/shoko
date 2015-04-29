@@ -23,9 +23,13 @@ article.uk-article
   hr.uk-article-divider
   #markdown
 
-coffee:
-  $('#nav-documents').addClass 'uk-active'
-
 javascript:
   markdown = '#{raw escape_javascript(@document.markdown)}';
-  $('#markdown').html(marked(markdown, { breaks: true }));
+
+coffee:
+  $('#nav-documents').addClass 'uk-active'
+  marked.setOptions {
+    highlight: (code) ->
+      return hljs.highlightAuto(code).value
+  }
+  $('#markdown').html marked(markdown, { breaks: true })
