@@ -216,6 +216,18 @@ mark {
     padding-bottom: 5px;
     border-bottom: 1px solid #444;
   }
+  a {
+    margin: 0 4px;
+  }
+  :not(pre) > code {
+    padding: 2px;
+    margin: 0 4px;
+    font: 12px / 18px Consolas,monospace,serif;
+    color: #444;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+  }
   table {
     border: 1px solid #ddd;
     border-collapse: collapse;
