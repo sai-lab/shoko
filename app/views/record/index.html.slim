@@ -19,11 +19,11 @@ javascript:
   template = '#{params[:template]}'
 
 coffee:
-  $('#nav-record').addClass 'uk-active'
-  $('select#template').val template
+  $('#nav-record').addClass('uk-active')
+  $('select#template').val(template)
   $('select#template').on 'change', ->
-    if $(this).val() is ''
-      $(this).addClass 'placeholder'
+    if $(this).val() == ''
+      $(this).addClass('placeholder')
     else
-      $(this).removeClass 'placeholder'
+      $(this).removeClass('placeholder')
   $('select#template').change()

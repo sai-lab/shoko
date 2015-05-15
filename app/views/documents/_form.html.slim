@@ -29,7 +29,7 @@
 
 - if document.id && document.is_publish?
   coffee:
-    $('#document-draft').attr 'disabled', true
+    $('#document-draft').attr('disabled', true)
 
 javascript:
   websocket_url = '#{request.raw_host_with_port}/websocket'
@@ -37,46 +37,46 @@ javascript:
 
 coffee:
   marked.setOptions {
-    breaks: true,
+    breaks: true
     gfm: true
   }
-  dispatcher = new WebSocketRails websocket_url
-  channel = dispatcher.subscribe user_account
+  dispatcher = new WebSocketRails(websocket_url)
+  channel = dispatcher.subscribe(user_account)
   channel.bind 'create_picture', ( data ) ->
     content = '\n![' + data.file_name + '](' + data.url + ' \"' + data.file_name + '\")\n'
-    $('.CodeMirror')[0].CodeMirror.replaceSelection content
-  uk_upload_settings = {
-    action: '/pictures',
-    allow: '*.(jpeg|jpg|png|gif)',
+    $('.CodeMirror')[0].CodeMirror.replaceSelection(content)
+  ukUploadSettings = {
+    action: '/pictures'
+    allow: '*.(jpeg|jpg|png|gif)'
     notallowed: ->
-      UIkit.notify { message: '不正な画像ファイルです。', timeout: 3000, status: 'danger' }
+      UIkit.notify({ message: '不正な画像ファイルです。', timeout: 3000, status: 'danger' })
     error: ->
-      UIkit.notify { message: 'アップロード中にエラーが発生しました。', timeout: 3000, status: 'danger' }
+      UIkit.notify({ message: 'アップロード中にエラーが発生しました。', timeout: 3000, status: 'danger' })
     abort: ->
-      UIkit.notify { message: 'アップロードを中断しました。', timeout: 3000, status: 'danger' }
+      UIkit.notify({ message: 'アップロードを中断しました。', timeout: 3000, status: 'danger' })
     params: {
       authenticity_token: $('meta[name=\"csrf-token\"]').attr('content')
     }
   }
-  uk_select = UIkit.uploadSelect $('#upload-select'), uk_upload_settings
-  uk_drop = UIkit.uploadDrop $('#upload-drop'), uk_upload_settings
+  uk_select = UIkit.uploadSelect($('#upload-select'), ukUploadSettings)
+  uk_drop = UIkit.uploadDrop($('#upload-drop'), ukUploadSettings)
   $('#template').on 'change', ->
-    if $(this).val() is ''
-      $(this).addClass 'placeholder'
+    if $(this).val() == ''
+      $(this).addClass('placeholder')
     else
-      $(this).removeClass 'placeholder'
-    if $(':selected').attr('value') isnt ''
+      $(this).removeClass('placeholder')
+    if $(':selected').attr('value') != ''
       $.ajax {
-        'url': '/templates/' + $(':selected').attr('value') + '/select',
-        'type': 'GET',
+        'url': '/templates/' + $(':selected').attr('value') + '/select'
+        'type': 'GET'
         'data-type': 'html'
       }
   $('#template').change()
   $('#document-publish').on 'click', (event) ->
     event.preventDefault()
-    $('#document_draft_flag').prop 'checked', false
+    $('#document_draft_flag').prop('checked', false)
     $('.uk-form').submit()
   $('#document-draft').on 'click', (event) ->
     event.preventDefault()
-    $('#document_draft_flag').prop 'checked', true
+    $('#document_draft_flag').prop('checked', true)
     $('.uk-form').submit()

@@ -1,5 +1,5 @@
 <% if @web_hook.errors.empty? %>
-  location.reload true
+  location.reload(true)
 <% else %>
   $('[id^=web-hook_]' ).removeClass('uk-form-danger')
   $('.uk-form-help-block').empty()

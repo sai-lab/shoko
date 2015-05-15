@@ -1,5 +1,5 @@
 <% if @user.errors.empty? %>
-  location.reload true
+  location.reload(true)
 <% else %>
   $('[id^=user_]' ).removeClass('uk-form-danger')
   $('.uk-form-help-block').empty()

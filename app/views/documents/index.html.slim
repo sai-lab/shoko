@@ -18,11 +18,11 @@ javascript:
   user = '#{params[:user]}'
 
 coffee:
-  $('#nav-documents').addClass 'uk-active'
-  $('select#user').val user
+  $('#nav-documents').addClass('uk-active')
+  $('select#user').val(user)
   $('select#user').on 'change', ->
-    if $(this).val() is ''
-      $(this).addClass 'placeholder'
+    if $(this).val() == ''
+      $(this).addClass('placeholder')
     else
-      $(this).removeClass 'placeholder'
+      $(this).removeClass('placeholder')
   $('select#user').change()

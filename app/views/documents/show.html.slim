@@ -27,10 +27,10 @@ javascript:
   markdown = '#{raw escape_javascript(@document.markdown)}';
 
 coffee:
-  $('#nav-documents').addClass 'uk-active'
+  $('#nav-documents').addClass('uk-active')
   marked.setOptions {
-    breaks: true,
-    gfm: true,
+    breaks: true
+    gfm: true
     highlight: (code) ->
       return hljs.highlightAuto(code).value
   }
