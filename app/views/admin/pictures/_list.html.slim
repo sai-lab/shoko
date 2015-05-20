@@ -6,5 +6,9 @@
   ul.uk-thumbnav.uk-grid-width-1-5
     - pictures.each do |picture|
       li
-        = link_to admin_picture_path(picture.id), remote: true do
-          img.uk-thumbnail src="#{picture.attachment.url}" alt="#{picture.attachment_file_name}"
+        - if picture.attachment_file_name =~ /\.pdf$/
+          = link_to picture.attachment.url
+            img.uk-thumbnail src="#{picture.pdf_url}" alt="pdf!!!#{picture.attachment_file_name}"
+        - else
+          = link_to admin_picture_path(picture.id), remote: true do
+            img.uk-thumbnail src="#{picture.attachment.url}" alt="#{picture.attachment_file_name}"

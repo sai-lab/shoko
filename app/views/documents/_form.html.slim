@@ -43,11 +43,11 @@ coffee:
   dispatcher = new WebSocketRails(websocket_url)
   channel = dispatcher.subscribe(user_account)
   channel.bind 'create_picture', ( data ) ->
-    content = '\n![' + data.file_name + '](' + data.url + ' \"' + data.file_name + '\")\n'
+    content = '\n[![' + data.file_name + '](' + data.image + ' \"' + data.file_name + '\")](' + data.url + ')\n'
     $('.CodeMirror')[0].CodeMirror.replaceSelection(content)
   ukUploadSettings = {
     action: '/pictures'
-    allow: '*.(jpeg|jpg|png|gif)'
+    allow: '*.(jpeg|jpg|png|gif|pdf)'
     notallowed: ->
       UIkit.notify({ message: '不正な画像ファイルです。', timeout: 3000, status: 'danger' })
     error: ->
