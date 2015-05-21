@@ -2,13 +2,10 @@ class PicturesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @pictures = []
-
     params[:files].each do |file|
       picture = Picture.new attachment: file
 
       if picture.save
-        @pictures << picture
         if attachment_content_type = 'application/pdf'
           data = {
             image: picture.pdf_url,

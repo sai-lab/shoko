@@ -25,9 +25,10 @@ class Picture < ActiveRecord::Base
 
   def pdf_url
     file_path = attachment.url.to_s.split('.pdf')[0] + '.png'
-    return file_path if File.exists?(Rails.root.to_s + '/public' + attachment.url.to_s.split('.pdf')[0] + '.png')
+    return file_path if File.exists?(Rails.root.to_s + '/public' + file_path)
+
     pdf = Magick::ImageList.new(Rails.root.to_s + '/public' + attachment.url.to_s.split('?')[0] + '[0]')
-    cover_tmp = Rails.root.to_s + '/public' + attachment.url.to_s.split('.pdf')[0] + '.png'
+    cover_tmp = Rails.root.to_s + '/public' + file_path
     pdf[0].write(cover_tmp)
     file_path
   end
