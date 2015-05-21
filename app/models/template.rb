@@ -15,7 +15,7 @@ class Template < ActiveRecord::Base
   validates_presence_of :name, :title, :markdown
 
   def self.id_is(id)
-    Template.find_by(id: id.to_i)
+    find_by(id: id.to_i)
   end
 
   def replace_title(user)

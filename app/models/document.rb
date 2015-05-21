@@ -22,7 +22,7 @@ class Document < ActiveRecord::Base
   scope :search_markdown, ->(keyword) { keyword ? Document.where(['markdown LIKE ?', "%#{PGconn.escape(keyword)}%"]) : Document.all }
 
   def self.id_is(id)
-    Document.find_by(id: id.to_i)
+    find_by(id: id.to_i)
   end
 
   def create_markdown

@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   include Grade
 
   def self.id_is(id)
-    User.find_by(id: id.to_i)
+    find_by(id: id.to_i)
   end
 
   def update_without_current_password(params, *options)
