@@ -22,16 +22,27 @@ class Picture < ActiveRecord::Base
     content_type: { content_type: /(image|application)\/(jpeg|png|gif|pdf)/ }
 
   def self.id_is(id)
-    Picture.find_by(id: id.to_i)
+    find_by(id: id.to_i)
   end
 
   def pdf_url
-    file_path = attachment.url.to_s.split('.pdf')[0] + '.png'
-    return file_path if File.exists?(Rails.root.to_s + '/public' + file_path)
-
-    pdf = Magick::ImageList.new(Rails.root.to_s + '/public' + attachment.url.to_s.split('?')[0] + '[0]')
-    cover_tmp = Rails.root.to_s + '/public' + file_path
+    image_path = attachment.url.gsub('.pdf', '.png')
+    absolute_image_path = attachment.path.gsub('.pdf', '.png')
+    return image_path if File.exists?(absolute_image_path)
+    pdf = Magick::ImageList.new(attachment.path + '[0]')
+    cover_tmp = absolute_image_path
     pdf[0].write(cover_tmp)
-    file_path
+    image_path
+  end
+
+  def destroy
+    destroy_pdf_image
+    super
+  end
+
+  def destroy_pdf_image
+    return unless attachment_content_type == 'application/pdf'
+    file_path = attachment.path.gsub('.pdf', '.png')
+    File.delete(file_path) if File.exists?(file_path)
   end
 end
