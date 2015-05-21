@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   has_many :user_documents, dependent: :destroy
   has_many :documents, through: :user_documents
 
-  scope :id_is, ->( id ) { find_by( id: id.to_i ) }
+  scope :id_is, ->(id) { find_by(id: id.to_i) }
 
   include Grade
 
