@@ -21,7 +21,9 @@ class Picture < ActiveRecord::Base
     presence: true,
     content_type: { content_type: /(image|application)\/(jpeg|png|gif|pdf)/ }
 
-  scope :id_is, ->(id) { find_by(id: id.to_i) }
+  def self.id_is(id)
+    Picture.find_by(id: id.to_i)
+  end
 
   def pdf_url
     file_path = attachment.url.to_s.split('.pdf')[0] + '.png'

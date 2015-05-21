@@ -23,9 +23,11 @@ class User < ActiveRecord::Base
   has_many :user_documents, dependent: :destroy
   has_many :documents, through: :user_documents
 
-  scope :id_is, ->(id) { find_by(id: id.to_i) }
-
   include Grade
+
+  def self.id_is(id)
+    User.find_by(id: id.to_i)
+  end
 
   def update_without_current_password(params, *options)
     params.delete(:current_password)

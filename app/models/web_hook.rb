@@ -11,5 +11,7 @@
 class WebHook < ActiveRecord::Base
   validates_presence_of :url
 
-  scope :id_is, ->(id) { find_by(id: id.to_i) }
+  def self.id_is(id)
+    WebHook.find_by(id: id.to_i)
+  end
 end
