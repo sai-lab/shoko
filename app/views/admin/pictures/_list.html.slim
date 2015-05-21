@@ -6,11 +6,17 @@
   ul.uk-thumbnav.uk-grid-width-1-5
     - pictures.each do |picture|
       li
-        = link_to delete_admin_picture_path(picture.id), class: 'uk-button uk-button-danger uk-button-mini', remote: true
-          = fa_icon 'trash', text: '削除'
         - if picture.attachment_content_type == 'application/pdf'
           = link_to picture.attachment.url, target: :_blank
-            img.uk-thumbnail src="#{picture.pdf_url}" alt="#{picture.attachment_file_name}"
+            .uk-thumbnail
+              img src="#{picture.pdf_url}" alt="#{picture.attachment_file_name}"
+              .uk-thumbnail-caption
+                = link_to delete_admin_picture_path(picture.id), class: 'uk-button uk-button-danger uk-button-mini', remote: true
+                  = fa_icon 'trash', text: '削除'
         - else
           = link_to admin_picture_path(picture.id), remote: true do
-            img.uk-thumbnail src="#{picture.attachment.url}" alt="#{picture.attachment_file_name}"
+            .uk-thumbnail
+              img src="#{picture.attachment.url}" alt="#{picture.attachment_file_name}"
+              .uk-thumbnail-caption
+                = link_to delete_admin_picture_path(picture.id), class: 'uk-button uk-button-danger uk-button-mini', remote: true
+                  = fa_icon 'trash', text: '削除'
