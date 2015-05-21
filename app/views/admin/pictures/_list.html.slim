@@ -7,7 +7,7 @@
     - pictures.each do |picture|
       li
         - if picture.attachment_file_name =~ /\.pdf$/
-          = link_to picture.attachment.url
+          = link_to picture.attachment.url, target: :_blank
             img.uk-thumbnail src="#{picture.pdf_url}" alt="pdf!!!#{picture.attachment_file_name}"
         - else
           = link_to admin_picture_path(picture.id), remote: true do
