@@ -9,10 +9,19 @@ class PicturesController < ApplicationController
 
       if picture.save
         @pictures << picture
-        data = {
-          url: picture.attachment.url,
-          file_name: picture.attachment_file_name
-        }
+        if attachment_content_type = 'application/pdf'
+          data = {
+            image: picture.pdf_url,
+            url: picture.attachment.url,
+            file_name: picture.attachment_file_name
+          }
+        else
+          data = {
+            image: picture.attachment.url,
+            url: picture.attachment.url,
+            file_name: picture.attachment_file_name
+          }
+        end
         WebsocketRails[current_user.account].trigger :create_picture, data
       end
     end

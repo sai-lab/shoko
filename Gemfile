@@ -65,3 +65,4 @@ gem 'paperclip'
 gem 'websocket-rails'
 gem 'sidekiq'
 gem 'sinatra', require: false
+gem 'rmagick', require: 'RMagick'

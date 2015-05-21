@@ -176,6 +176,7 @@ GEM
     ref (1.0.5)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rmagick (2.15.0)
     rspec-core (3.2.3)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.1)
@@ -293,6 +294,7 @@ DEPENDENCIES
   pry-rails
   quiet_assets
   rails (= 4.2.1)
+  rmagick
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

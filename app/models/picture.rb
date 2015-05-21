@@ -19,7 +19,16 @@ class Picture < ActiveRecord::Base
 
   validates_attachment :attachment,
     presence: true,
-    content_type: { content_type: /^image\/(jpeg|png|gif)/ }
+    content_type: { content_type: /(image|application)\/(jpeg|png|gif|pdf)/ }
 
   scope :id_is, ->(id) { find_by(id: id.to_i) }
+
+  def pdf_url
+    file_path = attachment.url.to_s.split('.pdf')[0] + '.png'
+    return file_path if File.exists?(Rails.root.to_s + '/public' + attachment.url.to_s.split('.pdf')[0] + '.png')
+    pdf = Magick::ImageList.new(Rails.root.to_s + '/public' + attachment.url.to_s.split('?')[0] + '[0]')
+    cover_tmp = Rails.root.to_s + '/public' + attachment.url.to_s.split('.pdf')[0] + '.png'
+    pdf[0].write(cover_tmp)
+    file_path
+  end
 end
