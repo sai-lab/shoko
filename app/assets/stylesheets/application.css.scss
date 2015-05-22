@@ -82,6 +82,19 @@ mark {
   padding: 8px 6px;
 }
 
+.uk-thumbnav {
+  .uk-thumbnail {
+    width: 100%;
+
+    img {
+      height: 120px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
 .uk-table {
   border: 1px solid #ddd;
 
