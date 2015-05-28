@@ -22,10 +22,9 @@ class RecordController < ApplicationController
       attends[user.grade] << family_name
 
       matches = document.markdown.match(/#{template.pattern}/)
-      outline_str = "○ #{family_name}\n\n"
+      outline_str += "○ #{family_name}\n\n"
       if matches
-        outline = document.markdown.match(/#{template.pattern}/)[1]
-        outline_str += "#{matches}\n\n"
+        outline_str += "#{matches[1]}\n\n"
       end
     end
 
