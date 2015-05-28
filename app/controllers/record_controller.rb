@@ -15,7 +15,7 @@ class RecordController < ApplicationController
     date_str = date.strftime("%Y.%m.%d(#{%w(日 月 火 水 木 金 土)[date.wday]})")
 
     documents.each do |document|
-      user = document.users.first
+      user = document.users.last
       family_name = user.name.split(' ').first
 
       attends[user.grade] = [] unless attends[user.grade]
