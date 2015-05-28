@@ -21,8 +21,12 @@ class RecordController < ApplicationController
       attends[user.grade] = [] unless attends[user.grade]
       attends[user.grade] << family_name
 
-      outline = document.markdown.match(/#{template.pattern}/)[1]
-      outline_str += "○ #{family_name}\n\n#{outline}\n\n"
+      matches = document.markdown.match(/#{template.pattern}/)
+      outline_str = "○ #{family_name}\n\n"
+      if matches
+        outline = document.markdown.match(/#{template.pattern}/)[1]
+        outline_str += "#{matches}\n\n"
+      end
     end
 
     attend_str = ''
