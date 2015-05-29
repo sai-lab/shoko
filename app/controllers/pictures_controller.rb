@@ -6,7 +6,7 @@ class PicturesController < ApplicationController
       picture = Picture.new attachment: file
 
       if picture.save
-        if attachment_content_type = 'application/pdf'
+        if attachment_content_type == 'application/pdf'
           data = {
             image: picture.pdf_url,
             url: picture.attachment.url,
