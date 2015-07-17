@@ -10,10 +10,12 @@ server {
 }
 
 server {
-    listen               443;
-    ssl                  on;
-    ssl_certificate      /etc/nginx/ssl/{{ ansible_hostname }}.crt;
-    ssl_certificate_key  /etc/nginx/ssl/{{ ansible_hostname }}.key;
+    listen                     443;
+    ssl                        on;
+    ssl_prefer_server_ciphers  on;
+    ssl_certificate            /etc/nginx/ssl/{{ ansible_hostname }}.crt;
+    ssl_certificate_key        /etc/nginx/ssl/{{ ansible_hostname }}.key;
+    ssl_protocols              TLSv1 TLSv1.1 TLSv1.2;
 
     server_name           {{ ansible_fqdn }};
     client_max_body_size  4G;
