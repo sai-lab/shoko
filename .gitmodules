@@ -1,6 +1,6 @@
 [submodule "playbook"]
 	path = playbook
-	url = git://github.com/hico-horiuchi/ansible-rails-deploy.git
+	url = https://github.com/hico-horiuchi/ansible-rails-deploy
 [submodule "vendor/assets/stylesheets/github-markdown-css"]
 	path = vendor/assets/stylesheets/github-markdown-css
 	url = https://github.com/sindresorhus/github-markdown-css
