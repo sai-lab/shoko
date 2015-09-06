@@ -39,6 +39,8 @@ coffee:
   marked.setOptions {
     breaks: true
     gfm: true
+    highlight: (code, lang) ->
+      hljs.highlightAuto(code, [lang]).value
   }
   dispatcher = new WebSocketRails(websocket_url)
   channel = dispatcher.subscribe(user_account)
@@ -80,3 +82,5 @@ coffee:
     event.preventDefault()
     $('#document_draft_flag').prop('checked', true)
     $('.uk-form').submit()
+  $(document).ready ->
+    $('.uk-htmleditor-preview').addClass('markdown-body')
