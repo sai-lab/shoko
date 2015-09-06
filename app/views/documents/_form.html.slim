@@ -39,6 +39,8 @@ coffee:
   marked.setOptions {
     breaks: true
     gfm: true
+    highlight: (code, lang) ->
+      hljs.highlightAuto(code, [lang]).value
   }
   dispatcher = new WebSocketRails(websocket_url)
   channel = dispatcher.subscribe(user_account)
