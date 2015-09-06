@@ -21,7 +21,8 @@ article.uk-article
       span.uk-margin-small-left #{I18n.l @document.updated_at, format: :short}
 
   hr.uk-article-divider
-  #markdown
+
+  .markdown-body
 
 javascript:
   markdown = '#{raw escape_javascript(@document.markdown)}';
@@ -34,4 +35,4 @@ coffee:
     highlight: (code) ->
       return hljs.highlightAuto(code).value
   }
-  $('#markdown').html marked(markdown)
+  $('.markdown-body').html marked(markdown)
