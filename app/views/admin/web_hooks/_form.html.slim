@@ -8,8 +8,13 @@
 
     .uk-form-row
       .uk-form-icon
+        i.uk-icon-font
+        = f.text_field :name, autofocus: true, placeholder: '名前', style: 'padding-left: 30px;'
+      .uk-form-help-block#web_hook-name-error
+    .uk-form-row
+      .uk-form-icon
         i.uk-icon-link
-        = f.text_field :url, autofocus: true, placeholder: 'URL', style: 'padding-left: 30px;'
+        = f.text_field :url, placeholder: 'URL', style: 'padding-left: 30px;'
       .uk-form-help-block#web_hook-url-error
 
     .uk-modal-footer.uk-text-right

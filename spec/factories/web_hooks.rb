@@ -6,6 +6,7 @@
 #  url        :string           default(""), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  name       :string           default(""), not null
 #
 
 FactoryGirl.define do

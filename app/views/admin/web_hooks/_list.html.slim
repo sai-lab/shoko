@@ -5,6 +5,7 @@
         th style="width: 150px;"
           = link_to new_admin_web_hook_path, class: 'uk-button uk-button-mini uk-button-primary', remote: true do
             = fa_icon 'plus', text: '作成'
+        th.bold style="width: 150px;" 名前
         th.bold URL
     tbody
       - web_hooks.each do |web_hook|
@@ -14,4 +15,5 @@
               = fa_icon 'pencil', text: '編集'
             = link_to delete_admin_web_hook_path(web_hook.id), class: 'uk-button uk-button-mini uk-button-danger', remote: true do
               = fa_icon 'trash', text: '削除'
+          td #{web_hook.name}
           td #{web_hook.url}
