@@ -7,7 +7,7 @@
       .uk-margin-top.uk-visible-small
       .uk-width-medium-2-3
         = f.text_field :title, autofocus: true, class: 'uk-form-large uk-width-1-1', placeholder: 'タイトル'
-  .uk-form-row
+  .uk-form-row#upload-paste
     = f.text_area :markdown, 'data-uk-htmleditor' => '{ markdown: true }'
   .uk-form-row
     .uk-grid
@@ -84,3 +84,26 @@ coffee:
     $('.uk-form').submit()
   $(document).ready ->
     $('.uk-htmleditor-preview').addClass('markdown-body')
+  $('#upload-paste').on 'paste', (event) ->
+    event.preventDefault()
+    # event からクリップボードのアイテムを取り出す
+    items = event.originalEvent.clipboardData.items
+    if items[0].type.indexOf('image') == 0
+      result = upload_files_with_ajax(items[0].getAsFile())
+    return
+  upload_files_with_ajax = (file) ->
+    event.preventDefault()
+    formData = new FormData
+    formData.append('files[]', file, 'from_clipboard.png')
+    formData.append('authenticity_token', $('meta[name=\"csrf-token\"]').attr('content'))
+    $.ajax '/pictures', {
+      type: 'POST'
+      contentType: false
+      processData: false
+      data: formData
+      error: ->
+      # アップロードエラー処理
+      success: (res) ->
+        console.log res
+      # アップロード成功処理
+    }
