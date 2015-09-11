@@ -94,8 +94,8 @@ coffee:
   upload_files_with_ajax = (file) ->
     event.preventDefault()
     formData = new FormData
-    formData.append 'files[]', file, 'from_clipboard.png'
-    formData.append 'authenticity_token', $('meta[name=\"csrf-token\"]').attr('content')
+    formData.append('files[]', file, 'from_clipboard.png')
+    formData.append('authenticity_token', $('meta[name=\"csrf-token\"]').attr('content'))
     $.ajax '/pictures', {
       type: 'POST'
       contentType: false
@@ -105,5 +105,5 @@ coffee:
       # アップロードエラー処理
       success: (res) ->
         console.log res
-      # アップロード成功処理 res.fileName
-     }
+      # アップロード成功処理
+    }
