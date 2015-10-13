@@ -52,6 +52,6 @@ class Admin::WebHooksController < ApplicationController
   end
 
   def web_hook_params
-    params.require(:web_hook).permit :url
+    params.require(:web_hook).permit :name, :url
   end
 end

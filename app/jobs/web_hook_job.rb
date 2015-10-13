@@ -5,12 +5,23 @@ class WebHookJob < ActiveJob::Base
     user = User.id_is user_id
     document = Document.id_is document_id
     routes = Rails.application.routes.url_helpers
+    action = {
+      'create' => '作成',
+      'update' => '更新'
+    }[action]
+
+    attachment = {}
+    attachment[:fallback] = "#{user.name.split(' ').first}さんが「#{document.title}」を#{action}しました。"
+    attachment[:title] = attachment[:fallback]
+    attachment[:title_link] = routes.document_url document_id, host: `hostname -f`.chomp
+    attachment[:text] = document.markdown.gsub("\r", ' ').gsub("\n", ' ').slice(0, 100) + '...'
+    attachment[:color] = '#9c9990'
 
     payload = {}
-    payload[:user] = user
-    payload[:document] = document
-    payload[:action] = action
-    payload[:url] = routes.document_url document_id, host: `hostname -f`.chomp
+    payload[:username] = '書庫'
+    payload[:icon_emoji] = ':memo:'
+    payload[:attachments] = [attachment]
+
     payload = payload.to_json
 
     WebHook.all.each do |web_hook|
