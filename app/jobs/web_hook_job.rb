@@ -14,8 +14,12 @@ class WebHookJob < ActiveJob::Base
     attachment[:fallback] = "#{user.name.split(' ').first}さんが「#{document.title}」を#{action}しました。"
     attachment[:title] = attachment[:fallback]
     attachment[:title_link] = routes.document_url document_id, host: `hostname -f`.chomp
-    attachment[:text] = document.markdown.gsub("\r", ' ').gsub("\n", ' ').slice(0, 100) + '...'
+    attachment[:text] = document.markdown.gsub(/!\[.+\]\(.+\)/, '').gsub(/\[(.+)\]\((.+)\)/, '<$2|$1>')
     attachment[:color] = '#9c9990'
+    attachment[:mrkdwn_in] = ['text']
+
+    images = document.markdown.match(/!\[.+\]\((.+)\)/)
+    attachment[:image_url] = images[1] if images
 
     payload = {}
     payload[:username] = '書庫'
